@@ -39,7 +39,7 @@
   <!-- Checks for whitespace                               -->
   <!-- See http://checkstyle.org/config_whitespace.html -->
   <module name="FileTabCharacter">
-    <property name="eachLine" value="true"/>
+    <property name="eachLine" value="false"/>
   </module>
 
   <module name="LineLength">
@@ -251,12 +251,12 @@
              value="GenericWhitespace ''{0}'' is not preceded with whitespace."/>
     </module>
     <module name="Indentation">
-      <property name="basicOffset" value="4"/>
-      <property name="braceAdjustment" value="4"/>
-      <property name="caseIndent" value="4"/>
-      <property name="throwsIndent" value="4"/>
-      <property name="lineWrappingIndentation" value="4"/>
-      <property name="arrayInitIndent" value="4"/>
+      <property name="basicOffset" value="8"/>
+      <property name="braceAdjustment" value="8"/>
+      <property name="caseIndent" value="8"/>
+      <property name="throwsIndent" value="8"/>
+      <property name="lineWrappingIndentation" value="8"/>
+      <property name="arrayInitIndent" value="8"/>
     </module>
     <module name="AbbreviationAsWordInName">
       <property name="ignoreFinal" value="false"/>
