@@ -19,4 +19,4 @@ The jdotxt project is an implementation of a todo application. It contains a GUI
 
 The project contains two main packages:
 
-- 
+
