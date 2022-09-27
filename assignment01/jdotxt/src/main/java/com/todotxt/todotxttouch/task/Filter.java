@@ -32,7 +32,7 @@ public interface Filter<T> {
 	 * Apply the filter
 	 * 
 	 * @param input
-	 *            the object to apply the filter to
+	 *              the object to apply the filter to
 	 * @return <code>true</code> if the object in question meets the filter
 	 *         criteria, <code>false</code> otherwise
 	 */

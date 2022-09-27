@@ -5,7 +5,7 @@ import com.todotxt.todotxttouch.task.Task;
 import java.util.List;
 
 public enum Sorters {
-    ID ("") {
+    ID("") {
         @Override
         public Sorter<Task> get(final boolean ascending) {
             return new GenericSorter<Task>() {
@@ -21,7 +21,7 @@ public enum Sorters {
             };
         }
     },
-    PRIORITY ("Priority") {
+    PRIORITY("Priority") {
         @Override
         public Sorter<Task> get(final boolean ascending) {
             return new GenericSorter<Task>() {
@@ -45,7 +45,7 @@ public enum Sorters {
             };
         }
     },
-    TEXT ("Task Text") {
+    TEXT("Task Text") {
         @Override
         Sorter<Task> get(final boolean ascending) {
             return new GenericSorter<Task>() {
@@ -61,7 +61,7 @@ public enum Sorters {
             };
         }
     },
-    DATE ("Creation Date") {
+    DATE("Creation Date") {
         @Override
         Sorter<Task> get(final boolean ascending) {
             return new GenericSorter<Task>() {
@@ -122,7 +122,7 @@ public enum Sorters {
             };
         }
     },
-    COMPLETION ("Completion") {
+    COMPLETION("Completion") {
         @Override
         public Sorter<Task> get(final boolean ascending) {
             return new GenericSorter<Task>() {
@@ -137,14 +137,16 @@ public enum Sorters {
                     final boolean c2 = t2.isCompleted();
                     int result = 0;
 
-                    if      (c1 == c2) { result =  0; }
-                    else if (c1      ) { result =  1; }
-                    else {
-                      result = -1;
+                    if (c1 == c2) {
+                        result = 0;
+                    } else if (c1) {
+                        result = 1;
+                    } else {
+                        result = -1;
                     }
 
                     if (!ascending)
-                      result = -result;
+                        result = -result;
 
                     return result;
                 }
@@ -161,8 +163,7 @@ public enum Sorters {
                 }
             };
         }
-    }
-    ;
+    };
 
     String name;
 
@@ -176,8 +177,13 @@ public enum Sorters {
 
     abstract Sorter<Task> get(final boolean ascending);
 
-    public Sorter<Task> ascending() {return get(true);}
-    public Sorter<Task> descending() {return get(false);}
+    public Sorter<Task> ascending() {
+        return get(true);
+    }
+
+    public Sorter<Task> descending() {
+        return get(false);
+    }
 
     public static <E extends Comparable> int compareLists(List<E> l1, List<E> l2) {
         if (l1.equals(l2))
@@ -198,15 +204,18 @@ public enum Sorters {
 
         // Similar to priorities -- we want tasks with threshold date go first.
 
-        if      (d1 == null && d2 == null) { result =  0; }
-        else if (d1 == null              ) { result =  1; }
-        else if (d2 == null              ) { result = -1; }
-        else {
-          result = d1.compareTo(d2);
+        if (d1 == null && d2 == null) {
+            result = 0;
+        } else if (d1 == null) {
+            result = 1;
+        } else if (d2 == null) {
+            result = -1;
+        } else {
+            result = d1.compareTo(d2);
         }
 
         if (!ascending)
-          result = -result;
+            result = -result;
 
         return result;
     }

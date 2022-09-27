@@ -42,19 +42,23 @@ import com.todotxt.todotxttouch.TodoException;
 
 public class Util {
 
-	/*private static String TAG = Util.class.getSimpleName();
-	private static final int CONNECTION_TIMEOUT = 120000;
-	private static final int SOCKET_TIMEOUT = 120000;*/
+	/*
+	 * private static String TAG = Util.class.getSimpleName();
+	 * private static final int CONNECTION_TIMEOUT = 120000;
+	 * private static final int SOCKET_TIMEOUT = 120000;
+	 */
 
 	private Util() {
 	}
 
-	/*public static HttpParams getTimeoutHttpParams() {
-		HttpParams params = new BasicHttpParams();
-		HttpConnectionParams.setConnectionTimeout(params, CONNECTION_TIMEOUT);
-		HttpConnectionParams.setSoTimeout(params, SOCKET_TIMEOUT);
-		return params;
-	}*/
+	/*
+	 * public static HttpParams getTimeoutHttpParams() {
+	 * HttpParams params = new BasicHttpParams();
+	 * HttpConnectionParams.setConnectionTimeout(params, CONNECTION_TIMEOUT);
+	 * HttpConnectionParams.setSoTimeout(params, SOCKET_TIMEOUT);
+	 * return params;
+	 * }
+	 */
 
 	public static void closeStream(Closeable stream) {
 		if (stream != null) {
@@ -67,34 +71,36 @@ public class Util {
 		}
 	}
 
-	/*public static InputStream getInputStreamFromUrl(String url)
-			throws ClientProtocolException, IOException {
-		HttpGet request = new HttpGet(url);
-		DefaultHttpClient client = new DefaultHttpClient(getTimeoutHttpParams());
-		HttpResponse response = client.execute(request);
-		int statusCode = response.getStatusLine().getStatusCode();
-		if (statusCode != 200) {
-			System.out.print("Failed to get stream for: " + url);
-			throw new IOException("Failed to get stream for: " + url);
-		}
-		return response.getEntity().getContent();
-	}
-
-	public static String fetchContent(String url)
-			throws ClientProtocolException, IOException {
-		InputStream input = getInputStreamFromUrl(url);
-		try {
-			int c;
-			byte[] buffer = new byte[8192];
-			StringBuilder sb = new StringBuilder();
-			while ((c = input.read(buffer)) != -1) {
-				sb.append(new String(buffer, 0, c));
-			}
-			return sb.toString();
-		} finally {
-			closeStream(input);
-		}
-	}*/
+	/*
+	 * public static InputStream getInputStreamFromUrl(String url)
+	 * throws ClientProtocolException, IOException {
+	 * HttpGet request = new HttpGet(url);
+	 * DefaultHttpClient client = new DefaultHttpClient(getTimeoutHttpParams());
+	 * HttpResponse response = client.execute(request);
+	 * int statusCode = response.getStatusLine().getStatusCode();
+	 * if (statusCode != 200) {
+	 * System.out.print("Failed to get stream for: " + url);
+	 * throw new IOException("Failed to get stream for: " + url);
+	 * }
+	 * return response.getEntity().getContent();
+	 * }
+	 * 
+	 * public static String fetchContent(String url)
+	 * throws ClientProtocolException, IOException {
+	 * InputStream input = getInputStreamFromUrl(url);
+	 * try {
+	 * int c;
+	 * byte[] buffer = new byte[8192];
+	 * StringBuilder sb = new StringBuilder();
+	 * while ((c = input.read(buffer)) != -1) {
+	 * sb.append(new String(buffer, 0, c));
+	 * }
+	 * return sb.toString();
+	 * } finally {
+	 * closeStream(input);
+	 * }
+	 * }
+	 */
 
 	public static String readStream(InputStream is) {
 		if (is == null) {
@@ -131,128 +137,134 @@ public class Util {
 		}
 	}
 
-	/*public static void showToastLong(Context cxt, int resid) {
-		Toast.makeText(cxt, resid, Toast.LENGTH_LONG).show();
-	}
-
-	public static void showToastShort(Context cxt, int resid) {
-		Toast.makeText(cxt, resid, Toast.LENGTH_SHORT).show();
-	}
-
-	public static void showToastLong(Context cxt, String msg) {
-		Toast.makeText(cxt, msg, Toast.LENGTH_LONG).show();
-	}
-
-	public static void showToastShort(Context cxt, String msg) {
-		Toast.makeText(cxt, msg, Toast.LENGTH_SHORT).show();
-	}
-
-	public interface OnMultiChoiceDialogListener {
-		void onClick(boolean[] selected);
-	}
-
-	public static Dialog createMultiChoiceDialog(Context cxt,
-			CharSequence[] keys, boolean[] values, Integer titleId,
-			Integer iconId, final OnMultiChoiceDialogListener listener) {
-		final boolean[] res;
-		if (values == null) {
-			res = new boolean[keys.length];
-		} else {
-			res = values;
-		}
-		AlertDialog.Builder builder = new AlertDialog.Builder(cxt);
-		if (iconId != null) {
-			builder.setIcon(iconId);
-		}
-		if (titleId != null) {
-			builder.setTitle(titleId);
-		}
-		builder.setMultiChoiceItems(keys, values,
-				new DialogInterface.OnMultiChoiceClickListener() {
-					public void onClick(DialogInterface dialog,
-							int whichButton, boolean isChecked) {
-						res[whichButton] = isChecked;
-					}
-				});
-		builder.setPositiveButton(R.string.ok,
-				new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int whichButton) {
-						listener.onClick(res);
-					}
-				});
-		builder.setNegativeButton(R.string.cancel, null);
-		return builder.create();
-	}
-
-	public static void showDialog(Context cxt, int titleid, int msgid) {
-		AlertDialog.Builder builder = new AlertDialog.Builder(cxt);
-		builder.setTitle(titleid);
-		builder.setMessage(msgid);
-		builder.setPositiveButton(android.R.string.ok, null);
-		builder.setCancelable(true);
-		builder.show();
-	}
-
-	public static void showDialog(Context cxt, int titleid, String msg) {
-		AlertDialog.Builder builder = new AlertDialog.Builder(cxt);
-		builder.setTitle(titleid);
-		builder.setMessage(msg);
-		builder.setPositiveButton(android.R.string.ok, null);
-		builder.setCancelable(true);
-		builder.show();
-	}
-
-	public static void showConfirmationDialog(Context cxt, int msgid,
-			OnClickListener oklistener) {
-		AlertDialog.Builder builder = new AlertDialog.Builder(cxt);
-		// builder.setTitle(cxt.getPackageName());
-		builder.setMessage(msgid);
-		builder.setPositiveButton(android.R.string.ok, oklistener);
-		builder.setNegativeButton(android.R.string.cancel, null);
-		builder.setCancelable(true);
-		builder.show();
-	}
-
-	public static void showConfirmationDialog(Context cxt, int msgid,
-			OnClickListener oklistener, int titleid) {
-		AlertDialog.Builder builder = new AlertDialog.Builder(cxt);
-		// builder.setTitle(cxt.getPackageName());
-		builder.setTitle(titleid);
-		builder.setMessage(msgid);
-		builder.setPositiveButton(android.R.string.ok, oklistener);
-		builder.setNegativeButton(android.R.string.cancel, null);
-		builder.setCancelable(true);
-		builder.show();
-	}
-
-	public static void showDeleteConfirmationDialog(Context cxt,
-			OnClickListener oklistener) {
-		AlertDialog.Builder builder = new AlertDialog.Builder(cxt);
-		builder.setTitle(R.string.delete_task_title);
-		builder.setMessage(R.string.delete_task_message);
-		builder.setPositiveButton(R.string.delete_task_confirm, oklistener);
-		builder.setNegativeButton(R.string.cancel, null);
-		builder.show();
-	}*/
+	/*
+	 * public static void showToastLong(Context cxt, int resid) {
+	 * Toast.makeText(cxt, resid, Toast.LENGTH_LONG).show();
+	 * }
+	 * 
+	 * public static void showToastShort(Context cxt, int resid) {
+	 * Toast.makeText(cxt, resid, Toast.LENGTH_SHORT).show();
+	 * }
+	 * 
+	 * public static void showToastLong(Context cxt, String msg) {
+	 * Toast.makeText(cxt, msg, Toast.LENGTH_LONG).show();
+	 * }
+	 * 
+	 * public static void showToastShort(Context cxt, String msg) {
+	 * Toast.makeText(cxt, msg, Toast.LENGTH_SHORT).show();
+	 * }
+	 * 
+	 * public interface OnMultiChoiceDialogListener {
+	 * void onClick(boolean[] selected);
+	 * }
+	 * 
+	 * public static Dialog createMultiChoiceDialog(Context cxt,
+	 * CharSequence[] keys, boolean[] values, Integer titleId,
+	 * Integer iconId, final OnMultiChoiceDialogListener listener) {
+	 * final boolean[] res;
+	 * if (values == null) {
+	 * res = new boolean[keys.length];
+	 * } else {
+	 * res = values;
+	 * }
+	 * AlertDialog.Builder builder = new AlertDialog.Builder(cxt);
+	 * if (iconId != null) {
+	 * builder.setIcon(iconId);
+	 * }
+	 * if (titleId != null) {
+	 * builder.setTitle(titleId);
+	 * }
+	 * builder.setMultiChoiceItems(keys, values,
+	 * new DialogInterface.OnMultiChoiceClickListener() {
+	 * public void onClick(DialogInterface dialog,
+	 * int whichButton, boolean isChecked) {
+	 * res[whichButton] = isChecked;
+	 * }
+	 * });
+	 * builder.setPositiveButton(R.string.ok,
+	 * new DialogInterface.OnClickListener() {
+	 * public void onClick(DialogInterface dialog, int whichButton) {
+	 * listener.onClick(res);
+	 * }
+	 * });
+	 * builder.setNegativeButton(R.string.cancel, null);
+	 * return builder.create();
+	 * }
+	 * 
+	 * public static void showDialog(Context cxt, int titleid, int msgid) {
+	 * AlertDialog.Builder builder = new AlertDialog.Builder(cxt);
+	 * builder.setTitle(titleid);
+	 * builder.setMessage(msgid);
+	 * builder.setPositiveButton(android.R.string.ok, null);
+	 * builder.setCancelable(true);
+	 * builder.show();
+	 * }
+	 * 
+	 * public static void showDialog(Context cxt, int titleid, String msg) {
+	 * AlertDialog.Builder builder = new AlertDialog.Builder(cxt);
+	 * builder.setTitle(titleid);
+	 * builder.setMessage(msg);
+	 * builder.setPositiveButton(android.R.string.ok, null);
+	 * builder.setCancelable(true);
+	 * builder.show();
+	 * }
+	 * 
+	 * public static void showConfirmationDialog(Context cxt, int msgid,
+	 * OnClickListener oklistener) {
+	 * AlertDialog.Builder builder = new AlertDialog.Builder(cxt);
+	 * // builder.setTitle(cxt.getPackageName());
+	 * builder.setMessage(msgid);
+	 * builder.setPositiveButton(android.R.string.ok, oklistener);
+	 * builder.setNegativeButton(android.R.string.cancel, null);
+	 * builder.setCancelable(true);
+	 * builder.show();
+	 * }
+	 * 
+	 * public static void showConfirmationDialog(Context cxt, int msgid,
+	 * OnClickListener oklistener, int titleid) {
+	 * AlertDialog.Builder builder = new AlertDialog.Builder(cxt);
+	 * // builder.setTitle(cxt.getPackageName());
+	 * builder.setTitle(titleid);
+	 * builder.setMessage(msgid);
+	 * builder.setPositiveButton(android.R.string.ok, oklistener);
+	 * builder.setNegativeButton(android.R.string.cancel, null);
+	 * builder.setCancelable(true);
+	 * builder.show();
+	 * }
+	 * 
+	 * public static void showDeleteConfirmationDialog(Context cxt,
+	 * OnClickListener oklistener) {
+	 * AlertDialog.Builder builder = new AlertDialog.Builder(cxt);
+	 * builder.setTitle(R.string.delete_task_title);
+	 * builder.setMessage(R.string.delete_task_message);
+	 * builder.setPositiveButton(R.string.delete_task_confirm, oklistener);
+	 * builder.setNegativeButton(R.string.cancel, null);
+	 * builder.show();
+	 * }
+	 */
 
 	public static boolean isDeviceWritable() {
-		/*String sdState = Environment.getExternalStorageState();
-		if (Environment.MEDIA_MOUNTED.equals(sdState)) {
-			return true;
-		} else {
-			return false;
-		}*/
+		/*
+		 * String sdState = Environment.getExternalStorageState();
+		 * if (Environment.MEDIA_MOUNTED.equals(sdState)) {
+		 * return true;
+		 * } else {
+		 * return false;
+		 * }
+		 */
 		return true;
 	}
 
 	public static boolean isDeviceReadable() {
-		/*String sdState = Environment.getExternalStorageState();
-		if (Environment.MEDIA_MOUNTED.equals(sdState)
-				|| Environment.MEDIA_MOUNTED_READ_ONLY.equals(sdState)) {
-			return true;
-		} else {
-			return false;
-		}*/
+		/*
+		 * String sdState = Environment.getExternalStorageState();
+		 * if (Environment.MEDIA_MOUNTED.equals(sdState)
+		 * || Environment.MEDIA_MOUNTED_READ_ONLY.equals(sdState)) {
+		 * return true;
+		 * } else {
+		 * return false;
+		 * }
+		 */
 		return true;
 	}
 
@@ -333,38 +345,41 @@ public class Util {
 		}
 	}
 
-	/*public static ArrayAdapter<String> newSpinnerAdapter(Context cxt,
-			List<String> items) {
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(cxt,
-				android.R.layout.simple_spinner_item, items);
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		return adapter;
-	}
-
-	public static void setGray(SpannableString ss, List<String> items) {
-		String data = ss.toString();
-		for (String item : items) {
-			int i = data.indexOf("@" + item);
-			if (i != -1) {
-				ss.setSpan(new ForegroundColorSpan(Color.GRAY), i,
-						i + 1 + item.length(),
-						Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-			}
-			int j = data.indexOf("+" + item);
-			if (j != -1) {
-				ss.setSpan(new ForegroundColorSpan(Color.GRAY), j,
-						j + 1 + item.length(),
-						Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-			}
-		}
-	}
-
-	public static boolean isOnline(Context context) {
-		ConnectivityManager cm = (ConnectivityManager) context
-				.getSystemService(Context.CONNECTIVITY_SERVICE);
-		return cm.getActiveNetworkInfo() != null
-				&& cm.getActiveNetworkInfo().isConnected();
-	}*/
+	/*
+	 * public static ArrayAdapter<String> newSpinnerAdapter(Context cxt,
+	 * List<String> items) {
+	 * ArrayAdapter<String> adapter = new ArrayAdapter<String>(cxt,
+	 * android.R.layout.simple_spinner_item, items);
+	 * adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item
+	 * );
+	 * return adapter;
+	 * }
+	 * 
+	 * public static void setGray(SpannableString ss, List<String> items) {
+	 * String data = ss.toString();
+	 * for (String item : items) {
+	 * int i = data.indexOf("@" + item);
+	 * if (i != -1) {
+	 * ss.setSpan(new ForegroundColorSpan(Color.GRAY), i,
+	 * i + 1 + item.length(),
+	 * Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+	 * }
+	 * int j = data.indexOf("+" + item);
+	 * if (j != -1) {
+	 * ss.setSpan(new ForegroundColorSpan(Color.GRAY), j,
+	 * j + 1 + item.length(),
+	 * Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+	 * }
+	 * }
+	 * }
+	 * 
+	 * public static boolean isOnline(Context context) {
+	 * ConnectivityManager cm = (ConnectivityManager) context
+	 * .getSystemService(Context.CONNECTIVITY_SERVICE);
+	 * return cm.getActiveNetworkInfo() != null
+	 * && cm.getActiveNetworkInfo().isConnected();
+	 * }
+	 */
 
 	public static String join(Collection<?> s, String delimiter) {
 		StringBuilder builder = new StringBuilder();
@@ -381,30 +396,30 @@ public class Util {
 		}
 		return builder.toString();
 	}
-	
+
 	public static ArrayList<String> split(String s, String delimeter) {
 		if (Strings.isBlank(s)) {
 			return new ArrayList<String>();
 		}
 		return new ArrayList<String>(Arrays.asList(s.split(delimeter)));
 	}
-	
-    public static ImageIcon createImageIcon(String path) {
-        java.net.URL imgURL = JdotxtToolbar.class.getResource(path);
-        if (imgURL != null) {
-            return new ImageIcon(imgURL);
-        } else {
-            System.err.println("Couldn't find file: " + path);
-            return null;
-        }
-    }
-    
+
+	public static ImageIcon createImageIcon(String path) {
+		java.net.URL imgURL = JdotxtToolbar.class.getResource(path);
+		if (imgURL != null) {
+			return new ImageIcon(imgURL);
+		} else {
+			System.err.println("Couldn't find file: " + path);
+			return null;
+		}
+	}
+
 	public static void prependString(ArrayList<String> list, String prepend) {
-		for (int k1=0; k1 < list.size(); k1++) {
+		for (int k1 = 0; k1 < list.size(); k1++) {
 			list.set(k1, prepend + list.get(k1));
 		}
 	}
-	
+
 	public static int[] integerList2IntArray(List<Integer> integerlist) {
 		int[] array = new int[integerlist.size()];
 		for (int k1 = 0; k1 < integerlist.size(); k1++) {

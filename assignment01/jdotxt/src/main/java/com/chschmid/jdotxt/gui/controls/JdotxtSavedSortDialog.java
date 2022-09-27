@@ -1,6 +1,5 @@
 package com.chschmid.jdotxt.gui.controls;
 
-
 import com.chschmid.jdotxt.gui.JdotxtGUI;
 import com.todotxt.todotxttouch.task.sorter.Sorters;
 
@@ -14,6 +13,7 @@ public class JdotxtSavedSortDialog extends JDialog {
     private Map<String, Map<Sorters, Boolean>> sorts;
     private Vector<Vector> sortDisplay = new Vector<>();
     private JButton ok;
+
     public JdotxtSavedSortDialog(Map<String, Map<Sorters, Boolean>> savedSorts) {
         sorts = new LinkedHashMap<>();
         for (Map.Entry<String, Map<Sorters, Boolean>> e : savedSorts.entrySet())
@@ -44,7 +44,7 @@ public class JdotxtSavedSortDialog extends JDialog {
         final JTable sorts = new JTable(new JdotxtSortDialog.EditDisabledTableModel(sortDisplay, cols));
         sorts.setRowSelectionAllowed(false);
         sorts.setCellSelectionEnabled(false);
-        sorts.setIntercellSpacing(new Dimension(0,0));
+        sorts.setIntercellSpacing(new Dimension(0, 0));
         sorts.getColumnModel().getColumn(1).setMaxWidth(17);
         sorts.getColumnModel().getColumn(2).setMaxWidth(17);
         sorts.setFont(new Font("Serif", Font.PLAIN, 14));
@@ -82,7 +82,7 @@ public class JdotxtSavedSortDialog extends JDialog {
         }));
 
         main.add(sorts);
-        main.add(Box.createRigidArea(new Dimension(0,10)));
+        main.add(Box.createRigidArea(new Dimension(0, 10)));
 
         Box buttons = new Box(BoxLayout.X_AXIS);
         buttons.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 3));
@@ -114,15 +114,14 @@ public class JdotxtSavedSortDialog extends JDialog {
         buttons.setBackground(JdotxtGUI.COLOR_GRAY_PANEL);
         buttons.setOpaque(true);
 
-
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
         this.setLocation(x, y);
 
-        add(Box.createRigidArea(new Dimension(0,10)), BorderLayout.NORTH);
-        add(Box.createRigidArea(new Dimension(15,0)), BorderLayout.WEST);
-        add(Box.createRigidArea(new Dimension(15,0)), BorderLayout.EAST);
+        add(Box.createRigidArea(new Dimension(0, 10)), BorderLayout.NORTH);
+        add(Box.createRigidArea(new Dimension(15, 0)), BorderLayout.WEST);
+        add(Box.createRigidArea(new Dimension(15, 0)), BorderLayout.EAST);
         add(main, BorderLayout.CENTER);
         add(buttons, BorderLayout.PAGE_END);
 

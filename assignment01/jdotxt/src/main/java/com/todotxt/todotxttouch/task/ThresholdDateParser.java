@@ -8,7 +8,8 @@ import java.util.regex.Pattern;
 
 public class ThresholdDateParser {
 
-    private static final Pattern THRESHOLD_DATE_PATTERN = Pattern.compile("(?:\\s|^)t:(\\d{4}-\\d{1,2}-\\d{1,2})(?:\\s|$)");
+    private static final Pattern THRESHOLD_DATE_PATTERN = Pattern
+            .compile("(?:\\s|^)t:(\\d{4}-\\d{1,2}-\\d{1,2})(?:\\s|$)");
     private static final Pattern DUE_DATE_PATTERN = Pattern.compile("(?:\\s|^)due:(\\d{4}-\\d{1,2}-\\d{1,2})(?:\\s|$)");
     private static final ThresholdDateParser INSTANCE = new ThresholdDateParser();
     private static final SimpleDateFormat FORMAT = new SimpleDateFormat("yyyy-MM-dd");
@@ -21,11 +22,11 @@ public class ThresholdDateParser {
     }
 
     public Date parseThresholdDate(String text) {
-      return this.parse(text, THRESHOLD_DATE_PATTERN);
+        return this.parse(text, THRESHOLD_DATE_PATTERN);
     }
 
     public Date parseDueDate(String text) {
-      return this.parse(text, DUE_DATE_PATTERN);
+        return this.parse(text, DUE_DATE_PATTERN);
     }
 
     private Date parse(String text, Pattern pattern) {
@@ -35,12 +36,12 @@ public class ThresholdDateParser {
         while (m.find()) {
             String possDate = m.group(1).trim();
             try {
-                //checking if this is a valid date
+                // checking if this is a valid date
                 Date d = FORMAT.parse(possDate);
                 if (possDate.equals(FORMAT.format(d)))
                     return d;
             } catch (ParseException e) {
-                //not a valid date, just continue
+                // not a valid date, just continue
             }
         }
         return null;

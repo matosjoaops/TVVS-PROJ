@@ -7,7 +7,8 @@ public class RecParser {
     private static final RecParser INSTANCE = new RecParser();
     private final Pattern p = Pattern.compile("rec:(\\+?)([0-9]+)([dwmy])");
 
-    private RecParser() {}
+    private RecParser() {
+    }
 
     public static RecParser getInstance() {
         return INSTANCE;

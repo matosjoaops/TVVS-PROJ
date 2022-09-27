@@ -46,19 +46,19 @@ public class TaskIo {
 	private final static String TAG = TaskIo.class.getSimpleName();
 
 	public static final String DEFAULT_ENCODING = "UTF-8";
-	
+
 	private static boolean sWindowsLineBreaks = false;
 	private static String encoding = DEFAULT_ENCODING;
-	
+
 	private static String readLine(BufferedReader r) throws IOException {
 		StringBuilder sb = new StringBuilder();
 		boolean eol = false;
 		int c;
-		
-		while(!eol && (c = r.read()) >= 0) {
-			sb.append((char)c);
+
+		while (!eol && (c = r.read()) >= 0) {
+			sb.append((char) c);
 			eol = (c == '\r' || c == '\n');
-			
+
 			// check for \r\n
 			if (c == '\r') {
 				r.mark(1);
@@ -67,13 +67,13 @@ public class TaskIo {
 					r.reset();
 				} else {
 					sWindowsLineBreaks = true;
-					sb.append((char)c);
+					sb.append((char) c);
 				}
 			}
 		}
 		return sb.length() == 0 ? null : sb.toString();
 	}
-	
+
 	public static ArrayList<Task> loadTasksFromFile(File file) throws IOException {
 		ArrayList<Task> items = new ArrayList<Task>();
 		BufferedReader in = null;
@@ -113,7 +113,7 @@ public class TaskIo {
 			}
 			Util.createParentDirectory(file);
 			OutputStreamWriter fw = new OutputStreamWriter(new FileOutputStream(file, append), encoding);
-			//FileWriter fw = new FileWriter(file, append);
+			// FileWriter fw = new FileWriter(file, append);
 			for (int i = 0; i < tasks.size(); ++i) {
 				String fileFormat = tasks.get(i).inFileFormat();
 				fw.write(fileFormat);
@@ -130,22 +130,24 @@ public class TaskIo {
 			System.out.printf(TAG, e.getMessage());
 		}
 	}
-	
+
 	private static String detectEncoding(File file) throws IOException {
 		byte[] buf = new byte[4096];
 
-		FileInputStream  fis = new FileInputStream(file);
+		FileInputStream fis = new FileInputStream(file);
 		UniversalDetector detector = new UniversalDetector(null);
-		
-	    int nread;
-	    while ((nread = fis.read(buf)) > 0 && !detector.isDone()) detector.handleData(buf, 0, nread);
 
-	    Util.closeStream(fis);
-	    
-	    detector.dataEnd();
-	    String encoding = detector.getDetectedCharset();
-	    
-	    if (encoding == null) encoding = DEFAULT_ENCODING;
+		int nread;
+		while ((nread = fis.read(buf)) > 0 && !detector.isDone())
+			detector.handleData(buf, 0, nread);
+
+		Util.closeStream(fis);
+
+		detector.dataEnd();
+		String encoding = detector.getDetectedCharset();
+
+		if (encoding == null)
+			encoding = DEFAULT_ENCODING;
 		return encoding;
 	}
 }

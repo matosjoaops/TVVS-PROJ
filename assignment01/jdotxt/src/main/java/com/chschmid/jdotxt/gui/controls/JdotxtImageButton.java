@@ -29,62 +29,64 @@ public class JdotxtImageButton extends JLabel {
 	private boolean mouseIsDown;
 	private boolean keyIsPressed;
 	private boolean focused;
-	
+
 	private Color cHover;
 	private Color cPressed;
 	private Color cBackground;
-	
+
 	public JdotxtImageButton() {
 		initGUI();
 	}
-	
+
 	public JdotxtImageButton(ImageIcon icon) {
 		initGUI();
 		this.setIcon(icon);
 	}
-	
+
 	private void initGUI() {
 		setFocusable(true);
 		this.setBorder(null);
-		
-		MouseAdapter mouseListener = new MouseAdapter() {
-            @Override
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-            	mouseIsOverButton = true;
-            	setBackground();
-            }
 
-            @Override
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-            	mouseIsOverButton = false;
-            	setBackground();
-            }
-            
-            @Override
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-            	if (SwingUtilities.isLeftMouseButton(evt)) {
-            		mouseIsDown = true;
-            		setBackground();
-            	}
-            }
-            
-            @Override
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-            	mouseIsDown = false;
-            	if (!isEnabled() || !SwingUtilities.isLeftMouseButton(evt)) return;
-            	if (mouseIsOverButton) fireActionPerformed(new ActionEvent(JdotxtImageButton.this, ActionEvent.ACTION_PERFORMED, "Click"));
-            	setBackground();
-            }
-        };
-        addMouseListener(mouseListener);
-        
-        FocusListener focusListener = new FocusListener() {
+		MouseAdapter mouseListener = new MouseAdapter() {
+			@Override
+			public void mouseEntered(java.awt.event.MouseEvent evt) {
+				mouseIsOverButton = true;
+				setBackground();
+			}
+
+			@Override
+			public void mouseExited(java.awt.event.MouseEvent evt) {
+				mouseIsOverButton = false;
+				setBackground();
+			}
+
+			@Override
+			public void mousePressed(java.awt.event.MouseEvent evt) {
+				if (SwingUtilities.isLeftMouseButton(evt)) {
+					mouseIsDown = true;
+					setBackground();
+				}
+			}
+
+			@Override
+			public void mouseReleased(java.awt.event.MouseEvent evt) {
+				mouseIsDown = false;
+				if (!isEnabled() || !SwingUtilities.isLeftMouseButton(evt))
+					return;
+				if (mouseIsOverButton)
+					fireActionPerformed(new ActionEvent(JdotxtImageButton.this, ActionEvent.ACTION_PERFORMED, "Click"));
+				setBackground();
+			}
+		};
+		addMouseListener(mouseListener);
+
+		FocusListener focusListener = new FocusListener() {
 			@Override
 			public void focusLost(FocusEvent arg0) {
 				focused = false;
 				setBackground();
 			}
-			
+
 			@Override
 			public void focusGained(FocusEvent arg0) {
 				focused = true;
@@ -92,13 +94,13 @@ public class JdotxtImageButton extends JLabel {
 			}
 		};
 		addFocusListener(focusListener);
-		
+
 		KeyListener keyListener = new KeyListener() {
-			
+
 			@Override
 			public void keyTyped(KeyEvent e) {
 			}
-			
+
 			@Override
 			public void keyReleased(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER || e.getKeyCode() == KeyEvent.VK_SPACE) {
@@ -107,7 +109,7 @@ public class JdotxtImageButton extends JLabel {
 					fireActionPerformed(new ActionEvent(JdotxtImageButton.this, ActionEvent.ACTION_PERFORMED, "Click"));
 				}
 			}
-			
+
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER || e.getKeyCode() == KeyEvent.VK_SPACE) {
@@ -118,45 +120,69 @@ public class JdotxtImageButton extends JLabel {
 		};
 		addKeyListener(keyListener);
 	}
-	
+
 	public void setEnabled(boolean enabled) {
 		super.setEnabled(enabled);
 		setBackground();
 	}
-	
-	public void setHoverColor(Color color) { cHover = color; setBackground(); }
-	public void setPressedColor(Color color) { cPressed = color; setBackground(); }
-	public void setBackgroundColor(Color color) { cBackground = color; setBackground(); }
-	
-	public Color getHoverColor() { return cHover; }
-	public Color getPressedColor() { return cPressed; }
-	public Color getBackgroundColor() { return cBackground; }
-	
-    public void addActionListener(ActionListener l) {
-        listenerList.add(ActionListener.class, l);
-    }
 
-    public void removeActionListener(ActionListener l) {
-    	listenerList.remove(ActionListener.class, l);
-    }
-    
-    public ActionListener[] getActionListeners() {
-        return listenerList.getListeners(ActionListener.class);
-    }
-    
-    private void setBackground() {
-    	if (keyIsPressed || (mouseIsOverButton && mouseIsDown)) setBackground(cPressed);
-    	else if (mouseIsOverButton || focused) setBackground(cHover);
-    	else setBackground(cBackground);
-    	if (isEnabled()) setOpaque(true);
-    	else setOpaque(false);
+	public void setHoverColor(Color color) {
+		cHover = color;
+		setBackground();
 	}
-    
-    protected void fireActionPerformed(ActionEvent event) {
-    	Object[] listeners = listenerList.getListeners(ActionListener.class);
-        
-        for (int i = 0; i < listeners.length; i++) {
-            ((ActionListener)listeners[i]).actionPerformed(event);
-        }
-    }
+
+	public void setPressedColor(Color color) {
+		cPressed = color;
+		setBackground();
+	}
+
+	public void setBackgroundColor(Color color) {
+		cBackground = color;
+		setBackground();
+	}
+
+	public Color getHoverColor() {
+		return cHover;
+	}
+
+	public Color getPressedColor() {
+		return cPressed;
+	}
+
+	public Color getBackgroundColor() {
+		return cBackground;
+	}
+
+	public void addActionListener(ActionListener l) {
+		listenerList.add(ActionListener.class, l);
+	}
+
+	public void removeActionListener(ActionListener l) {
+		listenerList.remove(ActionListener.class, l);
+	}
+
+	public ActionListener[] getActionListeners() {
+		return listenerList.getListeners(ActionListener.class);
+	}
+
+	private void setBackground() {
+		if (keyIsPressed || (mouseIsOverButton && mouseIsDown))
+			setBackground(cPressed);
+		else if (mouseIsOverButton || focused)
+			setBackground(cHover);
+		else
+			setBackground(cBackground);
+		if (isEnabled())
+			setOpaque(true);
+		else
+			setOpaque(false);
+	}
+
+	protected void fireActionPerformed(ActionEvent event) {
+		Object[] listeners = listenerList.getListeners(ActionListener.class);
+
+		for (int i = 0; i < listeners.length; i++) {
+			((ActionListener) listeners[i]).actionPerformed(event);
+		}
+	}
 }

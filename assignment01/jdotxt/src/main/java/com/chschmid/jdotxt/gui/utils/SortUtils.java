@@ -8,9 +8,9 @@ import java.util.Map;
 
 public class SortUtils {
     public static String writeSort(List<Map.Entry<Sorters, Boolean>> sortList) {
-        Map.Entry<Sorters, Boolean> last = sortList.get(sortList.size()-1);
+        Map.Entry<Sorters, Boolean> last = sortList.get(sortList.size() - 1);
         StringBuilder sb = new StringBuilder();
-        for (Map.Entry<Sorters, Boolean> s: sortList) {
+        for (Map.Entry<Sorters, Boolean> s : sortList) {
             sb.append(s.getKey().name());
             sb.append(":");
             sb.append(s.getValue().toString());

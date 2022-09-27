@@ -44,76 +44,79 @@ import com.todotxt.todotxttouch.util.Util;
 public class JdotxtGUItest extends JFrame {
 	public static int MIN_WIDTH = 640;
 	public static int MIN_HEIGHT = 480;
-	
-	ImageIcon iconSave     = Util.createImageIcon("/drawable/save.png");
-	public static final ImageIcon selected   = Util.createImageIcon("/drawable/check.png");
+
+	ImageIcon iconSave = Util.createImageIcon("/drawable/save.png");
+	public static final ImageIcon selected = Util.createImageIcon("/drawable/check.png");
 	public static final ImageIcon unselected = Util.createImageIcon("/drawable/uncheck.png");
-	
+
 	JdotxtImageCheckBox cb;
 	JdotxtTaskPanel tp;
-	
+
 	JEditorPane editor;
-	
+
 	public JdotxtGUItest() {
 		super();
 		initGUI();
 	}
-	
+
 	private void initGUI() {
 		this.add(new JdotxtTaskPanel(new Task()), BorderLayout.NORTH);
 		editor = new JEditorPane();
 		editor.setContentType("text/html");
 		editor.getDocument().addDocumentListener(new DocumentListener() {
-			
+
 			@Override
 			public void removeUpdate(DocumentEvent arg0) {
 				printDoc(arg0);
 			}
-			
+
 			@Override
 			public void insertUpdate(DocumentEvent arg0) {
 				printDoc(arg0);
 			}
-			
+
 			@Override
 			public void changedUpdate(DocumentEvent arg0) {
-				//printDoc(arg0);
+				// printDoc(arg0);
 			}
-			
+
 			private void printDoc(DocumentEvent event) {
 				try {
 					System.out.println(event.getDocument().getText(0, event.getDocument().getLength()));
-					//System.out.println(editor.getText());
+					// System.out.println(editor.getText());
 				} catch (BadLocationException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
 		});
-		//editor.setText("<a href=\"http://www.chschmid.com\">http://www.chschmid.com</a>");
+		// editor.setText("<a
+		// href=\"http://www.chschmid.com\">http://www.chschmid.com</a>");
 		editor.setText("abc");
 		this.add(editor, BorderLayout.CENTER);
 		this.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-	
+
 	public void testJdotxtDateField() {
 		JdotxtDateField df = new JdotxtDateField("2015-11-26");
-		//df.setDateListener(new JdotxtDateFieldListener("DateField"));
+		// df.setDateListener(new JdotxtDateFieldListener("DateField"));
 		JdotxtPriorityField pf = new JdotxtPriorityField('F');
 		pf.setPriorityListener(new JdotxtDateFieldListener("PriorityField"));
 		df.setFocusNext(true);
-		
+
 		this.add(pf, BorderLayout.LINE_START);
 		this.add(df, BorderLayout.CENTER);
 		this.add(new JTextField("Test3"), BorderLayout.LINE_END);
 	}
-	
+
 	private class JdotxtDateFieldListener implements DocumentListener {
 		private String element;
-		
-		public JdotxtDateFieldListener(String element) { this.element = element; }
-		
+
+		public JdotxtDateFieldListener(String element) {
+			this.element = element;
+		}
+
 		@Override
 		public void insertUpdate(DocumentEvent e) {
 			System.out.println(element + ": insertUpdate");
@@ -129,7 +132,7 @@ public class JdotxtGUItest extends JFrame {
 			System.out.println(element + ": changedUpdate");
 		}
 	}
-	
+
 	public void testJdotxtImageButton() {
 		JdotxtImageButton ib = new JdotxtImageButton(iconSave);
 		ib.setFocusable(true);
@@ -138,24 +141,32 @@ public class JdotxtGUItest extends JFrame {
 		cb = new JdotxtImageCheckBox(unselected, selected);
 		cb.addActionListener(new JdotxtImageCheckBoxListener("cb"));
 		this.add(cb, BorderLayout.LINE_END);
-		
-		tp = new JdotxtTaskPanel(new Task(1,"2015-12-01 blub"));
+
+		tp = new JdotxtTaskPanel(new Task(1, "2015-12-01 blub"));
 		this.add(tp, BorderLayout.CENTER);
-		//this.add(new JTextField("Test3"), BorderLayout.LINE_END);
+		// this.add(new JTextField("Test3"), BorderLayout.LINE_END);
 	}
-	
+
 	private class JdotxtImageButtonListener implements ActionListener {
 		String element;
-		public JdotxtImageButtonListener(String element) {this.element = element;}
+
+		public JdotxtImageButtonListener(String element) {
+			this.element = element;
+		}
+
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println(element + ": actionPerformed");
 		}
 	}
-	
+
 	private class JdotxtImageCheckBoxListener implements ActionListener {
 		String element;
-		public JdotxtImageCheckBoxListener(String element) {this.element = element;}
+
+		public JdotxtImageCheckBoxListener(String element) {
+			this.element = element;
+		}
+
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println(element + ": " + cb.isSelected());

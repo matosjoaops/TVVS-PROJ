@@ -29,11 +29,11 @@ public final class CursorPositionCalculator {
 	 * position prior to the change
 	 * 
 	 * @param priorCursorPosition
-	 *            the position of the cursor prior to the change
+	 *                            the position of the cursor prior to the change
 	 * @param priorValue
-	 *            the prior value of the string
+	 *                            the prior value of the string
 	 * @param newValue
-	 *            the new value of the string
+	 *                            the new value of the string
 	 * @return the calculated position. If priorValue is null than the
 	 *         calculated position will be the position just after the string.
 	 *         If the newValue is null than the position will be 0.

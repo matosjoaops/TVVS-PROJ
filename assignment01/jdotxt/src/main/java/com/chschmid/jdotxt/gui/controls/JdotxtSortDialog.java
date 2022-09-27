@@ -79,7 +79,7 @@ public class JdotxtSortDialog extends JDialog {
         current = new JTable(new EditDisabledTableModel(sortDisplay, cols));
         current.setRowSelectionAllowed(false);
         current.setCellSelectionEnabled(false);
-        current.setIntercellSpacing(new Dimension(0,0));
+        current.setIntercellSpacing(new Dimension(0, 0));
         current.getColumnModel().getColumn(1).setMaxWidth(17);
         current.getColumnModel().getColumn(2).setMaxWidth(17);
         current.getColumnModel().getColumn(3).setMaxWidth(17);
@@ -118,11 +118,11 @@ public class JdotxtSortDialog extends JDialog {
             }
         }));
 
-        tables.add(Box.createRigidArea(new Dimension(0,15)));
+        tables.add(Box.createRigidArea(new Dimension(0, 15)));
         tables.add(new JLabel("Current sort"));
         tables.add(current);
 
-        tables.add(Box.createRigidArea(new Dimension(0,15)));
+        tables.add(Box.createRigidArea(new Dimension(0, 15)));
 
         Box save = new Box(BoxLayout.X_AXIS);
         name = new JTextField();
@@ -140,7 +140,7 @@ public class JdotxtSortDialog extends JDialog {
         add = new JTable(new EditDisabledTableModel(addDisplay, cols));
         add.setRowSelectionAllowed(false);
         add.setCellSelectionEnabled(false);
-        add.setIntercellSpacing(new Dimension(0,0));
+        add.setIntercellSpacing(new Dimension(0, 0));
         add.getColumnModel().getColumn(1).setMaxWidth(17);
         add.setShowGrid(false);
         add.setFont(new Font("Serif", Font.PLAIN, 14));
@@ -159,9 +159,9 @@ public class JdotxtSortDialog extends JDialog {
         }));
         tables.add(new JLabel("Available fields"));
         tables.add(add);
-        tables.add(Box.createRigidArea(new Dimension(0,15)));
+        tables.add(Box.createRigidArea(new Dimension(0, 15)));
         tables.add(save);
-        tables.add(Box.createRigidArea(new Dimension(0,15)));
+        tables.add(Box.createRigidArea(new Dimension(0, 15)));
 
         Box buttons = new Box(BoxLayout.X_AXIS);
         buttons.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 3));
@@ -200,16 +200,16 @@ public class JdotxtSortDialog extends JDialog {
 
         this.add(tables, BorderLayout.CENTER);
         this.add(buttons, BorderLayout.PAGE_END);
-        this.add(Box.createRigidArea(new Dimension(15,0)), BorderLayout.WEST);
-        this.add(Box.createRigidArea(new Dimension(15,0)), BorderLayout.EAST);
+        this.add(Box.createRigidArea(new Dimension(15, 0)), BorderLayout.WEST);
+        this.add(Box.createRigidArea(new Dimension(15, 0)), BorderLayout.EAST);
         pack();
     }
 
     public JButton getOk() {
         return ok;
     }
-    static class EditDisabledTableModel extends DefaultTableModel {
 
+    static class EditDisabledTableModel extends DefaultTableModel {
 
         EditDisabledTableModel(Vector vector, Vector vector1) {
             super(vector, vector1);
@@ -233,7 +233,6 @@ public class JdotxtSortDialog extends JDialog {
         };
     }
 
-
     public JButton getSaveButton() {
         return saveButton;
     }
@@ -245,7 +244,7 @@ public class JdotxtSortDialog extends JDialog {
     public Map<Sorters, Boolean> getSort() {
         Map<Sorters, Boolean> res = new LinkedHashMap<>();
 
-        for (Map.Entry<Sorters, Boolean> s: sortList) {
+        for (Map.Entry<Sorters, Boolean> s : sortList) {
             res.put(s.getKey(), s.getValue());
         }
 

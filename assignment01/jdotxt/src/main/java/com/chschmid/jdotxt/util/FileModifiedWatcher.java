@@ -32,80 +32,94 @@ import java.util.ArrayList;
 public class FileModifiedWatcher {
 	private File file;
 	private WatchKey key;
-	
+
 	private final WatchService watcher;
 	private ArrayList<FileModifiedListener> fileModifiedListenerList = new ArrayList<FileModifiedListener>();
-	
+
 	private boolean processing = false;
 	private Thread t;
-	
+
 	public FileModifiedWatcher() throws IOException {
-		watcher  = FileSystems.getDefault().newWatchService();
+		watcher = FileSystems.getDefault().newWatchService();
 		file = null;
-		key  = null;
+		key = null;
 	}
-	
+
 	public File registerFile(File file) throws IOException {
 		File oldFile = this.file;
-		
-		if (key != null) key.cancel();
+
+		if (key != null)
+			key.cancel();
 		Path path = file.getParentFile().toPath();
-		
+
 		key = path.register(watcher, StandardWatchEventKinds.ENTRY_MODIFY, StandardWatchEventKinds.ENTRY_CREATE);
-	    this.file = file;
+		this.file = file;
 		return oldFile;
 	}
-	
+
 	public File unRegisterFile() {
 		File oldfile = file;
-		if (key != null) key.cancel();
-		key  = null;
+		if (key != null)
+			key.cancel();
+		key = null;
 		file = null;
 		return oldfile;
 	}
-	
-	public File getFile() { return file; }
-	
-	public void addFileModifiedListener(FileModifiedListener fileModifiedListener) { fileModifiedListenerList.add(fileModifiedListener); }
-	public void removeFileModifiedListener(FileModifiedListener fileModifiedListener) { fileModifiedListenerList.remove(fileModifiedListener); }
-	
-	private void fireFileModified() {
-		for (int i = fileModifiedListenerList.size()-1; i >= 0; i--) fileModifiedListenerList.get(i).fileModified();
+
+	public File getFile() {
+		return file;
 	}
-	
+
+	public void addFileModifiedListener(FileModifiedListener fileModifiedListener) {
+		fileModifiedListenerList.add(fileModifiedListener);
+	}
+
+	public void removeFileModifiedListener(FileModifiedListener fileModifiedListener) {
+		fileModifiedListenerList.remove(fileModifiedListener);
+	}
+
+	private void fireFileModified() {
+		for (int i = fileModifiedListenerList.size() - 1; i >= 0; i--)
+			fileModifiedListenerList.get(i).fileModified();
+	}
+
 	public synchronized void startProcessingEvents() {
-		if (processing) return;
+		if (processing)
+			return;
 		t = new Thread(new Watcher());
 		processing = true;
 		t.start();
 	}
-	
+
 	public synchronized void stopProcessingEvents() {
-		if (!processing) return;
+		if (!processing)
+			return;
 		processing = false;
 		t.interrupt();
-	    try {
+		try {
 			t.join();
 		} catch (InterruptedException e) {
 		}
 	}
-	
+
 	private class Watcher implements Runnable {
 		@Override
 		public void run() {
 			WatchKey key;
-	        while(processing) { 
-	            try {
-	                key = watcher.take();
-		            for (WatchEvent<?> event: key.pollEvents()) {
-		                if (event.kind() == StandardWatchEventKinds.ENTRY_MODIFY || event.kind() == StandardWatchEventKinds.ENTRY_CREATE) {
-		                	if (file != null && event.context().toString().equals(file.getName())) fireFileModified();
-		                }
-		            }
-		            key.reset();
-	            } catch (InterruptedException x) {
-	            }
-	        }
-		}	
+			while (processing) {
+				try {
+					key = watcher.take();
+					for (WatchEvent<?> event : key.pollEvents()) {
+						if (event.kind() == StandardWatchEventKinds.ENTRY_MODIFY
+								|| event.kind() == StandardWatchEventKinds.ENTRY_CREATE) {
+							if (file != null && event.context().toString().equals(file.getName()))
+								fireFileModified();
+						}
+					}
+					key.reset();
+				} catch (InterruptedException x) {
+				}
+			}
+		}
 	}
 }

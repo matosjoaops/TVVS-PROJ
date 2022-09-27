@@ -38,27 +38,27 @@ import com.todotxt.todotxttouch.task.TaskBagFactory;
 
 public class Jdotxt {
 	public static final String VERSION = "0.4.8";
-	public static final String APPID   = "chschmid.jdotxt";
-	
+	public static final String APPID = "chschmid.jdotxt";
+
 	public static final int AUTOSAVE_DELAY = 3000;
-	
+
 	public static TaskBag taskBag;
 	public static Preferences userPrefs;
 
 	public static final String DEFAULT_DIR = System.getProperty("user.home") + File.separator + "jdotxt";
-	
+
 	private static FileModifiedWatcher fileModifiedWatcher;
-	
+
 	private static native NativeLong SetCurrentProcessExplicitAppUserModelID(WString appID);
-	
+
 	// Lock object for file operations
 	private static Object fileLock = new Object();
-	
-	public static void main( String[] args )
-	{
+
+	public static void main(String[] args) {
 		loadPreferences();
-		
-		// For detecting file changes to todo.txt, start thread, file will be specified later
+
+		// For detecting file changes to todo.txt, start thread, file will be specified
+		// later
 		try {
 			fileModifiedWatcher = new FileModifiedWatcher();
 			fileModifiedWatcher.startProcessingEvents();
@@ -66,20 +66,22 @@ public class Jdotxt {
 		}
 
 		JdotxtGUI.loadLookAndFeel(userPrefs.get("lang", "English"));
-		
+
 		// Windows taskbar fix
-		if (isWindows()) onWindows();
-		
+		if (isWindows())
+			onWindows();
+
 		// Mac OS X fixes
-		if (isMacOSX()) onMacOSX();
-		
+		if (isMacOSX())
+			onMacOSX();
+
 		// Start GUI
 		Runnable viewGUI = new Runnable() {
 			@Override
 			public void run() {
 				File todoFileDir;
 				boolean showDialog = true;
-				
+
 				while (showDialog) {
 					// Show settings on first run or show path selection if file path is not found
 					if (userPrefs.getBoolean("firstRun", true)) {
@@ -89,43 +91,47 @@ public class Jdotxt {
 					} else {
 						todoFileDir = new File(userPrefs.get("dataDir", DEFAULT_DIR));
 						if (!todoFileDir.exists()) {
-							JdotxtWelcomeDialog welcomeDialog = new JdotxtWelcomeDialog(JdotxtWelcomeDialog.P_PATH_NOT_FOUND);
+							JdotxtWelcomeDialog welcomeDialog = new JdotxtWelcomeDialog(
+									JdotxtWelcomeDialog.P_PATH_NOT_FOUND);
 							welcomeDialog.setVisible(true);
 						}
 					}
-					
+
 					// Try to create path
 					todoFileDir = new File(userPrefs.get("dataDir", DEFAULT_DIR));
 					todoFileDir.mkdirs();
-					
+
 					showDialog = !todoFileDir.exists();
 				}
-					
+
 				// Main window
 				JdotxtGUI mainGUI = new JdotxtGUI();
-				//JdotxtGUItest mainGUI = new JdotxtGUItest();
+				// JdotxtGUItest mainGUI = new JdotxtGUItest();
 				mainGUI.setVisible(true);
 			}
 		};
 		EventQueue.invokeLater(viewGUI);
 	}
-	
-	public static void loadPreferences() { userPrefs = Preferences.userNodeForPackage(Jdotxt.class); }
-	
+
+	public static void loadPreferences() {
+		userPrefs = Preferences.userNodeForPackage(Jdotxt.class);
+	}
+
 	public static void loadTodos() {
-		String dataDir   = userPrefs.get("dataDir", DEFAULT_DIR);
+		String dataDir = userPrefs.get("dataDir", DEFAULT_DIR);
 		File todoFileDir = new File(dataDir);
-		if (!todoFileDir.exists()) dataDir = DEFAULT_DIR;
-		
-		String todoFile  = dataDir + File.separator + "todo.txt";
-		String doneFile  = dataDir + File.separator + "done.txt";
-		
+		if (!todoFileDir.exists())
+			dataDir = DEFAULT_DIR;
+
+		String todoFile = dataDir + File.separator + "todo.txt";
+		String doneFile = dataDir + File.separator + "done.txt";
+
 		LocalFileTaskRepository.TODO_TXT_FILE = new File(todoFile);
 		LocalFileTaskRepository.DONE_TXT_FILE = new File(doneFile);
 		LocalFileTaskRepository.initFiles();
-		
+
 		taskBag = TaskBagFactory.getTaskBag();
-		synchronized(fileLock){
+		synchronized (fileLock) {
 			if (fileModifiedWatcher != null) {
 				// Unregister first, in case path has been changed
 				fileModifiedWatcher.unRegisterFile();
@@ -137,17 +143,17 @@ public class Jdotxt {
 			taskBag.reload();
 		}
 	}
-	
+
 	public static void addFileModifiedListener(FileModifiedListener fileModifiedListener) {
 		fileModifiedWatcher.addFileModifiedListener(fileModifiedListener);
 	}
+
 	public static void removeFileModifiedListener(FileModifiedListener fileModifiedListener) {
 		fileModifiedWatcher.removeFileModifiedListener(fileModifiedListener);
 	}
-	
-	
-	public static void archiveTodos() { 
-		synchronized(fileLock){
+
+	public static void archiveTodos() {
+		synchronized (fileLock) {
 			fileModifiedWatcher.unRegisterFile();
 			taskBag.archive();
 			try {
@@ -156,8 +162,9 @@ public class Jdotxt {
 			}
 		}
 	}
-	public static void storeTodos() { 
-		synchronized(fileLock){
+
+	public static void storeTodos() {
+		synchronized (fileLock) {
 			fileModifiedWatcher.unRegisterFile();
 			taskBag.store();
 			try {
@@ -166,34 +173,41 @@ public class Jdotxt {
 			}
 		}
 	}
-	
+
 	// Detect OS
-	public static boolean isWindows() {	return System.getProperty("os.name").startsWith("Windows"); }
-	public static boolean isMacOSX() { return System.getProperty("os.name").startsWith("Mac OS X"); }
-	
+	public static boolean isWindows() {
+		return System.getProperty("os.name").startsWith("Windows");
+	}
+
+	public static boolean isMacOSX() {
+		return System.getProperty("os.name").startsWith("Mac OS X");
+	}
+
 	public static void onWindows() {
 		// Windows taskbar fix: provideAppUserModelID
 		try {
 			NativeLibrary lib = NativeLibrary.getInstance("shell32");
-		    Function function = lib.getFunction("SetCurrentProcessExplicitAppUserModelID");
-		    Object[] args = {new WString(APPID)}; 
-		    function.invokeInt(args);
+			Function function = lib.getFunction("SetCurrentProcessExplicitAppUserModelID");
+			Object[] args = { new WString(APPID) };
+			function.invokeInt(args);
 		} catch (Error e) {
-		    return;
+			return;
 		} catch (Exception x) {
 			return;
 		}
 	}
-	
+
 	public static void onMacOSX() {
 		// Nothing so far
 	}
-	
+
 	public static String insertReplaceString(String original, String replace, int offset) {
-		String a =  original.substring(0, Math.min(offset, original.length()));
+		String a = original.substring(0, Math.min(offset, original.length()));
 		String b;
-		if (original.length() > (offset + replace.length())) b = original.substring(offset + replace.length(), original.length());
-		else b = "";
+		if (original.length() > (offset + replace.length()))
+			b = original.substring(offset + replace.length(), original.length());
+		else
+			b = "";
 		return a + replace + b;
-	  }
+	}
 }
