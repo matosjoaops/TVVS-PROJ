@@ -350,7 +350,7 @@ public class JdotxtTaskList extends JPanel implements Scrollable {
 			List<Task> tasks = taskBag.getTasks(filter, getSort());
 			if (!isUpToDate(tasks)) {
 				JdotxtTaskList.this.requestFocus();
-				Runnable postprocessing ;
+				Runnable postprocessing;
 				if (field == JdotxtTaskPanel.COMPLETED && t.isCompleted())
 					postprocessing = new RequestFocus(null, (short)0);
 				else postprocessing = new RequestFocus(t, field);

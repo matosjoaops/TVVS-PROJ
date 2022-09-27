@@ -72,7 +72,7 @@ public class Jdotxt {
 			onWindows();
 
 		// Mac OS X fixes
-		if (isMacOSX())
+		if (isMacOsx())
 			onMacOSX();
 
 		// Start GUI
@@ -170,6 +170,7 @@ public class Jdotxt {
 			try {
 				fileModifiedWatcher.registerFile(LocalFileTaskRepository.TODO_TXT_FILE);
 			} catch (IOException e) {
+				e.printStackTrace();
 			}
 		}
 	}
@@ -179,7 +180,7 @@ public class Jdotxt {
 		return System.getProperty("os.name").startsWith("Windows");
 	}
 
-	public static boolean isMacOSX() {
+	public static boolean isMacOsx() {
 		return System.getProperty("os.name").startsWith("Mac OS X");
 	}
 
@@ -204,8 +205,9 @@ public class Jdotxt {
 	public static String insertReplaceString(String original, String replace, int offset) {
 		String a = original.substring(0, Math.min(offset, original.length()));
 		String b;
-		if (original.length() > (offset + replace.length()))
+		if (original.length() > (offset + replace.length())) {
 			b = original.substring(offset + replace.length(), original.length());
+		}
 		else
 			b = "";
 		return a + replace + b;
