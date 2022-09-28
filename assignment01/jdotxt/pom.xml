@@ -61,8 +61,37 @@
                 <version>3.19.0</version>
                 <configuration>
                     <rulesets>
+                        <ruleset>${basedir}/rulesets/pmd-unusedcode.xml</ruleset>
                         <ruleset>${basedir}/rulesets/pmd-basic.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-braces.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-clone.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-codesize.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-comments.xml</ruleset>
+                        <!--<ruleset>${basedir}/rulesets/pmd-controversial.xml</ruleset>-->
+                        <ruleset>${basedir}/rulesets/pmd-coupling.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-design.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-empty.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-finalizers.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-imports.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-j2ee.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-javabeans.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-junit.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-logging-jakarta-commons.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-logging-java.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-metrics.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-migrating_to_13.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-migrating_to_14.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-migrating_to_15.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-migrating_to_junit4.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-migrating.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-naming.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-optimizations.xml</ruleset>
                         <ruleset>${basedir}/rulesets/pmd-quickstart.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-strictexception.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-strings.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-sunsecure.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-typeresolution.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-unnecessary.xml</ruleset>
                     </rulesets>
                 </configuration>
             </plugin>
@@ -158,8 +187,37 @@
                 <version>3.19.0</version>
                 <configuration>
                     <rulesets>
+                        <ruleset>${basedir}/rulesets/pmd-unusedcode.xml</ruleset>
                         <ruleset>${basedir}/rulesets/pmd-basic.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-braces.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-clone.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-codesize.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-comments.xml</ruleset>
+                        <!--<ruleset>${basedir}/rulesets/pmd-controversial.xml</ruleset>-->
+                        <ruleset>${basedir}/rulesets/pmd-coupling.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-design.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-empty.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-finalizers.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-imports.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-j2ee.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-javabeans.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-junit.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-logging-jakarta-commons.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-logging-java.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-metrics.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-migrating_to_13.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-migrating_to_14.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-migrating_to_15.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-migrating_to_junit4.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-migrating.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-naming.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-optimizations.xml</ruleset>
                         <ruleset>${basedir}/rulesets/pmd-quickstart.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-strictexception.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-strings.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-sunsecure.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-typeresolution.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-unnecessary.xml</ruleset>
                     </rulesets>
                 </configuration>
             </plugin>
