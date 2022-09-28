@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-class ContextParser {
+final class ContextParser {
 	private final static Pattern CONTEXT_PATTERN = Pattern
 			.compile("(?:^|\\s)@([\\w_\\.\\-\\:\\/]+)", Pattern.UNICODE_CHARACTER_CLASS);
 	private static final ContextParser INSTANCE = new ContextParser();

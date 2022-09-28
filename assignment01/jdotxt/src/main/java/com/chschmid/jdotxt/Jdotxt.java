@@ -49,7 +49,7 @@ public class Jdotxt {
 
 	private static FileModifiedWatcher fileModifiedWatcher;
 
-	private static native NativeLong SetCurrentProcessExplicitAppUserModelID(WString appID);
+	private static native NativeLong setCurrentProcessExplicitAppUserModelID(WString appID);
 
 	// Lock object for file operations
 	private static Object fileLock = new Object();
