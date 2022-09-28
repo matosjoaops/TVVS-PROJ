@@ -149,3 +149,16 @@ To fix this warning, we added the changed the first character of the method name
 
 ![](https://i.imgur.com/l4joN1U.png)
 
+##### Warning *AvoidReassigningParameters*
+
+PMD was throwing a warning there was a parameter reassigment.
+
+![](https://i.imgur.com/IHpWCHr.png)
+
+![](https://i.imgur.com/iABuVJj.png)
+
+To fix this warning, we created a new variable to be assigned instead of the parameter.
+
+![](https://i.imgur.com/ERgJr93.png)
+
+

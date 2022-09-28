@@ -54,10 +54,11 @@ public class PriorityTextSplitter {
 		}
 		Priority priority = Priority.NONE;
 		Matcher priorityMatcher = PRIORITY_PATTERN.matcher(text);
+		String newText = text;
 		if (priorityMatcher.find()) {
 			priority = Priority.toPriority(priorityMatcher.group(1));
-			text = priorityMatcher.group(2);
+			newText = priorityMatcher.group(2);
 		}
-		return new PrioritySplitResult(priority, text);
+		return new PrioritySplitResult(priority, newText);
 	}
 }
