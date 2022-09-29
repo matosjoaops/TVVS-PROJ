@@ -51,6 +51,19 @@ To use CheckStyle in the project, we executed the following steps:
     - By default, CheckStyle does not allow the use of tabs, this was changed since the project does make use of tabs.
 
 
+#### Report summary
+
+The report emitted by Checkstyle is composed by the summary, files, rules and details sections.
+
+In the summary section, it is possible to see the number of files, number of warnings and number of errors. In the case of the jdotxt project, there are 68 files, 12481 warnings and 0 errors.
+
+The files section exposes a list with more information about each file, namely the number of warnings and number of errors.
+
+The section about the rules has information about the rules used by Checkstyle, showing the number of violations and the severity of each one. For the jdotxt project, the rules with the highest number of violations are the *Indentation* and the *FileTabCharacter*.
+
+Lastly, the details section shows every warning and error, with a message and its location.
+
+
 #### Bugs solved
 
 ##### Warning *EmptyCatchBlock*
@@ -125,6 +138,14 @@ To use PMD in the project, we executed the following steps
 - Change the plugin configuration in order to enable and disable some rulesets:
   - ![](https://i.imgur.com/t94vbN9.png)
     - Controversial rules were disabled since some of them did not make sense and were even marked as deprecated by PMD's own documentation.
+
+#### Report summary
+
+Before applying our custom configuration, the original report contained multiple violations with priority 1. The ones with the most violations were *AvoidUsingShortType* and *VariableNamingConventions*.
+For priority 2, we mostly see violations related to *SystemPrintln* and *AvoidReassigningParameters* but we didn't see a large amount of violations with this priority level.
+For priority levels 3-5, there is a large variety of violations being reported across the entire project.
+The report also contains the file, description and line where each violation is detected.
+
 
 #### Bugs solved
 
