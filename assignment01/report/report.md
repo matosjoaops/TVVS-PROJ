@@ -13,7 +13,7 @@
 
 ### What is it?
 
-The jdotxt project is an implementation of a todo application. It contains a GUI where it is possible to insert new tasks and marked them as completed. The information is saved in a text file in a location chosen by the user.
+The jdotxt project is an implementation of a todo application. It contains a GUI where users can insert new tasks and mark them as completed. The information is saved in a text file in a location chosen by the user.
 
 ### How is the source-code organized?
 
@@ -21,16 +21,16 @@ The project contains two packages at the root of the source code:
 
 #### com.chschmid.jdotxt
 
-This package contains the entrypoint of the application along with 2 other packages. One with utilities and the other with the code responsible for building the GUI. The latter has its own subpackages with more utilities and code for the controls of the UI.
+This package contains the application's entrypoint and two other packages, one with utilities and the other with the code responsible for building the GUI. The latter has its own subpackages with more utilities and code for the controls of the UI.
 
 #### com.todotxt.todotxttouch
 
-This package contains some constants and exception related code at its root. Furthermore, it contains 2 subpackages, one for utilities and another for task related code. This code is responsible for parsing, filtering and sorting (in its own package) the tasks created by the user.
+This package contains some constants and exception-related code at its root. Furthermore, it contains two subpackages, one for utilities and another for task-related code. This code is responsible for parsing, filtering, and sorting (in its own package) the tasks created by the user.
 
 
-## What static testing is and why it is import and relevant?
+## What is static testing and why is it important and relevant?
 
-Static testing is a technique which allows to check for faults in a software application and associated documents without requiring it to be executed, enabling faster feedback. This technique is usually used to find faults in the code which could make it less maintainable.
+Static testing is a technique that allows checking for faults in a software application and associated documents without requiring it to be executed, enabling faster feedback. This technique is usually used to find faults in the code, which could make it less maintainable.
 
 ## Static testing tools used
 
@@ -48,16 +48,16 @@ To use CheckStyle in the project, we executed the following steps:
   - ![](https://i.imgur.com/AM4VHRr.png)
     - The indentation values were changed to better match those used by the project;
   - ![](https://i.imgur.com/QIROY95.png)
-    - By default, CheckStyle does not allow the use of tabs, this was changed since the project does make use of tabs.
+    - By default, CheckStyle does not allow the use of tabs. This was changed since the project does make use of tabs.
 
 
 #### Report summary
 
-The report emitted by Checkstyle is composed by the summary, files, rules and details sections.
+The report emitted by Checkstyle is composed of the summary, files, rules, and details sections.
 
-In the summary section, it is possible to see the number of files, number of warnings and number of errors. In the case of the jdotxt project, there are 68 files, 12481 warnings and 0 errors.
+In the summary section, it is possible to see the number of files, warnings, and errors. In the case of the jdotxt project, there are 68 files, 12481 warnings, and 0 errors.
 
-The files section exposes a list with more information about each file, namely the number of warnings and number of errors.
+The files section exposes a list with more information about each file, namely the number of warnings and errors.
 
 The section about the rules has information about the rules used by Checkstyle, showing the number of violations and the severity of each one. For the jdotxt project, the rules with the highest number of violations are the *Indentation* and the *FileTabCharacter*.
 
@@ -74,13 +74,13 @@ CheckStyle was throwing a warning because of the empty catch blocks present on t
 
 ![](https://i.imgur.com/PTUAblp.png)
 
-To fix this warning, we decided to add a line which prints the stack trace. This way, when an exception is catched, the programmer can better understand the source of the problem.
+To fix this warning, we added a line that prints the stack trace. This way, when an exception is caught, the programmer can better understand the source of the problem.
 
 ![](https://i.imgur.com/tGPmx5l.png)
 
 ##### Warning *AbbreviationAsWordInName*
 
-CheckStyle alerted us to the existence of a function with a name that didn't follow the naming convention properly and had 2 consecutive capital letters.
+CheckStyle alerted us to the existence of a function with a name that did not follow the naming convention properly and had two consecutive capital letters.
 
 ![](https://i.imgur.com/FrtfVOh.png)
 
@@ -114,7 +114,7 @@ To fix this issue, we removed the whitespace.
 
 ##### Warning *Indentation*
 
-CheckStyle alerted us about the value of the indentation: it should be 8 instead of 4. We could change the ruleset to fix this problem, but as the majority of the source code was using an indentation level of 8, we decided to maintain it.
+CheckStyle alerted us about the indentation value: it should be 8 instead of 4. We could change the ruleset to fix this problem, but as most of the source code was using an indentation level of 8, we decided to maintain it.
 
 ![](https://i.imgur.com/dA22kOB.png)
 
@@ -126,12 +126,12 @@ To fix this issue, we changed the indentation level from 4 to 8.
 
 #### Report after fixes
 
-After configuring the rules and fixing the 5 bugs, Checkstyle was throwing 1947 warnings and 0 errors.
+After configuring the rules and fixing the five bugs, Checkstyle threw 1947 warnings and 0 errors.
 
 
 ### PMD
 
-PMD is a tool used to report issues on the source code of an application. It has predefined rules and gives the possibility to costumize the ruleset.
+PMD is a tool used to report issues on the source code of an application. It has predefined rules and gives the possibility to customize the ruleset.
 
 #### Configuration
 
@@ -140,13 +140,13 @@ To use PMD in the project, we executed the following steps
 - Copy the PMD ruleset files used in the class to the `rulesets` folder;
 - Change the plugin configuration in order to enable and disable some rulesets:
   - ![](https://i.imgur.com/t94vbN9.png)
-    - Controversial rules were disabled since some of them did not make sense and were even marked as deprecated by PMD's own documentation.
+    - Controversial rules were disabled since some did not make sense and were even marked as deprecated by PMD's documentation.
 
 #### Report summary
 
 Before applying our custom configuration, the original report contained multiple violations with priority 1. The ones with the most violations were *AvoidUsingShortType* and *VariableNamingConventions*.
-For priority 2, we mostly see violations related to *SystemPrintln* and *AvoidReassigningParameters* but we didn't see a large amount of violations with this priority level.
-For priority levels 3-5, there is a large variety of violations being reported across the entire project.
+For priority 2, we mostly see violations related to *SystemPrintln* and *AvoidReassigningParameters*, but we did not see many violations with this priority level.
+For priority levels 3-5, a large variety of violations are reported across the entire project.
 The report also contains the file and line where each violation is detected, along with a short description.
 
 
@@ -154,7 +154,7 @@ The report also contains the file and line where each violation is detected, alo
 
 ##### Warning *ClassWithOnlyPrivateConstructorsShouldBeFinal*
 
-PMD was throwing a warning because of a class which only has private constructors. In this case, the class should be marked as final.
+PMD was throwing a warning because of a class that only has private constructors. In this case, the class should be marked as final.
 
 ![](https://i.imgur.com/4rSzYvf.png)
 
@@ -166,19 +166,19 @@ To fix this warning, we added the final keyword to the class.
 
 ##### Warning *MethodNamingConventions*
 
-PMD was throwing a warning because a method was not following camel case convention.
+PMD was throwing a warning because a method was not following the camel case convention.
 
 ![](https://i.imgur.com/LoRjGAW.png)
 
 ![](https://i.imgur.com/TyYB16z.png)
 
-To fix this warning, we added the changed the first character of the method name from upper to lower case.
+To fix this warning, we changed the first character of the method name from upper to lower case.
 
 ![](https://i.imgur.com/l4joN1U.png)
 
 ##### Warning *AvoidReassigningParameters*
 
-PMD was throwing a warning saying there was a parameter reassigment.
+PMD was throwing a warning saying there was a parameter reassignment.
 
 ![](https://i.imgur.com/IHpWCHr.png)
 
@@ -197,20 +197,20 @@ PMD showed us a warning regarding a local variable that could be declared as fin
 
 ![](https://i.imgur.com/4kMvt4s.png)
 
-To fix the warning, the "final" keyword was added in the declaration.
+The "final" keyword was added to the declaration to fix the warning.
 
 ![](https://i.imgur.com/miENx1b.png)
 
 
 ##### *ImmutableField*
 
-PMD showed us a warning regarding a field whose value was never reassigned and could, therefore, be made final.
+PMD showed us a warning regarding a field whose value was never reassigned and could be made final.
 
 ![](https://i.imgur.com/REmok68.png)
 
 ![](https://i.imgur.com/8mw8MMf.png)
 
-The "final" keyword was added, which made the warning go away.
+The "final" keyword was added, making the warning disappear.
 
 ![](https://i.imgur.com/b0liiNi.png)
 
