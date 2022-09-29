@@ -124,6 +124,9 @@ To fix this issue, we changed the indentation level from 4 to 8.
 
 ![](https://i.imgur.com/oszrh6e.png)
 
+#### Report after fixes
+
+After configuring the rules and fixing the 5 bugs, Checkstyle was throwing 1947 warnings and 0 errors.
 
 
 ### PMD
@@ -144,7 +147,7 @@ To use PMD in the project, we executed the following steps
 Before applying our custom configuration, the original report contained multiple violations with priority 1. The ones with the most violations were *AvoidUsingShortType* and *VariableNamingConventions*.
 For priority 2, we mostly see violations related to *SystemPrintln* and *AvoidReassigningParameters* but we didn't see a large amount of violations with this priority level.
 For priority levels 3-5, there is a large variety of violations being reported across the entire project.
-The report also contains the file, description and line where each violation is detected.
+The report also contains the file and line where each violation is detected, along with a short description.
 
 
 #### Bugs solved
@@ -205,10 +208,13 @@ PMD showed us a warning regarding a field whose value was never reassigned and c
 
 ![](https://i.imgur.com/REmok68.png)
 
-
 ![](https://i.imgur.com/8mw8MMf.png)
 
 The "final" keyword was added, which made the warning go away.
 
 ![](https://i.imgur.com/b0liiNi.png)
+
+#### Report after fixes
+
+After applying our configuration, all violations related to the controversial ruleset disappeared (the most notable absence was *AvoidUsingShortType*). For the fixes, the individual instances that we addressed also disappeared.
 
