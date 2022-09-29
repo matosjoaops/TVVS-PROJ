@@ -151,7 +151,7 @@ To fix this warning, we added the changed the first character of the method name
 
 ##### Warning *AvoidReassigningParameters*
 
-PMD was throwing a warning there was a parameter reassigment.
+PMD was throwing a warning saying there was a parameter reassigment.
 
 ![](https://i.imgur.com/IHpWCHr.png)
 
@@ -161,4 +161,30 @@ To fix this warning, we created a new variable to be assigned instead of the par
 
 ![](https://i.imgur.com/ERgJr93.png)
 
+##### Warning *LocalVariableCouldBeFinal*
+
+PMD showed us a warning regarding a local variable that could be declared as final.
+
+
+![](https://i.imgur.com/je1g27x.png)
+
+![](https://i.imgur.com/4kMvt4s.png)
+
+To fix the warning, the "final" keyword was added in the declaration.
+
+![](https://i.imgur.com/miENx1b.png)
+
+
+##### *ImmutableField*
+
+PMD showed us a warning regarding a field whose value was never reassigned and could, therefore, be made final.
+
+![](https://i.imgur.com/REmok68.png)
+
+
+![](https://i.imgur.com/8mw8MMf.png)
+
+The "final" keyword was added, which made the warning go away.
+
+![](https://i.imgur.com/b0liiNi.png)
 

@@ -76,7 +76,7 @@ public class Jdotxt {
 			onMacOSX();
 
 		// Start GUI
-		Runnable viewGUI = new Runnable() {
+		final Runnable viewGUI = new Runnable() {
 			@Override
 			public void run() {
 				File todoFileDir;

@@ -85,7 +85,7 @@ public class JdotxtGUI extends JFrame {
 	private LinkedList<String> locations = new LinkedList<>();
 
 	// Task filters
-	private ArrayList<Priority> filterPrios = new ArrayList<Priority>();
+	private final ArrayList<Priority> filterPrios = new ArrayList<Priority>();
 	private ArrayList<String> filterContexts;
 	private boolean showHidden = Jdotxt.userPrefs.getBoolean("showHidden", true);
 	private boolean showThreshold = Jdotxt.userPrefs.getBoolean("showThreshold", true);
