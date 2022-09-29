@@ -34,26 +34,28 @@ Static testing is a technique which allows to check for faults in a software app
 
 ## Static testing tools used
 
-### Checkstyle
+### CheckStyle
 
 This tool is used to make sure the Java code in a project follows the styling rules that have been defined.
 
 
 #### Configuration
 
-To use Checkstyle in the project, we executed the following steps:
-- Add the checkstyle configaration to the pom.xml file, as explained in the [Recitation #1](https://paginas.fe.up.pt/~jcmc/tvvs/2022-2023/recitations/recitation-1.html).
-- Create the file `checkstyle-rules.xml` on the `rulesets` folder.
+To use CheckStyle in the project, we executed the following steps:
+- Add the CheckStyle configuration to the pom.xml file, as explained in the [Recitation #1](https://paginas.fe.up.pt/~jcmc/tvvs/2022-2023/recitations/recitation-1.html);
+- Create the file `checkstyle-rules.xml` on the `rulesets` folder;
 - Change the following configurations on the `checkstyle-rules.xml` file:
   - ![](https://i.imgur.com/AM4VHRr.png)
+    - The indentation values were changed to better match those used by the project;
   - ![](https://i.imgur.com/QIROY95.png)
+    - By default, CheckStyle does not allow the use of tabs, this was changed since the project does make use of tabs.
 
 
 #### Bugs solved
 
 ##### Warning *EmptyCatchBlock*
 
-Checkstyle was throwing a warning because of the empty catch blocks present on the source code.
+CheckStyle was throwing a warning because of the empty catch blocks present on the source code.
 
 ![](https://i.imgur.com/v47j7s3.png)
 
@@ -65,7 +67,7 @@ To fix this warning, we decided to add a line which prints the stack trace. This
 
 ##### Warning *AbbreviationAsWordInName*
 
-Checkstyle alerted us to the existence of a function with a name that didn't follow the naming convention properly and had 2 consecutive capital letters.
+CheckStyle alerted us to the existence of a function with a name that didn't follow the naming convention properly and had 2 consecutive capital letters.
 
 ![](https://i.imgur.com/FrtfVOh.png)
 
@@ -75,7 +77,7 @@ Checkstyle alerted us to the existence of a function with a name that didn't fol
 
 ##### Warning *NeedBraces*
 
-Checkstyle presented a warning about the use of braces ({}) on the if constructs.
+CheckStyle presented a warning about the use of braces ({}) on the if constructs.
 
 ![](https://i.imgur.com/MYlvj0y.png)
 
@@ -87,7 +89,7 @@ To fix this warning, we added braces on the corresponding if constructs.
 
 ##### Warning *NoWhitespaceBefore*
 
-Checkstyle was throwing a warning because of the whitespace before the ";".
+CheckStyle was throwing a warning because of the whitespace before the ";".
 
 ![](https://i.imgur.com/e4IDa3s.png)
 
@@ -99,7 +101,7 @@ To fix this issue, we removed the whitespace.
 
 ##### Warning *Indentation*
 
-Checkstyle alerted us about the value of the indentation: it should be 8 instead of 4. We could change the ruleset to fix this problem, but as the majority of the source code was using an indentation level of 8, we decided to maintain it.
+CheckStyle alerted us about the value of the indentation: it should be 8 instead of 4. We could change the ruleset to fix this problem, but as the majority of the source code was using an indentation level of 8, we decided to maintain it.
 
 ![](https://i.imgur.com/dA22kOB.png)
 
@@ -117,11 +119,12 @@ PMD is a tool used to report issues on the source code of an application. It has
 
 #### Configuration
 
-To use Checkstyle in the project, we executed the following steps:
-- Add the PMD configaration to the pom.xml file, as explained in the [Recitation #1](https://paginas.fe.up.pt/~jcmc/tvvs/2022-2023/recitations/recitation-1.html).
-- Create the configuration files on the `rulesets` folder, following the rules of the [Recitation #1](https://paginas.fe.up.pt/~jcmc/tvvs/2022-2023/recitations/recitation-1.html).
-- Change the following configurations on the `checkstyle-rules.xml` file:
-  - ***TODO***
+To use PMD in the project, we executed the following steps
+- Add the PMD configuration to the pom.xml file, as explained in the [Recitation #1](https://paginas.fe.up.pt/~jcmc/tvvs/2022-2023/recitations/recitation-1.html);
+- Copy the PMD ruleset files used in the class to the `rulesets` folder;
+- Change the plugin configuration in order to enable and disable some rulesets:
+  - ![](https://i.imgur.com/t94vbN9.png)
+    - Controversial rules were disabled since some of them did not make sense and were even marked as deprecated by PMD's own documentation.
 
 #### Bugs solved
 
