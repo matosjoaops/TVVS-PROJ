@@ -1,20 +1,19 @@
 package com.todotxt.todotxttouch.util;
 
-import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 
 public class StringsTest {
 
-    @Test
+    // TODO: use junit5 to use @ParameterizedTest
+
     public void insertPadded() {
 
-        String baseString = "string";
+        String baseString = "abc";
         int position = 3;
-        String stringToInsert = "insert";
+        String stringToInsert = "xxx";
 
         String result = Strings.insertPadded(baseString, position, stringToInsert);
 
-        assertEquals(result, "str insert ing");
+        assertEquals(result, "abc xxx ");
     }
 }
