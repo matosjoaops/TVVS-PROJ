@@ -124,19 +124,19 @@ The *prependString* function, which can be found in the Util class, concatenates
 
 Given the described parameters, the following partitions were created:
 
-#### Partition #1
+#### Partition #1:
 - `list` is an ArrayList with length > 0
 - `prepend` is a string with length > 0
 
-#### Partition #2
+#### Partition #2:
 - `list` is an ArrayList with length = 0
 - `prepend` is a string with length > 0
 
-#### Partition #3
+#### Partition #3:
 - `list` is an ArrayList with length > 0
 - `prepend` is a string with length = 0
 
-#### Partition #4
+#### Partition #4:
 - `list` is an ArrayList with length = 0
 - `prepend` is a string with length = 0
 
@@ -189,4 +189,59 @@ static Stream<Arguments> prependProvider() {
 public static String fileName(String path)
 ```
 
+This function returns the corresponding filename for a given `path`. It was chosen for the unique properties that valid paths have.
 
+### Category-Partition algorithm
+
+The following partitions were created for this function (all paths use the Unix format):
+
+#### Partition #1:
+- `path` is a valid absolute path with no spaces and multiple occurrences of the `/` character
+
+#### Partition #2:
+- `path` is a valid relative path with no spaces and a single occurrence of the `/` character
+
+#### Partition #3:
+- `path` is a valid relative path with no spaces and no occurrences of the `/` character
+
+#### Partition #4:
+- `path` is a valid absolute path with a space between quotation marks
+
+#### Partition #5:
+- `path` is a valid absolute path with a space preceded by the escape character (`\`)
+
+#### Partition #6:
+- `path` is an invalid absolute path with a space
+
+#### Partition #7:
+- `path` is an empty string
+
+### Unit tests generated for each category
+
+The following code was used to test this function's partitions. A parameterized test was used to provide the different paths for each partition. We were also expecting the function to throw an exception when the invalid path was used but that did not happen, causing that test to fail.
+
+
+```java
+@ParameterizedTest
+@MethodSource("pathProvider")
+public void fileName(String path, String expected) {
+    String result = Path.fileName(path);
+    assertEquals(result, expected);
+}
+
+@Test
+public void invalidFileName() {
+    assertThrows(Exception.class, () -> Path.fileName("/home/user/space dir/file6.txt"));
+}
+
+static Stream<Arguments> pathProvider() {
+    return Stream.of(
+            arguments("/home/user/file1.txt", "file1.txt"),
+            arguments("dir/file2.txt", "file2.txt"),
+            arguments("file3.txt", "file3.txt"),
+            arguments("/home/user/\"space dir\"/file4.txt", "file4.txt"),
+            arguments("/home/user/space\\ dir/file5.txt", "file5.txt"),
+            arguments("", "")
+    );
+}
+```
