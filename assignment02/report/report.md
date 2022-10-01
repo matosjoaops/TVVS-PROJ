@@ -73,7 +73,7 @@ static Stream<Arguments> stringIntStringProvider() {
         arguments("test", 4, "", "test"), // partition #4
         arguments("", 0, "a", "a ") // partition #5
         );
-}
+        }
 ```
 
 
@@ -83,18 +83,18 @@ According to the documentation, if the parameter `insertAt` is negative or great
 
 ```java
 @ParameterizedTest()
-    @MethodSource("stringInvalidPositionStringProvider")
-    public void insertPaddedNegativePosition(String s, int insertAt, String stringToInsert) {
+@MethodSource("stringInvalidPositionStringProvider")
+public void insertPaddedNegativePosition(String s, int insertAt, String stringToInsert) {
         assertThrows(IndexOutOfBoundsException.class, () -> Strings.insertPadded(s, insertAt, stringToInsert));
-    }
+        }
 
-    static Stream<Arguments> stringInvalidPositionStringProvider() {
+static Stream<Arguments> stringInvalidPositionStringProvider() {
         return Stream.of(
-                arguments("a", -1, "b"), // partition #2
-                arguments("a", 5, "b"), // partition #3
-                arguments("test", -1, "") // partition #6
+        arguments("a", -1, "b"), // partition #2
+        arguments("a", 5, "b"), // partition #3
+        arguments("test", -1, "") // partition #6
         );
-    }
+        }
 ```
 
 ## *getRelativeDate* function
@@ -118,7 +118,57 @@ We can divide the function testing in the following partitions by changing the v
 - `date` is a date/time after to the current date/time
 
 
-...
+### Unit tests generated for each category
+
+The following code tests the partitions #1, #2 and #3. As the previous tested functions, it makes use of the `@ParamerizedTest` and `@MethodSource` annotations to test the different partitions without having to write duplicate code. The test passes for all partitions, as the code runs as expected.
+
+```java
+@ParameterizedTest
+@MethodSource("dateProvider")
+public void getRelativeDate(Date date, String expectedResult) {
+
+    String result = RelativeDate.getRelativeDate(date);
+
+    assertEquals(result, expectedResult);
+}
+
+static Stream<Arguments> dateProvider() throws ParseException {
+    Calendar calendar = new GregorianCalendar();
+
+    Date now = new Date();
+    Date before = new SimpleDateFormat("yyyy/MM/dd").parse("2000/10/1");
+    Date after = new SimpleDateFormat("yyyy/MM/dd").parse("3000/10/1");
+
+    calendar.setTime(now);
+    String nowString = String.format("%04d-%02d-%02d",
+        calendar.get(Calendar.YEAR),
+        (calendar.get(Calendar.MONTH) + 1), // months start at 0
+        calendar.get(Calendar.DAY_OF_MONTH)
+    );
+
+
+    calendar.setTime(before);
+    String beforeString = String.format("%04d-%02d-%02d",
+        calendar.get(Calendar.YEAR),
+        (calendar.get(Calendar.MONTH) + 1), // months start at 0
+        calendar.get(Calendar.DAY_OF_MONTH)
+    );
+
+    calendar.setTime(after);
+    String afterString = String.format("%04d-%02d-%02d",
+        calendar.get(Calendar.YEAR),
+        (calendar.get(Calendar.MONTH) + 1), // months start at 0
+        calendar.get(Calendar.DAY_OF_MONTH)
+    );
+
+
+    return Stream.of(
+            arguments(before, beforeString), // partition #1
+            arguments(now, nowString), // partition #2
+            arguments(after, afterString) // partition #3
+    );
+}
+```
 
 
 ## *isBlank* function
@@ -153,19 +203,19 @@ The following code tests the partitions #1, #2, #3 and #4. As the previous teste
 @MethodSource("stringProvider")
 public void isBlank(String s, boolean expectedResult) {
 
-    boolean result = Strings.isBlank(s);
+        boolean result = Strings.isBlank(s);
 
-    assertEquals(result, expectedResult);
-}
+        assertEquals(result, expectedResult);
+        }
 
 static Stream<Arguments> stringProvider() {
-    return Stream.of(
-            arguments(null, true), // partition #1
-            arguments("", true), // partition #2
-            arguments("   ", true), // partition #3
-            arguments("123", false) // partition #4
-    );
-}
+        return Stream.of(
+        arguments(null, true), // partition #1
+        arguments("", true), // partition #2
+        arguments("   ", true), // partition #3
+        arguments("123", false) // partition #4
+        );
+        }
 ```
 
 
