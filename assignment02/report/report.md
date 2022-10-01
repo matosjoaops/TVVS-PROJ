@@ -15,7 +15,7 @@
 public static String insertPadded(String s, int insertAt, String stringToInsert)
 ```
 
-The *insertedPadded* function, present in the Strings class, inserts a given string `stringToInsert` into another `s`, at position `insertAt`, padding it with spaces. We chose this function because is has a clear objective, it has three parameters and can throw an exception, making it an interesting function to test.
+The *insertedPadded* function, present in the `Strings` class, inserts a given string `stringToInsert` into another `s`, at position `insertAt`, padding it with spaces. We chose this function because is has a clear objective, it has three parameters and can throw an exception, making it an interesting function to test.
 
 ### Category-Partition algorithm
 
@@ -103,12 +103,69 @@ According to the documentation, if the parameter `insertAt` is negative or great
 public static String getRelativeDate(Date date)
 ```
 
+The *getRelativeDate* function, present in the `RelativeDate` class, receives a `Date` object and returns a string representing the relative date, by comparing the date being passed to the time that it is right now.
+
+### Category-Partition algorithm
+We can divide the function testing in the following partitions by changing the values of the parameter:
+
+#### Partition #1:
+- `date` is a date/time before the current date/time
+
+#### Partition #2:
+- `date` is a date/time equal to the current date/time
+
+#### Partition #3:
+- `date` is a date/time after to the current date/time
+
+
+...
 
 
 ## *isBlank* function
 
 ```java
 public static boolean isBlank(String s)
+```
+
+The *isBlank* function, present in the `Strings` class, checks the passed in string to see if it is null, empty, or only composed by whitespaces.
+
+### Category-Partition algorithm
+We can divide the function testing in the following partitions by changing the values of the parameter:
+
+#### Partition #1:
+- `s` is null
+
+#### Partition #2:
+- `s` is an empty string
+
+#### Partition #3:
+- `s` is only composed by spaces
+
+#### Partition #4:
+- `s` a non-empty string
+
+### Unit tests generated for each category
+
+The following code tests the partitions #1, #2, #3 and #4. As the previous tested functions, it makes use of the `@ParamerizedTest` and `@MethodSource` annotations to test the different partitions without having to write duplicate code. The test passes for all partitions, as the code runs as expected.
+
+```java
+@ParameterizedTest
+@MethodSource("stringProvider")
+public void isBlank(String s, boolean expectedResult) {
+
+    boolean result = Strings.isBlank(s);
+
+    assertEquals(result, expectedResult);
+}
+
+static Stream<Arguments> stringProvider() {
+    return Stream.of(
+            arguments(null, true), // partition #1
+            arguments("", true), // partition #2
+            arguments("   ", true), // partition #3
+            arguments("123", false) // partition #4
+    );
+}
 ```
 
 
