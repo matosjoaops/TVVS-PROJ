@@ -96,3 +96,33 @@ According to the documentation, if the parameter `insertAt` is negative or great
         );
     }
 ```
+
+## *getRelativeDate* function
+
+```java
+public static String getRelativeDate(Date date)
+```
+
+
+
+## *isBlank* function
+
+```java
+public static boolean isBlank(String s)
+```
+
+
+## *prependString* function
+
+```java
+public static void prependString(ArrayList<String> list, String prepend)
+```
+
+
+## *fileName* function
+
+```java
+public static String fileName(String path)
+```
+
+
