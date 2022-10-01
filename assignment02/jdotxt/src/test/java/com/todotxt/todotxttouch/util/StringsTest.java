@@ -41,4 +41,24 @@ public class StringsTest {
                 arguments("test", -1, "") // partition #6
         );
     }
+
+
+    @ParameterizedTest
+    @MethodSource("stringProvider")
+    public void isBlank(String s, boolean expectedResult) {
+
+        boolean result = Strings.isBlank(s);
+
+        assertEquals(result, expectedResult);
+    }
+
+    static Stream<Arguments> stringProvider() {
+        return Stream.of(
+                arguments(null, true), // partition #1
+                arguments("", true), // partition #2
+                arguments("   ", true), // partition #3
+                arguments("123", false) // partition #4
+        );
+    }
+
 }
