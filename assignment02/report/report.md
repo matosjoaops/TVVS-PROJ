@@ -6,8 +6,8 @@
 - Group id: 06
 - Project id: 03
 - Students:
-  - João Matos, up201703884
-  - Tiago Gomes, up201806658
+    - João Matos, up201703884
+    - Tiago Gomes, up201806658
 
 ## *insertPadded* function
 
@@ -62,18 +62,18 @@ The following code tests the partitions #1, #4 and #5. It makes use of the `@Par
 @MethodSource("stringIntStringProvider")
 public void insertPadded(String baseString, int position, String stringToInsert, String expectedResult) {
 
-        String result = Strings.insertPadded(baseString, position, stringToInsert);
+    String result = Strings.insertPadded(baseString, position, stringToInsert);
 
-        assertEquals(result, expectedResult);
-        }
+    assertEquals(result, expectedResult);
+}
 
 static Stream<Arguments> stringIntStringProvider() {
-        return Stream.of(
+    return Stream.of(
         arguments("apple", 1, "pear", "a pear pple"), // partition #1
         arguments("test", 4, "", "test"), // partition #4
         arguments("", 0, "a", "a ") // partition #5
-        );
-        }
+    );
+}
 ```
 
 
@@ -85,16 +85,16 @@ According to the documentation, if the parameter `insertAt` is negative or great
 @ParameterizedTest()
 @MethodSource("stringInvalidPositionStringProvider")
 public void insertPaddedNegativePosition(String s, int insertAt, String stringToInsert) {
-        assertThrows(IndexOutOfBoundsException.class, () -> Strings.insertPadded(s, insertAt, stringToInsert));
-        }
+    assertThrows(IndexOutOfBoundsException.class, () -> Strings.insertPadded(s, insertAt, stringToInsert));
+}
 
 static Stream<Arguments> stringInvalidPositionStringProvider() {
-        return Stream.of(
+    return Stream.of(
         arguments("a", -1, "b"), // partition #2
         arguments("a", 5, "b"), // partition #3
         arguments("test", -1, "") // partition #6
-        );
-        }
+    );
+}
 ```
 
 ## *getRelativeDate* function
@@ -146,7 +146,6 @@ static Stream<Arguments> dateProvider() throws ParseException {
         calendar.get(Calendar.DAY_OF_MONTH)
     );
 
-
     calendar.setTime(before);
     String beforeString = String.format("%04d-%02d-%02d",
         calendar.get(Calendar.YEAR),
@@ -155,17 +154,16 @@ static Stream<Arguments> dateProvider() throws ParseException {
     );
 
     calendar.setTime(after);
-    String afterString = String.format("%04d-%02d-%02d",
+        String afterString = String.format("%04d-%02d-%02d",
         calendar.get(Calendar.YEAR),
         (calendar.get(Calendar.MONTH) + 1), // months start at 0
         calendar.get(Calendar.DAY_OF_MONTH)
     );
 
-
     return Stream.of(
-            arguments(before, beforeString), // partition #1
-            arguments(now, nowString), // partition #2
-            arguments(after, afterString) // partition #3
+        arguments(before, beforeString), // partition #1
+        arguments(now, nowString), // partition #2
+        arguments(after, afterString) // partition #3
     );
 }
 ```
@@ -203,19 +201,19 @@ The following code tests the partitions #1, #2, #3 and #4. As the previous teste
 @MethodSource("stringProvider")
 public void isBlank(String s, boolean expectedResult) {
 
-        boolean result = Strings.isBlank(s);
-
-        assertEquals(result, expectedResult);
-        }
+    boolean result = Strings.isBlank(s);
+    
+    assertEquals(result, expectedResult);
+}
 
 static Stream<Arguments> stringProvider() {
-        return Stream.of(
+    return Stream.of(
         arguments(null, true), // partition #1
         arguments("", true), // partition #2
         arguments("   ", true), // partition #3
         arguments("123", false) // partition #4
-        );
-        }
+    );
+}
 ```
 
 
