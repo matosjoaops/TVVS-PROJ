@@ -15,11 +15,11 @@
 public static String insertPadded(String s, int insertAt, String stringToInsert)
 ```
 
-The *insertedPadded* function, present in the `Strings` class, inserts a given string `stringToInsert` into another `s`, at position `insertAt`, padding it with spaces. We chose this function because is has a clear objective, it has three parameters and can throw an exception, making it an interesting function to test.
+The *insertedPadded* function, present in the `Strings` class, inserts a given string `stringToInsert` into another `s`, at position `insertAt`, padding it with spaces. We chose this function because it has a clear objective, has three parameters, and can throw an exception, making it an interesting function to test.
 
 ### Category-Partition algorithm
 
-We can divide the function testing in the following partitions by changing the values of the three parameters:
+We can divide the function testing into the following partitions by changing the values of the three parameters:
 
 #### Partition #1:
 - `s` is a string of length > 0
@@ -55,7 +55,7 @@ We can divide the function testing in the following partitions by changing the v
 
 #### Testings partitions #1, #4 and #5
 
-The following code tests the partitions #1, #4 and #5. It makes use of the `@ParamerizedTest` and `@MethodSource` annotations to test the different partitions without having to write duplicate code. The test passes for all partitions, as the code runs as expected.
+The following code tests partitions #1, #4, and #5. It uses the `@ParamerizedTest` and `@MethodSource` annotations to test the different partitions without writing duplicate code. The test passes for all partitions, as the code runs as expected.
 
 ```java
 @ParameterizedTest
@@ -79,7 +79,7 @@ static Stream<Arguments> stringIntStringProvider() {
 
 #### Testing partitions #2, #3 and #6
 
-According to the documentation, if the parameter `insertAt` is negative or greater than the length of the base string, then an `IndexOutOfBoundsException` should be thrown. This is what happened for partitions 2 and 3. However, for partition 6 the exception wasn't thrown. It seems the implementation first checks if the `stringToInsert` is empty and only then checks if `insertAt`'s value is valid. But since this behaviour contradicts the documentation, it can be considered a bug and therefore, the test does not pass. These tests make use of `assertThrows` to check if the exception is thrown.
+According to the documentation, if the parameter `insertAt` is negative or greater than the length of the base string, then an `IndexOutOfBoundsException` should be thrown. This is what happened for partitions 2 and 3. However, for partition 6, the exception was not thrown. It seems the implementation first checks if the `stringToInsert` is empty and only then checks if `insertAt`'s value is valid. However, since this behavior contradicts the documentation, it can be considered a bug; therefore, the test does not pass. These tests use `assertThrows` to check if the exception is thrown.
 
 ```java
 @ParameterizedTest()
@@ -103,10 +103,10 @@ static Stream<Arguments> stringInvalidPositionStringProvider() {
 public static String getRelativeDate(Date date)
 ```
 
-The *getRelativeDate* function, present in the `RelativeDate` class, receives a `Date` object and returns a string representing the relative date, by comparing the date being passed to the time that it is right now.
+The *getRelativeDate* function, present in the `RelativeDate` class, receives a `Date` object and returns a string representing the relative date by comparing the date being passed to the time it is right now.
 
 ### Category-Partition algorithm
-We can divide the function testing in the following partitions by changing the values of the parameter:
+We can divide the function testing into the following partitions by changing the values of the parameter:
 
 #### Partition #1:
 - `date` is a date/time before the current date/time
@@ -120,7 +120,7 @@ We can divide the function testing in the following partitions by changing the v
 
 ### Unit tests generated for each category
 
-The following code tests the partitions #1, #2 and #3. As the previous tested functions, it makes use of the `@ParamerizedTest` and `@MethodSource` annotations to test the different partitions without having to write duplicate code. The test passes for all partitions, as the code runs as expected.
+The following code tests partitions #1, #2, and #3. As the previously tested functions, it uses the `@ParamerizedTest` and `@MethodSource` annotations to test the different partitions without having to write duplicate code. The test passes for all partitions, as the code runs as expected.
 
 ```java
 @ParameterizedTest
@@ -175,10 +175,10 @@ static Stream<Arguments> dateProvider() throws ParseException {
 public static boolean isBlank(String s)
 ```
 
-The *isBlank* function, present in the `Strings` class, checks the passed in string to see if it is null, empty, or only composed by whitespaces.
+The *isBlank* function, present in the `Strings` class, checks the passed-in string to see if it is null, empty, or only composed of whitespaces.
 
 ### Category-Partition algorithm
-We can divide the function testing in the following partitions by changing the values of the parameter:
+We can divide the function testing into the following partitions by changing the values of the parameter:
 
 #### Partition #1:
 - `s` is null
@@ -187,14 +187,14 @@ We can divide the function testing in the following partitions by changing the v
 - `s` is an empty string
 
 #### Partition #3:
-- `s` is only composed by spaces
+- `s` is only composed of spaces
 
 #### Partition #4:
 - `s` a non-empty string
 
 ### Unit tests generated for each category
 
-The following code tests the partitions #1, #2, #3 and #4. As the previous tested functions, it makes use of the `@ParamerizedTest` and `@MethodSource` annotations to test the different partitions without having to write duplicate code. The test passes for all partitions, as the code runs as expected.
+The following code tests partitions #1, #2, #3, and #4. As the previously tested functions, it uses the `@ParamerizedTest` and `@MethodSource` annotations to test the different partitions without having to write duplicate code. The test passes for all partitions, as the code runs as expected.
 
 ```java
 @ParameterizedTest
@@ -247,7 +247,7 @@ Given the described parameters, the following partitions were created:
 
 ### Unit tests generated for each category
 
-The following code was used to test all the partitions. Several lists with the same content had to be used for the tests since their contents can't be reset between tests. Each test receives the parameters for the function along with the expected list and uses `assertEquals` to compare the content of the lists. All tests passed.
+The following code was used to test all the partitions. Several lists with the same content had to be used for the tests since their contents could not be reset between tests. Each test receives the parameters for the function along with the expected list and uses `assertEquals` to compare the content of the lists. All tests passed.
 
 ```java
 @ParameterizedTest
@@ -323,7 +323,7 @@ The following partitions were created for this function (all paths use the Unix 
 
 ### Unit tests generated for each category
 
-The following code was used to test this function's partitions. A parameterized test was used to provide the different paths for each partition. We were also expecting the function to throw an exception when the invalid path was used but that did not happen, causing that test to fail.
+The following code was used to test this function's partitions. A parameterized test was used to provide the different paths for each partition. We also expected the function to throw an exception when the invalid path was used, but that did not happen, causing that test to fail.
 
 
 ```java
