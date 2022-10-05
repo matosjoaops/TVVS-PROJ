@@ -27,31 +27,33 @@ public class RelativeDateTest {
 
     static Stream<Arguments> dateProvider() throws ParseException {
         Calendar calendar = new GregorianCalendar();
+        Calendar calendar2 = new GregorianCalendar();
 
         Date now = new Date();
         Date before = new SimpleDateFormat("yyyy/MM/dd").parse("2000/10/1");
         Date after = new SimpleDateFormat("yyyy/MM/dd").parse("3000/10/1");
 
         calendar.setTime(now);
-        String nowString = String.format("%04d-%02d-%02d",
-            calendar.get(Calendar.YEAR),
-            (calendar.get(Calendar.MONTH) + 1), // months start at 0
-            calendar.get(Calendar.DAY_OF_MONTH)
+        calendar2.setTime(now);
+        String nowString = String.format("%04d/%02d/%02d",
+            calendar2.get(Calendar.YEAR) - calendar.get(Calendar.YEAR),
+            calendar2.get(Calendar.MONTH) - calendar.get(Calendar.MONTH), // months start at 0
+            calendar2.get(Calendar.DAY_OF_MONTH) - calendar.get(Calendar.DAY_OF_MONTH)
         );
 
 
-        calendar.setTime(before);
-        String beforeString = String.format("%04d-%02d-%02d",
-            calendar.get(Calendar.YEAR),
-            (calendar.get(Calendar.MONTH) + 1), // months start at 0
-            calendar.get(Calendar.DAY_OF_MONTH)
+        calendar2.setTime(before);
+        String beforeString = String.format("%04d/%02d/%02d",
+            calendar2.get(Calendar.YEAR) - calendar.get(Calendar.YEAR),
+            calendar2.get(Calendar.MONTH) - calendar.get(Calendar.MONTH), // months start at 0
+            calendar2.get(Calendar.DAY_OF_MONTH) - calendar.get(Calendar.DAY_OF_MONTH)
         );
 
-        calendar.setTime(after);
-        String afterString = String.format("%04d-%02d-%02d",
-            calendar.get(Calendar.YEAR),
-            (calendar.get(Calendar.MONTH) + 1), // months start at 0
-            calendar.get(Calendar.DAY_OF_MONTH)
+        calendar2.setTime(after);
+        String afterString = String.format("%04d/%02d/%02d",
+            calendar2.get(Calendar.YEAR) - calendar.get(Calendar.YEAR),
+            calendar2.get(Calendar.MONTH) - calendar.get(Calendar.MONTH), // months start at 0
+            calendar2.get(Calendar.DAY_OF_MONTH) - calendar.get(Calendar.DAY_OF_MONTH)
         );
 
 

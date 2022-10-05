@@ -115,12 +115,12 @@ We can divide the function testing into the following partitions by changing the
 - `date` is a date/time equal to the current date/time
 
 #### Partition #3:
-- `date` is a date/time after to the current date/time
+- `date` is a date/time after the current date/time
 
 
 ### Unit tests generated for each category
 
-The following code tests partitions #1, #2, and #3. As the previously tested functions, it uses the `@ParamerizedTest` and `@MethodSource` annotations to test the different partitions without having to write duplicate code. The test passes for all partitions, as the code runs as expected.
+The following code tests partitions #1, #2, and #3. As the previously tested functions, it uses the `@ParamerizedTest` and `@MethodSource` annotations to test the different partitions without having to write duplicate code. All the tests fail because, despite its name, the function just seems to return a string representation of the date provided in the `date` parameter instead of returning a relative date.
 
 ```java
 @ParameterizedTest
@@ -134,36 +134,40 @@ public void getRelativeDate(Date date, String expectedResult) {
 
 static Stream<Arguments> dateProvider() throws ParseException {
     Calendar calendar = new GregorianCalendar();
+    Calendar calendar2 = new GregorianCalendar();
 
     Date now = new Date();
     Date before = new SimpleDateFormat("yyyy/MM/dd").parse("2000/10/1");
     Date after = new SimpleDateFormat("yyyy/MM/dd").parse("3000/10/1");
 
     calendar.setTime(now);
-    String nowString = String.format("%04d-%02d-%02d",
-        calendar.get(Calendar.YEAR),
-        (calendar.get(Calendar.MONTH) + 1), // months start at 0
-        calendar.get(Calendar.DAY_OF_MONTH)
+    calendar2.setTime(now);
+    String nowString = String.format("%04d/%02d/%02d",
+        calendar2.get(Calendar.YEAR) - calendar.get(Calendar.YEAR),
+        calendar2.get(Calendar.MONTH) - calendar.get(Calendar.MONTH), // months start at 0
+        calendar2.get(Calendar.DAY_OF_MONTH) - calendar.get(Calendar.DAY_OF_MONTH)
     );
 
-    calendar.setTime(before);
-    String beforeString = String.format("%04d-%02d-%02d",
-        calendar.get(Calendar.YEAR),
-        (calendar.get(Calendar.MONTH) + 1), // months start at 0
-        calendar.get(Calendar.DAY_OF_MONTH)
+
+    calendar2.setTime(before);
+    String beforeString = String.format("%04d/%02d/%02d",
+        calendar2.get(Calendar.YEAR) - calendar.get(Calendar.YEAR),
+        calendar2.get(Calendar.MONTH) - calendar.get(Calendar.MONTH), // months start at 0
+        calendar2.get(Calendar.DAY_OF_MONTH) - calendar.get(Calendar.DAY_OF_MONTH)
     );
 
-    calendar.setTime(after);
-        String afterString = String.format("%04d-%02d-%02d",
-        calendar.get(Calendar.YEAR),
-        (calendar.get(Calendar.MONTH) + 1), // months start at 0
-        calendar.get(Calendar.DAY_OF_MONTH)
+    calendar2.setTime(after);
+    String afterString = String.format("%04d/%02d/%02d",
+        calendar2.get(Calendar.YEAR) - calendar.get(Calendar.YEAR),
+        calendar2.get(Calendar.MONTH) - calendar.get(Calendar.MONTH), // months start at 0
+        calendar2.get(Calendar.DAY_OF_MONTH) - calendar.get(Calendar.DAY_OF_MONTH)
     );
+
 
     return Stream.of(
-        arguments(before, beforeString), // partition #1
-        arguments(now, nowString), // partition #2
-        arguments(after, afterString) // partition #3
+            arguments(before, beforeString), // partition #1
+            arguments(now, nowString), // partition #2
+            arguments(after, afterString) // partition #3
     );
 }
 ```
