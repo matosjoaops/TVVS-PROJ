@@ -1,0 +1,271 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>jdotxt</groupId>
+    <artifactId>jdotxt</artifactId>
+    <packaging>jar</packaging>
+    <version>0.4.9-SNAPSHOT</version>
+    <name>jdotxt</name>
+    <organization>
+        <name>Christian M. Schmid</name>
+    </organization>
+
+    <properties>
+        <site.plugin.version>4.0.0-M3</site.plugin.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <surefire.plugin.version>3.0.0-M7</surefire.plugin.version>
+
+        <!-- JUnit related -->
+        <junit.jupiter.version>5.9.1</junit.jupiter.version>
+        <junit.vintage.version>5.9.1</junit.vintage.version>
+        <junit.version>5.9.1</junit.version>
+    </properties>
+
+    <repositories>
+      <repository>
+        <id>main</id>
+        <url>https://repo.maven.apache.org/maven2</url>
+      </repository>
+      <repository>
+        <id>secondary</id>
+        <url>http://builds.archive.org/maven2</url>
+      </repository>
+    </repositories>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>${junit.vintage.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna</artifactId>
+            <version>5.12.1</version>
+        </dependency>
+        <dependency>
+          <groupId>com.github.albfernandez</groupId>
+          <artifactId>juniversalchardet</artifactId>
+          <version>2.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-core</artifactId>
+            <version>2.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>3.19.0</version>
+                <configuration>
+                    <rulesets>
+                        <ruleset>${basedir}/rulesets/pmd-unusedcode.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-basic.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-braces.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-clone.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-codesize.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-comments.xml</ruleset>
+                        <!--<ruleset>${basedir}/rulesets/pmd-controversial.xml</ruleset>-->
+                        <ruleset>${basedir}/rulesets/pmd-coupling.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-design.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-empty.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-finalizers.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-imports.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-j2ee.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-javabeans.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-junit.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-logging-jakarta-commons.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-logging-java.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-metrics.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-migrating_to_13.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-migrating_to_14.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-migrating_to_15.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-migrating_to_junit4.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-migrating.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-naming.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-optimizations.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-quickstart.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-strictexception.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-strings.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-sunsecure.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-typeresolution.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-unnecessary.xml</ruleset>
+                    </rulesets>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <configLocation>${basedir}/rulesets/checkstyle-rules.xml</configLocation>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>10.3.3</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                    <debug>false</debug>
+                </configuration>
+            </plugin>
+
+            <!--plugin>
+                <groupId>sh.tak.appbundler</groupId>
+                <artifactId>appbundle-maven-plugin</artifactId>
+                <version>1.2.0</version>
+                <configuration>
+                    <mainClass>com.chschmid.jdotxt.Jdotxt</mainClass>
+                    <iconFile>drawable/jdotxt.icns</iconFile>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                          <goal>bundle</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin-->
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.4.2</version>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <addDefaultEntries>true</addDefaultEntries>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                            <mainClass>com.chschmid.jdotxt.Jdotxt</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>${site.plugin.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+
+    <reporting>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>3.19.0</version>
+                <configuration>
+                    <rulesets>
+                        <ruleset>${basedir}/rulesets/pmd-unusedcode.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-basic.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-braces.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-clone.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-codesize.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-comments.xml</ruleset>
+                        <!--<ruleset>${basedir}/rulesets/pmd-controversial.xml</ruleset>-->
+                        <ruleset>${basedir}/rulesets/pmd-coupling.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-design.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-empty.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-finalizers.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-imports.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-j2ee.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-javabeans.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-junit.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-logging-jakarta-commons.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-logging-java.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-metrics.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-migrating_to_13.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-migrating_to_14.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-migrating_to_15.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-migrating_to_junit4.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-migrating.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-naming.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-optimizations.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-quickstart.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-strictexception.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-strings.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-sunsecure.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-typeresolution.xml</ruleset>
+                        <ruleset>${basedir}/rulesets/pmd-unnecessary.xml</ruleset>
+                    </rulesets>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <configLocation>${basedir}/rulesets/checkstyle-rules.xml</configLocation>
+                </configuration>
+            </plugin>
+
+            <plugin> <!-- JUnit report -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>${surefire.plugin.version}</version>
+            </plugin>
+
+        </plugins>
+    </reporting>
+
+
+</project>
