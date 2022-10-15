@@ -29,10 +29,36 @@ We can divide the function testing into the following partitions by changing the
 #### Partition #3:
 - `date` is a date/time after the current date/time
 
+#### Partition #4:
+- `date` is null
+
+
+### Boundary Value Analysis
+
+#### Between Partition #1 and Partition #2:
+- On-point: current date minus 1 day
+- Off-point: current date
+
+#### Between Partition #2 and Partition #3:
+- On-point: current date
+- Off-point: current date plus 1 day
+
+#### Between Partition #4 and Partition #1:
+- On-point: null
+- Off-point: date before the current date
+
+#### Between Partition #4 and Partition #2:
+- On-point: null
+- Off-point: current date
+
+#### Between Partition #4 and Partition #3:
+- On-point: null
+- Off-point: date after the current date
+
 
 ### Unit tests generated for each category
 
-The following code tests partitions #1, #2, and #3. As the previously tested functions, it uses the `@ParamerizedTest` and `@MethodSource` annotations to test the different partitions without having to write duplicate code. All the tests fail because, despite its name, the function just seems to return a string representation of the date provided in the `date` parameter instead of returning a relative date.
+The following code tests partitions #1, #2, #3, and #4, as well as its boundaries. It uses the `@ParamerizedTest` and `@MethodSource` annotations to test the different partitions without having to write duplicate code. All the tests fail because, despite its name, the function just seems to return a string representation of the date provided in the `date` parameter instead of returning a relative date.
 
 ```java
 @ParameterizedTest
