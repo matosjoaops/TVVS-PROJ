@@ -106,11 +106,27 @@ We can divide the function testing into the following partitions by changing the
 - `s` is only composed of spaces
 
 #### Partition #4:
-- `s` a non-empty string
+- `s` a non-empty string that is not composed only by spaces
+
+
+### Boundary Value Analysis
+
+#### Between Partition #1 and Partition #2:
+- On-point: null
+- Off-point: empty string
+
+#### Between Partition #2 and Partition #3:
+- On-point: empty string
+- Off-point: string with one space character
+
+#### Between Partition #2 and Partition #4:
+- On-point: empty string
+- Off-point: string one non-space character
+
 
 ### Unit tests generated for each category
 
-The following code tests partitions #1, #2, #3, and #4. As the previously tested functions, it uses the `@ParamerizedTest` and `@MethodSource` annotations to test the different partitions without having to write duplicate code. The test passes for all partitions, as the code runs as expected.
+The following code tests partitions #1, #2, #3, and #4, as well as its boundaries. As the previously tested functions, it uses the `@ParamerizedTest` and `@MethodSource` annotations to test the different partitions without having to write duplicate code. The test passes for all partitions and boundaries, as the code runs as expected.
 
 ```java
 @ParameterizedTest
@@ -124,10 +140,14 @@ public void isBlank(String s, boolean expectedResult) {
 
 static Stream<Arguments> stringProvider() {
     return Stream.of(
-        arguments(null, true), // partition #1
-        arguments("", true), // partition #2
-        arguments("   ", true), // partition #3
-        arguments("123", false) // partition #4
+        arguments(null, true), // Partition #1; Between Partition #1 and Partition #2 On-point
+        arguments("", true), // Partition #2; Between Partition #1 and Partition #2 Off-point; 
+                             // Between Partition #2 and Partition #3 On-point;
+                             // Between Partition #2 and Partition #4 On-point
+        arguments("   ", true), // Partition #3
+        arguments("123", false), // Partition #4
+        arguments(" ", true), // Between Partition #2 and Partition #3 Off-point
+        arguments("a", false) // Between Partition #2 and Partition #4 Off-point
     );
 }
 ```

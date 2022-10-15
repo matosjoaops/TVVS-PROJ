@@ -53,12 +53,16 @@ public class StringsTest {
     }
 
     static Stream<Arguments> stringProvider() {
-        return Stream.of(
-                arguments(null, true), // partition #1
-                arguments("", true), // partition #2
-                arguments("   ", true), // partition #3
-                arguments("123", false) // partition #4
-        );
-    }
+    return Stream.of(
+        arguments(null, true), // Partition #1; Between Partition #1 and Partition #2 On-point
+        arguments("", true), // Partition #2; Between Partition #1 and Partition #2 Off-point; 
+                             // Between Partition #2 and Partition #3 On-point;
+                             // Between Partition #2 and Partition #4 On-point
+        arguments("   ", true), // Partition #3
+        arguments("123", false), // Partition #4
+        arguments(" ", true), // Between Partition #2 and Partition #3 Off-point
+        arguments("a", false) // Between Partition #2 and Partition #4 Off-point
+    );
+}
 
 }
