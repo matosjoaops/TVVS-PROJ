@@ -226,8 +226,8 @@ Given the described parameters, the following partitions were created for each p
 
 ##### Between Partition #2 and Partition #3:
 - On-point: empty list
-- Off-point: any list with one elements
-- In-points: all strings with one or more characters
+- Off-point: any list with one element
+- In-points: all lists with one or more elements
 - Out-points: empty list and `null`
 
 #### Boundaries for `prepend`
@@ -247,43 +247,47 @@ Given the described parameters, the following partitions were created for each p
 
 ### Unit tests generated for each category
 
-The following code was used to test all the partitions. Several lists with the same content had to be used for the tests since their contents could not be reset between tests. Each test receives the parameters for the function along with the expected list and uses `assertEquals` to compare the content of the lists. All tests passed.
+The following code was used to test all the partitions and their boundaries. Several lists with the same content had to be used for the tests since their contents could not be reset between tests. Each test receives the parameters for the function along with the expected list and uses `assertEquals` to compare the content of the lists. For tests where we expected an exception to be thrown we used `assertThrows`. We expected the function to throw an exception when `prepend` was `null`. However, this did not happen, leading that test to fail. All other tests passed.
 
 ```java
 @ParameterizedTest
-@MethodSource("prependProvider")
-public void prepend(ArrayList<String> list, String prepend, ArrayList<String> expected) {
-    Util.prependString(list, prepend);
-    assertEquals(list, expected);
-}
+    @MethodSource("prependProvider")
+    public void prepend(ArrayList<String> list, String prepend, ArrayList<String> expected) {
+        Util.prependString(list, prepend);
+        assertEquals(list, expected);
+    }
 
-static Stream<Arguments> prependProvider() {
-    ArrayList<String> list1 = new ArrayList<>(
-            Arrays.asList("a", "b")
-    );
-    ArrayList<String> expectedList1 = new ArrayList<>(
-            Arrays.asList("ca", "cb")
-    );
+    @Test
+    public void nullList() {
+        assertThrows(Exception.class, () -> Util.prependString(null, "a"));
+    }
 
-    ArrayList<String> list2 = new ArrayList<>();
-    ArrayList<String> expectedList2 = new ArrayList<>();
+    @Test
+    public void nullString() {
+        assertThrows(Exception.class, () -> Util.prependString(new ArrayList<>(Arrays.asList("b")), null));
+    }
 
-    ArrayList<String> list3 = new ArrayList<>(
-            Arrays.asList("a", "b")
-    );
-    ArrayList<String> expectedList3 = new ArrayList<>(
-            Arrays.asList("a", "b")
-    );
+    static Stream<Arguments> prependProvider() {
+        String normalString = "a";
+        ArrayList<String> normalList1 = new ArrayList<>(Arrays.asList("b"));
+        ArrayList<String> normalList2 = new ArrayList<>(Arrays.asList("b"));
 
-    ArrayList<String> list4 = new ArrayList<>();
-    ArrayList<String> expectedList4 = new ArrayList<>();
+        ArrayList<String> testList2 = new ArrayList<>();
+        ArrayList<String> testList3 = new ArrayList<>(Arrays.asList("b"));
 
+        String testString1 = "";
+        String testString2 = "a";
 
-    return Stream.of(
-            arguments(list1, "c", expectedList1),
-            arguments(list2, "c", expectedList2),
-            arguments(list3, "", expectedList3),
-            arguments(list4, "", expectedList4)
-    );
-}
+        ArrayList<String> expectedList1 = new ArrayList<>();
+        ArrayList<String> expectedList2 = new ArrayList<>(Arrays.asList("ab"));
+        ArrayList<String> expectedList3 = new ArrayList<>(Arrays.asList("b"));
+        ArrayList<String> expectedList4 = new ArrayList<>(Arrays.asList("ab"));
+
+        return Stream.of(
+                arguments(testList2, normalString, expectedList1),
+                arguments(testList3, normalString, expectedList2),
+                arguments(normalList1, testString1, expectedList3),
+                arguments(normalList2, testString2, expectedList4)
+        );
+    }
 ```
