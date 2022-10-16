@@ -202,23 +202,48 @@ The *prependString* function, which can be found in the Util class, concatenates
 
 ### Category-Partition algorithm
 
-Given the described parameters, the following partitions were created:
+Given the described parameters, the following partitions were created for each parameter:
 
-#### Partition #1:
-- `list` is an ArrayList with length > 0
-- `prepend` is a string with length > 0
+#### Partitions for `list`
+- `list` is `null`
+- `list` is an empty list
+- `list` is a list with one or more elements
 
-#### Partition #2:
-- `list` is an ArrayList with length = 0
-- `prepend` is a string with length > 0
+#### Partitions for `prepend`
+- `prepend` is `null`
+- `prepend` is an empty string
+- `prepend` is a string with one or more characters
 
-#### Partition #3:
-- `list` is an ArrayList with length > 0
-- `prepend` is a string with length = 0
+### Boundary Value Analysis
 
-#### Partition #4:
-- `list` is an ArrayList with length = 0
-- `prepend` is a string with length = 0
+#### Boundaries for `list`
+
+##### Between Partition #1 and Partition #2:
+- On-point: `null`
+- Off-point: empty list
+- In-points: all non-null lists
+- Out-points: `null`
+
+##### Between Partition #2 and Partition #3:
+- On-point: empty list
+- Off-point: any list with one elements
+- In-points: all strings with one or more characters
+- Out-points: empty list and `null`
+
+#### Boundaries for `prepend`
+
+##### Between Partition #1 and Partition #2:
+- On-point: `null`
+- Off-point: empty string
+- In-points: all non-null strings
+- Out-points: `null`
+
+##### Between Partition #2 and Partition #3:
+- On-point: empty string
+- Off-point: any string with one character
+- In-points: all strings with one or more characters
+- Out-points: empty string and `null` 
+
 
 ### Unit tests generated for each category
 
