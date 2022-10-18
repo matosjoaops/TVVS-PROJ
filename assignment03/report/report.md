@@ -38,32 +38,22 @@ We can divide the function testing into the following partitions by changing the
 #### Between Partition #1 and Partition #2:
 - On-point: current date minus 1 day
 - Off-point: current date
-- In-points: dates before the current date
-- Out-points: dates equal to after the current date; null
 
 #### Between Partition #2 and Partition #3:
 - On-point: current date
 - Off-point: current date plus 1 day
-- In-points: dates after the current date
-- Out-points: dates before or after the current date; null
 
 #### Between Partition #4 and Partition #1:
 - On-point: null
 - Off-point: date before the current date
-- In-points: null
-- Out-points: dates before the current date
 
 #### Between Partition #4 and Partition #2:
 - On-point: null
 - Off-point: current date
-- In-points: null
-- Out-points: current date
 
 #### Between Partition #4 and Partition #3:
 - On-point: null
 - Off-point: date after the current date
-- In-points: null
-- Out-points: dates after the current date
 
 
 ### Unit tests generated for each category
@@ -231,28 +221,20 @@ Given the described parameters, the following partitions were created for each p
 ##### Between Partition #1 and Partition #2:
 - On-point: `null`
 - Off-point: empty list
-- In-points: all non-null lists
-- Out-points: `null`
 
 ##### Between Partition #2 and Partition #3:
 - On-point: empty list
 - Off-point: any list with one element
-- In-points: all lists with one or more elements
-- Out-points: empty list and `null`
 
 #### Boundaries for `prepend`
 
 ##### Between Partition #1 and Partition #2:
 - On-point: `null`
 - Off-point: empty string
-- In-points: all non-null strings
-- Out-points: `null`
 
 ##### Between Partition #2 and Partition #3:
 - On-point: empty string
-- Off-point: any string with one character
-- In-points: all strings with one or more characters
-- Out-points: empty string and `null` 
+- Off-point: any string with one character 
 
 
 ### Unit tests generated for each category
