@@ -215,14 +215,14 @@ The *prependString* function, which can be found in the Util class, concatenates
 Given the described parameters, the following partitions were created for each parameter:
 
 #### Partitions for `list`
-- `list` is `null`
-- `list` is an empty list
-- `list` is a list with one or more elements
+1. `list` is `null` 
+2. `list` is an empty list
+3. `list` is a list with one or more elements
 
 #### Partitions for `prepend`
-- `prepend` is `null`
-- `prepend` is an empty string
-- `prepend` is a string with one or more characters
+1. `prepend` is `null`
+2. `prepend` is an empty string
+3. `prepend` is a string with one or more characters
 
 ### Boundary Value Analysis
 
