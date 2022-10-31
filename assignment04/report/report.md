@@ -35,10 +35,10 @@ The transition tree describes all the possible paths of this use case. There are
 | States\\Events     | Click on text field | Click on priority field  | Click on "+" | Hit the "Enter" key | 
 | ------------------ | ------------------- | ------------------------ | ------------ | ------------------- | 
 | Idle               |     Task Text Edit  | Task Priority Edit       |              |                     | 
-| Task Text Edit     |                     | Task Priority Edit       | Idle         | Idle                | 
-| Task Priority Edit |                     |                          | Idle         | Idle                | 
+| Task Text Edit     | Task Text Edit                    | Task Priority Edit       | Idle         | Idle                | 
+| Task Priority Edit |  Task Text Edit                   | Task Priority Edit                         | Idle         | Idle                | 
 
-The transition table of this use case allows us to identify the sneak paths, i.e., identify paths with unspecified behavior.
+The transition table of this use case allows us to identify the sneak paths, i.e., identify paths with unspecified behavior. In this case, there are 2 sneak paths.
 
 ### Test cases
 
@@ -64,6 +64,12 @@ This test aims to test the transitions that were not used on the previous tests,
 The test passes, which means the transitions are working as expected.
 
 ![](https://i.imgur.com/ZyK72Vd.png)
+
+### testSneakPathIdleEnter
+
+This is a sneak path, because when the application is on the "Idle" state and we click the "Enter" key, the behavior is unexpected. In the test, we start by checking if the application is on the "Idle" state, then we click the "Enter" key, and finally we check if the state did not change. The test passes, which means that, in fact, nothing happens when the application is on the "Idle" state and the user clicks the "Enter" key.
+
+![](https://i.imgur.com/5M5mPos.png)
 
 ## Search for a task's text
 
