@@ -85,3 +85,7 @@ This is the transition tree for this use case. There are 4 possible paths. We st
 | Query Processing |                      |                  | Query Start       | Query Processing | Query Start                           | Idle                      |
 
 This is the transition table for this use case. We can see that there are 11 sneaky paths.
+
+## QF-Test Feedback
+
+Overall, *QF-Test* proved to be very useful when creating test cases that require interaction with the UI. However, one problem that we found is that the configuration file used makes it harder to collaborate with other people when using the tool. The configuration file contains information that is specific to each developer's machine. We edited this file in an attempt to use it in a different machine. Unfortunately, *QF-Test* signs the configuration file and checks its integrity upon loading, making it impossible to use a file that's been edited. Perhaps, if the test suite data was stored in a separate file, it could be used with VCS, while the file with user specific information is ignored.
