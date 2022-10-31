@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE RootStep>
 <RootStep id="_0" name="root"
-          signature="612F81612287D4B66EE3B69B2379CF43A46A4519"
+          signature="F176DCABA11DACFEEBF71508E0A77C8B630A60B6"
           version="6.0.3">
   <include>qfs.qft</include>
   <TestSet id="_1" name="testSearch">
@@ -24,6 +24,162 @@
         <ClientWaiter client="$(client)" id="_B"/>
       </IfSequence>
     </SetupSequence>
+    <TestCase id="_1V" name="testTextEdit">
+      <BasicSequence id="_1W" name="click_search-type_gibberish-edit_text">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.text" event="MOUSE_MPRC"
+                        id="_1X" modifiers="16" x="52" y="11"/>
+        <TextInputStep clear="true" client="$(client)"
+                       component="frameJdotxt.text" id="_1Y">
+          <text>asdfasdf</text>
+        </TextInputStep>
+        <KeyEventStep client="$(client)" component="frameJdotxt.text"
+                      event="KEY_PTR" id="_1Z" keychar="8" keycode="8"
+                      modifiers="0"/>
+        <KeyEventStep client="$(client)" component="frameJdotxt.text"
+                      event="KEY_PTR" id="_1a" keychar="8" keycode="8"
+                      modifiers="0"/>
+        <KeyEventStep client="$(client)" component="frameJdotxt.text"
+                      event="KEY_PTR" id="_1b" keychar="8" keycode="8"
+                      modifiers="0"/>
+        <KeyEventStep client="$(client)" component="frameJdotxt.text"
+                      event="KEY_PTR" id="_1c" keychar="8" keycode="8"
+                      modifiers="0"/>
+        <TextInputStep client="$(client)" component="frameJdotxt.text"
+                       id="_1d">
+          <text>asdfadsfa</text>
+        </TextInputStep>
+        <KeyEventStep client="$(client)" component="frameJdotxt.text"
+                      event="KEY_PTR" id="_1e" keychar="8" keycode="8"
+                      modifiers="0"/>
+        <KeyEventStep client="$(client)" component="frameJdotxt.text"
+                      event="KEY_PTR" id="_1f" keychar="8" keycode="8"
+                      modifiers="0"/>
+        <KeyEventStep client="$(client)" component="frameJdotxt.text"
+                      event="KEY_PTR" id="_1g" keychar="8" keycode="8"
+                      modifiers="0"/>
+        <TextInputStep client="$(client)" component="frameJdotxt.text"
+                       id="_1h">
+          <text>adsf</text>
+        </TextInputStep>
+        <TextInputStep client="$(client)" component="frameJdotxt.text"
+                       id="_1i">
+          <text>adsf</text>
+        </TextInputStep>
+        <KeyEventStep client="$(client)" component="frameJdotxt.text"
+                      event="KEY_PTR" id="_1j" keychar="8" keycode="8"
+                      modifiers="0"/>
+        <KeyEventStep client="$(client)" component="frameJdotxt.text"
+                      event="KEY_PTR" id="_1k" keychar="8" keycode="8"
+                      modifiers="0"/>
+        <KeyEventStep client="$(client)" component="frameJdotxt.text"
+                      event="KEY_PTR" id="_1l" keychar="8" keycode="8"
+                      modifiers="0"/>
+        <KeyEventStep client="$(client)" component="frameJdotxt.text"
+                      event="KEY_PTR" id="_1m" keychar="8" keycode="8"
+                      modifiers="0"/>
+        <TextInputStep client="$(client)" component="frameJdotxt.text"
+                       id="_1n">
+          <text>asdf</text>
+        </TextInputStep>
+      </BasicSequence>
+      <BasicSequence id="_1o" name="assertSearchQuery">
+        <CheckStringStep client="$(client)" component="frameJdotxt.text"
+                         id="_1p">
+          <text>asdfasdfadadsfasdf</text>
+        </CheckStringStep>
+      </BasicSequence>
+      <CleanupSequence id="_1q" name="teardown">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.panel2" event="MOUSE_MPRC"
+                        id="_1r" modifiers="16" x="322" y="231"/>
+        <WindowEventStep client="$(client)" component="frameJdotxt"
+                         event="WINDOW_CLOSING" id="_1s"/>
+      </CleanupSequence>
+    </TestCase>
+    <TestCase id="_1R" name="testProcessXIcon">
+      <BasicSequence id="_1L" name="click_search-type_gibberish-click_x">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.text" event="MOUSE_MPRC"
+                        id="_1M" modifiers="16" x="43" y="13"/>
+        <TextInputStep clear="true" client="$(client)"
+                       component="frameJdotxt.text" id="_1N">
+          <text>asdfasfaf</text>
+        </TextInputStep>
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.labelX" event="MOUSE_MPRC"
+                        id="_1O" modifiers="16" x="6" y="4"/>
+      </BasicSequence>
+      <BasicSequence id="_1P" name="assertIdleBar">
+        <CheckStringStep client="$(client)" component="frameJdotxt.text"
+                         id="_1Q">
+          <text>Search...</text>
+        </CheckStringStep>
+      </BasicSequence>
+      <CleanupSequence id="_1S" name="teardown">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.panel2" event="MOUSE_MPRC"
+                        id="_1T" modifiers="16" x="322" y="231"/>
+        <WindowEventStep client="$(client)" component="frameJdotxt"
+                         event="WINDOW_CLOSING" id="_1U"/>
+      </CleanupSequence>
+    </TestCase>
+    <TestCase id="_17" name="testDeleteText">
+      <BasicSequence id="_18" name="click_search-type_gibberish-delete_text">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.text" event="MOUSE_MPRC"
+                        id="_19" modifiers="16" x="42" y="16"/>
+        <TextInputStep clear="true" client="$(client)"
+                       component="frameJdotxt.text" id="_1A">
+          <text>asdfasfdadsf</text>
+        </TextInputStep>
+        <KeyEventStep client="$(client)" component="frameJdotxt.text"
+                      event="KEY_PRESSED" id="_1B" keychar="65535"
+                      keycode="17" modifiers="2"/>
+        <KeyEventStep client="$(client)" component="frameJdotxt.text"
+                      event="KEY_PTR" id="_1C" keychar="8" keycode="8"
+                      modifiers="2"/>
+        <KeyEventStep client="$(client)" component="frameJdotxt.text"
+                      event="KEY_RELEASED" id="_1D" keychar="65535"
+                      keycode="17" modifiers="0"/>
+      </BasicSequence>
+      <BasicSequence id="_1G" name="assertEmptySearchFocus">
+        <CheckStringStep client="$(client)" component="frameJdotxt.text"
+                         id="_1H"/>
+      </BasicSequence>
+      <CleanupSequence id="_1I" name="teardown">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.panel2" event="MOUSE_MPRC"
+                        id="_1J" modifiers="16" x="322" y="231"/>
+        <WindowEventStep client="$(client)" component="frameJdotxt"
+                         event="WINDOW_CLOSING" id="_1K"/>
+      </CleanupSequence>
+    </TestCase>
+    <TestCase id="_q" name="testEscKey">
+      <BasicSequence id="_x" name="click_search-type_gibberish-hit_esc">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.text" event="MOUSE_MPRC"
+                        id="_y" modifiers="16" x="61" y="14"/>
+        <TextInputStep clear="true" client="$(client)"
+                       component="frameJdotxt.text" id="_z">
+          <text>asdfasdf</text>
+        </TextInputStep>
+        <KeyEventStep client="$(client)" component="frameJdotxt.text"
+                      event="KEY_PTR" id="_+" keychar="27" keycode="27"
+                      modifiers="0"/>
+      </BasicSequence>
+      <BasicSequence id="_12" name="assertEmptySearchFocus">
+        <CheckStringStep client="$(client)" component="frameJdotxt.text"
+                         id="_13"/>
+      </BasicSequence>
+      <CleanupSequence id="_14" name="teardown">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.panel2" event="MOUSE_MPRC"
+                        id="_15" modifiers="16" x="322" y="231"/>
+        <WindowEventStep client="$(client)" component="frameJdotxt"
+                         event="WINDOW_CLOSING" id="_16"/>
+      </CleanupSequence>
+    </TestCase>
     <TestCase id="_h" name="testStartXIcon">
       <BasicSequence id="_i" name="click_search-click_x">
         <MouseEventStep clicks="1" client="$(client)"
@@ -57,7 +213,7 @@
           <text>asdfadsfasdfasf</text>
         </TextInputStep>
       </BasicSequence>
-      <BasicSequence id="_X" name="assert_no_results">
+      <BasicSequence id="_X" name="assertNoResults">
         <CheckBooleanStep checktype="visible" client="$(client)"
                           component="frameJdotxt.panel" id="_Y"/>
       </BasicSequence>
