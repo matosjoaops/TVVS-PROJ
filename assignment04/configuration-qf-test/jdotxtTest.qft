@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE RootStep>
 <RootStep id="_0" name="root"
-          signature="791B07E33EEE0CF40F876D5595A4202635688C2D"
+          signature="C040C17A3E32E4CF1412670529D6EFED3CE1DDDC"
           version="6.0.3">
   <include>qfs.qft</include>
   <TestSet id="_1" name="jdotxtTest">
@@ -145,6 +145,111 @@
                         event="MOUSE_MPRC" id="_1Z" modifiers="16"/>
       </CleanupSequence>
     </TestCase>
+    <TestCase id="_21" name="testCreateTaskWithPriority">
+      <BasicSequence id="_22" name="Dashboard visible">
+        <CheckBooleanStep checktype="visible" client="$(client)"
+                          component="frameJdotxt.panel" id="_23"/>
+      </BasicSequence>
+      <BasicSequence id="_24" name="Type text on the &#34;Idle&#34; state">
+        <KeyEventStep client="$(client)" component="frameJdotxt.labelSearch"
+                      event="KEY_PTR" id="_25" keychar="97" keycode="65"
+                      modifiers="0"/>
+        <KeyEventStep client="$(client)" component="frameJdotxt.labelSearch"
+                      event="KEY_PTR" id="_26" keychar="104" keycode="72"
+                      modifiers="0"/>
+        <KeyEventStep client="$(client)" component="frameJdotxt.labelSearch"
+                      event="KEY_PTR" id="_27" keychar="103" keycode="71"
+                      modifiers="0"/>
+        <KeyEventStep client="$(client)" component="frameJdotxt.labelSearch"
+                      event="KEY_PTR" id="_28" keychar="104" keycode="72"
+                      modifiers="0"/>
+        <KeyEventStep client="$(client)" component="frameJdotxt.labelSearch"
+                      event="KEY_PTR" id="_29" keychar="100" keycode="68"
+                      modifiers="0"/>
+        <KeyEventStep client="$(client)" component="frameJdotxt.labelSearch"
+                      event="KEY_PTR" id="_2A" keychar="115" keycode="83"
+                      modifiers="0"/>
+        <KeyEventStep client="$(client)" component="frameJdotxt.labelSearch"
+                      event="KEY_PTR" id="_2B" keychar="103" keycode="71"
+                      modifiers="0"/>
+        <KeyEventStep client="$(client)" component="frameJdotxt.labelSearch"
+                      event="KEY_PTR" id="_2C" keychar="104" keycode="72"
+                      modifiers="0"/>
+      </BasicSequence>
+      <BasicSequence id="_2D"
+                     name="Check if it's not on the &#34;Task Text Edit&#34; state">
+        <CheckStringStep client="$(client)" component="frameJdotxt.text"
+                         id="_2E">
+          <text>New task</text>
+        </CheckStringStep>
+      </BasicSequence>
+      <BasicSequence id="_2F" name="Go to the &#34;Task Text Edit&#34; state">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.text" event="MOUSE_MPRC"
+                        id="_2G" modifiers="16" x="59" y="16"/>
+        <TextInputStep clear="true" client="$(client)"
+                       component="frameJdotxt.text" id="_2H">
+          <text>Study</text>
+        </TextInputStep>
+      </BasicSequence>
+      <BasicSequence id="_2I"
+                     name="Check if it's on the &#34;Task Text Edit&#34; state">
+        <CheckBooleanStep checktype="editable" client="$(client)"
+                          component="frameJdotxt.text" id="_2J"/>
+      </BasicSequence>
+      <BasicSequence id="_2V" name="Add a priority">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.text6" event="MOUSE_MPRC"
+                        id="_2W" modifiers="16" x="13" y="17"/>
+        <TextInputStep client="$(client)" component="frameJdotxt.text6"
+                       id="_2X">
+          <text>A</text>
+        </TextInputStep>
+      </BasicSequence>
+      <BasicSequence id="_2Y"
+                     name="Check if it's on the &#34;Task Priority Edit&#34; state">
+        <CheckBooleanStep checktype="editable" client="$(client)"
+                          component="frameJdotxt.text6" id="_2Z"/>
+      </BasicSequence>
+      <BasicSequence id="_2a" name="Click on the task text field">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.text" event="MOUSE_MPRC"
+                        id="_2b" modifiers="16" x="67" y="19"/>
+      </BasicSequence>
+      <BasicSequence id="_2c"
+                     name="Check if it's on the &#34;Task Text Edit&#34; state">
+        <CheckBooleanStep checktype="editable" client="$(client)"
+                          component="frameJdotxt.text" id="_2d"/>
+      </BasicSequence>
+      <BasicSequence id="_2f"
+                     name="Go the the &#34;Task Priority Edit&#34; state and create task by clicking &#34;Enter&#34;">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.text6" event="MOUSE_MPRC"
+                        id="_2g" modifiers="16" x="13" y="13"/>
+        <KeyEventStep client="$(client)" component="frameJdotxt.text6"
+                      event="KEY_PTR" id="_2h" keychar="10" keycode="10"
+                      modifiers="0"/>
+      </BasicSequence>
+      <BasicSequence id="_2i"
+                     name="Check if task was created with the given priority">
+        <CheckStringStep client="$(client)" component="frameJdotxt.text5"
+                         id="_2j">
+          <text>(A)</text>
+        </CheckStringStep>
+        <CheckStringStep client="$(client)" component="frameJdotxt.text3"
+                         id="_2k">
+          <text>Study</text>
+        </CheckStringStep>
+      </BasicSequence>
+      <CleanupSequence id="_2Q" name="Teardown when there are changes">
+        <WindowEventStep client="$(client)" component="frameJdotxt"
+                         event="WINDOW_CLOSING" id="_2R"/>
+        <ComponentWaiter client="$(client)" component="dialogJdotxt"
+                         id="_2S"/>
+        <MouseEventStep clicks="1" client="$(client)" component="buttonNo"
+                        event="MOUSE_MPRC" id="_2T" modifiers="16"/>
+      </CleanupSequence>
+    </TestCase>
   </TestSet>
   <PackageRoot id="_3"/>
   <ExtraSequence id="_4"/>
@@ -210,6 +315,16 @@
           <extrafeature name="qfs:systemclass" negate="false" regexp="false"
                         state="0">javax.swing.JPanel</extrafeature>
         </ComponentStep>
+        <ComponentStep class="TextField" classcount="3" classindex="0"
+                       height="25" id="frameJdotxt.text6" uid="_2U" width="34"
+                       x="48" y="2">
+          <extrafeature name="qfs:class" negate="false" regexp="false"
+                        state="0">com.chschmid.jdotxt.gui.controls.JdotxtPriorityField</extrafeature>
+          <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                        state="0">TextField</extrafeature>
+          <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                        state="0">javax.swing.JTextField</extrafeature>
+        </ComponentStep>
       </ComponentStep>
       <ComponentStep class="Panel" classcount="15" classindex="5" height="481"
                      id="frameJdotxt.scroll2" uid="_p" width="250" x="0"
@@ -272,6 +387,15 @@
                         state="0">TextField</extrafeature>
           <extrafeature name="qfs:systemclass" negate="false" regexp="false"
                         state="0">javax.swing.JTextField</extrafeature>
+        </ComponentStep>
+        <ComponentStep class="Panel" classcount="8" classindex="1"
+                       id="frameJdotxt.panel2" uid="_2e">
+          <extrafeature name="qfs:class" negate="false" regexp="false"
+                        state="0">com.chschmid.jdotxt.gui.controls.JdotxtTaskList</extrafeature>
+          <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                        state="0">Panel</extrafeature>
+          <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                        state="0">javax.swing.JPanel</extrafeature>
         </ComponentStep>
       </ComponentStep>
       <ComponentStep class="Label" classcount="16" classindex="10" height="12"
