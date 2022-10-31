@@ -40,6 +40,28 @@ The transition tree describes all the possible paths of this use case. There are
 
 The transition table of this use case allows us to identify the sneak paths, i.e., identify paths with unspecified behavior.
 
+### Test cases
+
+#### testCreateTaskWithoutPriority
+
+This test aims to check if the create task feature is working properly when there is no associated priority. It starts by checking if the application is on the "Idle" state, by making sure the dashboard is visible and by typing some characters and checking if nothing happens. Then, it goes to the "Task Text Edit", by clicking on the "New Task" text and writing the name of the task. We test if the system is in fact in the "Task Text Edit" state by checking if the new task text is editable. Finally, we create the task, by clicking on the plus button. To test if the task was created, we check if the name we gave to the task is present on the tasks dashboard. Because we didn't gave a priority to the task, we also check if the task was created without a priority.
+
+![](https://i.imgur.com/A4pKDCt.png)
+
+### testCreateTaskWithPriority
+
+ This test aims to check if the create task with a priority feature is working properly. As the previous test, it starts by checking if the application is on the "Idle" state. Then, it goes to the "Task Text Edit" and checks if it's there. After that, it goes to the "Task Priority Edit", by clicking on the priority field and typing a priority, and checks that state by making sure the priority field is editable. It goes back to the "Task Text Edit" by clicking the task text field, goes again to the "Task Priority Edit" by clicking the priority field and finalizes de creation of the task by clicking the "Enter" key. Finally, it checks if the task was created, by checking the text and the priority of the created task on the tasks dashboard.
+
+ ![](https://i.imgur.com/oYzWYOv.png)
+
+ ### testOtherTransitions
+
+This test aims to test the transitions that were not used on the previous tests, namely:
+- "Hit the Enter key", from "Task Test Edit" to "Idle"
+- "Click the +", from "Task Priority Edit" to "Idle"
+- "Click on priority field", from "Idle" to "Task Priority Edit"
+
+
 ## Search for a task's text
 
 ### State Machine
