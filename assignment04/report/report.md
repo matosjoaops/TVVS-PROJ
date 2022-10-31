@@ -86,6 +86,62 @@ This is the transition tree for this use case. There are 4 possible paths. We st
 
 This is the transition table for this use case. We can see that there are 11 sneaky paths.
 
+### Test suite(s)
+
+Two test suites were created for this use case. One for sneaky paths and another for normal paths. All test cases perform cleanup at the end by closing the application window.
+
+#### Normal paths
+
+This test suite has 7 test cases, one for each transition. All these tests pass.
+
+![](./images/normal_path_suite.png)
+
+##### clickSearch
+
+This case asserts that we are in the Idle state by checking the search bar (in this state the bar just says "Search..."), clicks the search bar and asserts that we are in the Query Start state by checking the search bar again (in this state the bar is completely empty and no prompt is shown) and finishes.
+
+##### typeSomething
+
+This case clicks the search bar, asserts that we are in the Query Start state by checking the search bar, types something (e.g. "asdfasdf") into the search bar and asserts that we are in the Query Processing state by checking that no notes are shown (because no notes have been created, there is no match for any given query).
+
+##### hitEsc
+
+This case clicks the search bar, types something, asserts that we are in the Query Processing state by checking that no notes are shown, hits the "Esc" key and asserts that we are in the Query Start state by checking the search bar.
+
+##### editText
+
+This case click the search bar, types something, asserts that we are in the Query Processing state by checking that no notes are shown, edits the text that is currently in the search bar (e.g. removes some characters and adds more random characters like "afasdf") and asserts that we are still in the Query Processing state by performing the same verification that was previously done.
+
+##### deleteText
+
+This case clicks the search bar, types something, asserts that we are in the Query Processing state, deletes all the text in the search bar and asserts that we are in the Query Start state.
+
+##### clickX1
+
+This case clicks the search bar, asserts that we are in the Query Start state, clicks the "X" icon which is in the corner of the bar and asserts that we are in the Idle state.
+
+##### clickX2
+
+This case clicks the search bar, types something, asserts that we are in the Query Processing state, clicks the "X" icon and asserts that we are in the Idle state.
+
+#### Sneaky paths
+
+This test suite had 3 test cases. They are all performed in the Idle state and the events used are "Type something", "Hit the Esc key" and "Delete all the text in the search bar". All these tests fail.
+
+![](./images/sneaky_path_suite.png)
+
+##### sneakyPathIdleType
+
+This case asserts that we are in the Idle state, types something and asserts that we are still in the Idle state. This last assertion fails because it's actually possible to provide input to the search bar without clicking it first, taking us to the Query Processing state.
+
+##### sneakyPathIdleEsc
+
+This case asserts that we are in the Idle state, hits the "Esc" key and asserts that we are still in the Idle state. This last assertion fails because hitting the "Esc" key actually takes us to the Query Start state even though we had not clicked or typed anything.
+
+##### sneakyPathIdleDelete
+
+This case asserts that we are in the Idle state, tries to delete all the text in the search bar and asserts that we are still in the Idle state. This last assertion fails because we are actually taken to the Query Start state, even though we had not typed anything.
+
 ## QF-Test Feedback
 
 Overall, *QF-Test* proved to be very useful when creating test cases that require interaction with the UI. However, one problem that we found is that the configuration file used makes it harder to collaborate with other people when using the tool. The configuration file contains information that is specific to each developer's machine. We edited this file in an attempt to use it in a different machine. Unfortunately, *QF-Test* signs the configuration file and checks its integrity upon loading, making it impossible to use a file that's been edited. Perhaps, if the test suite data was stored in a separate file, it could be used with VCS, while the file with user specific information is ignored.
