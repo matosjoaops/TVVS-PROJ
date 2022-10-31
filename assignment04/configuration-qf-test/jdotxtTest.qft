@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE RootStep>
 <RootStep id="_0" name="root"
-          signature="C040C17A3E32E4CF1412670529D6EFED3CE1DDDC"
+          signature="3CCAFDCB62C9CFF3A187AAF6C9B08E603A2E3DD7"
           version="6.0.3">
   <include>qfs.qft</include>
   <TestSet id="_1" name="jdotxtTest">
@@ -24,48 +24,6 @@
         <ClientWaiter client="$(client)" id="_B"/>
       </IfSequence>
     </SetupSequence>
-    <TestCase id="_h" name="testIdleToTaskTextEdit">
-      <BasicSequence id="_i"
-                     name="From &#34;Idle&#34; to &#34;Task Text Edit&#34;">
-        <MouseEventStep clicks="1" client="$(client)"
-                        component="frameJdotxt.text" event="MOUSE_MPRC"
-                        id="_j" modifiers="16" x="62" y="20"/>
-        <TextInputStep clear="true" client="$(client)"
-                       component="frameJdotxt.text" id="_k">
-          <text>A new task</text>
-        </TextInputStep>
-      </BasicSequence>
-      <BasicSequence id="_l" name="Task text edit has focus">
-        <CheckBooleanStep checktype="focused" client="$(client)"
-                          component="frameJdotxt.text" id="_m"/>
-      </BasicSequence>
-      <CleanupSequence id="_n" name="Teardown">
-        <WindowEventStep client="$(client)" component="frameJdotxt"
-                         event="WINDOW_CLOSING" id="_o"/>
-      </CleanupSequence>
-    </TestCase>
-    <TestCase id="_2" name="testTaskTextEditToIdle">
-      <BasicSequence id="_v"
-                     name="From &#34;Task Text Edit&#34; to &#34;Idle&#34; clicking plus">
-        <MouseEventStep clicks="1" client="$(client)"
-                        component="frameJdotxt.labelAdd" event="MOUSE_MPRC"
-                        id="_w" modifiers="16" x="33" y="26"/>
-      </BasicSequence>
-      <BasicSequence id="_10" name="New task was created">
-        <CheckStringStep client="$(client)" component="frameJdotxt.text3"
-                         id="_11">
-          <text>New task</text>
-        </CheckStringStep>
-      </BasicSequence>
-      <CleanupSequence id="_1B" name="Teardown when there are changes">
-        <WindowEventStep client="$(client)" component="frameJdotxt"
-                         event="WINDOW_CLOSING" id="_1C"/>
-        <ComponentWaiter client="$(client)" component="dialogJdotxt"
-                         id="_1D"/>
-        <MouseEventStep clicks="1" client="$(client)" component="buttonNo"
-                        event="MOUSE_MPRC" id="_1E" modifiers="16"/>
-      </CleanupSequence>
-    </TestCase>
     <TestCase id="_1R" name="testCreateTaskWithoutPriority">
       <BasicSequence id="_1L" name="Dashboard visible">
         <CheckBooleanStep checktype="visible" client="$(client)"
