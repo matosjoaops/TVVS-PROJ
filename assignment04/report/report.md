@@ -20,9 +20,9 @@ The first two use cases were chosen because they represent the main functionalit
 
 ### State Machine
 
-![](https://i.imgur.com/1ylsSLy.png)
+![](https://i.imgur.com/ei8lnNw.png)
 
-The idle state is the application initial dashboard, where it's possible to see the projects, categories and list of tasks, as well as create new ones. It's possible to create a new task by clicking on the new task text field, where it's possible to choose its title. It's also possible to choose a priority, by clicking on the priority field. When clicking the "+" button or hitting the "Enter" key, the task is created and it's possible to see it on the application dashboard. In this state machine there are 3 states, 8 transitions and 4 events.
+The idle state is the application initial dashboard, where it's possible to see the projects, categories and list of tasks, as well as create new ones. It's possible to create a new task by clicking on the new task text field, where it's possible to choose its title. It's also possible to choose a priority, by clicking on the priority field. When clicking the "+" button or hitting the "Enter" key, the task is created and it's possible to see it on the application dashboard. In this state machine there are 3 states, 10 transitions and 4 events.
 
 ### Transition Tree
 
@@ -70,6 +70,12 @@ The test passes, which means the transitions are working as expected.
 This is a sneak path, because when the application is on the "Idle" state and we click the "Enter" key, the behavior is unexpected. In the test, we start by checking if the application is on the "Idle" state, then we click the "Enter" key, and finally we check if the state did not change. The test passes, which means that, in fact, nothing happens when the application is on the "Idle" state and the user clicks the "Enter" key.
 
 ![](https://i.imgur.com/5M5mPos.png)
+
+### testSneakPathIdleClickPlus
+
+This is a sneak path, because when the application is on the "Idle" state and we click the plus button, the behavior is unexpected. As the previous sneak path test, we start by checking if the application is on the "Idle" state, then we click the plus button, and finally we check if the state did not change. The test fails, because the a default task was created. We could say that this is not a sneak path, because the application is expected to create a default task when the user clicks the plus button without editing the task text, but we decided to consider it a sneak path, because a task should have an associated text.
+
+![](https://i.imgur.com/lpYM6BR.png)
 
 ## Search for a task's text
 
