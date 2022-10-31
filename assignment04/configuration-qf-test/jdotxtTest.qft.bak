@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE RootStep>
+<RootStep id="_0" name="root"
+          signature="F190772E2916BF93BFD7502C4885B2F9EE9CEC5F"
+          version="6.0.3">
+  <include>qfs.qft</include>
+  <TestSet id="_1" name="jdotxtTest">
+    <SetupSequence id="_6" name="Launch jdotxt">
+      <SetGlobalStep id="_7" varname="client">
+        <default>jdotxt</default>
+      </SetGlobalStep>
+      <ClientWaiter client="$(client)" id="_8" local="true" raise="false"
+                    resvarname="isSUTRunning" timeout="1">
+        <comment>This node checks whether the SUT is already running. The result of this check will be stored in the variable isSUTRunning. The variable itself can contain true if SUT is already running or false if SUT is not running. This variable will be used in the following 'If' node.</comment>
+      </ClientWaiter>
+      <IfSequence id="_9" name="Launch SUT if not running"
+                  test="not $(isSUTRunning)">
+        <JavaClientStarter client="$(client)"
+                           directory="/Users/tiago/Desktop/FEUP/2y1s/TPs/TVVS/TVVS-PROJ/assignment04/configuration-qf-test"
+                           executable="${qftest:java}" id="_A">
+          <parameter>-jar</parameter>
+          <parameter>/Users/tiago/Desktop/FEUP/2y1s/TPs/TVVS/TVVS-PROJ/assignment04/jdotxt/out/artifacts/jdotxt_jar/jdotxt.jar</parameter>
+        </JavaClientStarter>
+        <ClientWaiter client="$(client)" id="_B"/>
+      </IfSequence>
+    </SetupSequence>
+    <TestCase id="_2" name="testIdleToTaskTextEdit">
+      <BasicSequence id="_F"
+                     name="From &#34;Idle&#34; to &#34;Task Text Edit&#34;">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.text" event="MOUSE_MPRC"
+                        id="_G" modifiers="16" x="62" y="20"/>
+        <TextInputStep clear="true" client="$(client)"
+                       component="frameJdotxt.text" id="_H">
+          <text>A new task</text>
+        </TextInputStep>
+      </BasicSequence>
+      <BasicSequence id="_b" name="Task text edit has focus">
+        <CheckBooleanStep checktype="focused" client="$(client)"
+                          component="frameJdotxt.text" id="_c"/>
+      </BasicSequence>
+      <CleanupSequence id="_d" name="Teardown">
+        <WindowEventStep client="$(client)" component="frameJdotxt"
+                         event="WINDOW_CLOSING" id="_e"/>
+      </CleanupSequence>
+    </TestCase>
+  </TestSet>
+  <PackageRoot id="_3"/>
+  <ExtraSequence id="_4"/>
+  <WindowList id="_5">
+    <WindowStep class="Window" feature="jdotxt" height="582" id="frameJdotxt"
+                uid="_C" width="963" x="264" y="143">
+      <extrafeature name="qfs:class" negate="false" regexp="false" state="0">com.chschmid.jdotxt.gui.JdotxtGUI</extrafeature>
+      <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                    state="0">Window</extrafeature>
+      <extrafeature name="qfs:label" negate="false" regexp="false" state="1">jdotxt</extrafeature>
+      <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                    state="0">javax.swing.JFrame</extrafeature>
+      <ComponentStep class="Panel" classcount="15" classindex="9" height="481"
+                     id="frameJdotxt.scroll" uid="_D" width="463" x="500"
+                     y="76">
+        <extrafeature name="qfs:class" negate="false" regexp="false"
+                      state="0">javax.swing.JScrollPane</extrafeature>
+        <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                      state="0">Panel</extrafeature>
+        <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                      state="0">javax.swing.JScrollPane</extrafeature>
+        <extrafeature name="qfs:type" negate="false" regexp="false" state="0">Panel:ScrollPanel</extrafeature>
+        <ComponentStep class="TextField" classcount="3" classindex="1"
+                       height="25" id="frameJdotxt.text" uid="_E" width="342"
+                       x="82" y="2">
+          <extrafeature name="qfs:class" negate="false" regexp="false"
+                        state="0">com.chschmid.jdotxt.gui.controls.JdotxtContentField</extrafeature>
+          <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                        state="0">TextField</extrafeature>
+          <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                        state="0">javax.swing.JTextField</extrafeature>
+        </ComponentStep>
+        <ComponentStep class="TextField" classcount="3" classindex="2"
+                       height="23" id="frameJdotxt.text2" uid="_I" width="342"
+                       x="82" y="27">
+          <extrafeature name="qfs:class" negate="false" regexp="false"
+                        state="0">com.chschmid.jdotxt.gui.controls.JdotxtDateField</extrafeature>
+          <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                        state="0">TextField</extrafeature>
+          <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                        state="0">javax.swing.JTextField</extrafeature>
+        </ComponentStep>
+      </ComponentStep>
+    </WindowStep>
+  </WindowList>
+</RootStep>
