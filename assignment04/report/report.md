@@ -101,6 +101,24 @@ The transition tree describes all the possible paths of this use case. There are
 
 This is the transition table for this use case. We can see that there are 2 sneaky paths.
 
+### Test cases
+
+#### testMarkAsDoneAndUndoneAndDelete
+
+This test starts by creating a task, to reach the initial state of having a task that is not marked as done. It checks if the task was indeed created and if it's not marked as done. Then, it marks the task as done, checks that new state, marks the task as not done, checks again if it's on the correct state and finally it deletes the task and checks if it was in fact deleted. The test passes, which means the feature is working as expected.
+
+![](https://i.imgur.com/lFjIxDB.png)
+
+#### testDeleteDoneTask
+
+This test aims to test the transition which was not tested on the previous test, namely when a task is marked as done and the user deletes it. The test passes, which means the feature is working as expected. 
+
+![](https://i.imgur.com/jfG2uFi.png)
+
+#### Sneak paths
+
+Even though there are 2 sneak paths in this use case, it's not possible to test them, as it's impossible to mark a deleted task as done and undone or delete it again.
+
 ## Search for a task's text
 
 ### State Machine
