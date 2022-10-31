@@ -11,7 +11,7 @@
 
 ## Use cases
 - Create a task without a context or a project
-- Mark a task as done
+- Complete and delete a task
 - Search for task's text
 
 The first two use cases were chosen because they represent the main functionality of the application, which is to create a list of tasks that can be marked as done. The last one was chosen because it's useful for a user to be able to find previously written tasks. By testing these use cases, we make sure that they are working properly.
@@ -76,6 +76,30 @@ This is a sneak path, because when the application is on the "Idle" state and we
 This is a sneak path, because when the application is on the "Idle" state and we click the plus button, the behavior is unexpected. As the previous sneak path test, we start by checking if the application is on the "Idle" state, then we click the plus button, and finally we check if the state did not change. The test fails, because the a default task was created. We could say that this is not a sneak path, because the application is expected to create a default task when the user clicks the plus button without editing the task text, but we decided to consider it a sneak path, because a task should have an associated text.
 
 ![](https://i.imgur.com/lpYM6BR.png)
+
+## Complete and delete a task
+
+### State Machine
+
+This use case assumes there is a task on the dashboard, which is not marked as done. If the user clicks the check box, the task is marked as done, and if it clicks it again, the task is marked as not done. In the two states, when the user clicks the delete button, the task is deleted from the dashboard. Once a task is deleted, there is no way of going back to the other states. There are 3 states, 4 transitions and 2 events.
+
+![](https://i.imgur.com/Rxe790M.png)
+
+### Transition Tree
+
+The transition tree describes all the possible paths of this use case. There are 3 different paths.
+
+![](https://i.imgur.com/8SLturu.png)
+
+### Transition Table
+
+| States\\Events     | Click the check box on the task | Click the delete button on the task  |
+| ------------------ | ------------------------------- | ------------------------------------ |
+| Task not done      | Task done                       | Task deleted                         |
+| Task done          | Task not done                   | Task deleted                         |
+| Task deleted       |                                 |                                      |
+
+This is the transition table for this use case. We can see that there are 2 sneaky paths.
 
 ## Search for a task's text
 
