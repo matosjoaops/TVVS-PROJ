@@ -6,10 +6,11 @@
 - Group id: 06
 - Project id: 03
 - Students:
-    - João Matos, up201703884
-    - Tiago Gomes, up201806658
+  - João Matos, up201703884
+  - Tiago Gomes, up201806658
 
 ## Use cases
+
 - Create a task without a context or a project
 - Complete and delete a task
 - Search for task's text
@@ -22,7 +23,7 @@ The first two use cases were chosen because they represent the main functionalit
 
 ![](https://i.imgur.com/ei8lnNw.png)
 
-The idle state is the application initial dashboard, where it's possible to see the projects, categories and list of tasks, as well as create new ones. It's possible to create a new task by clicking on the new task text field, where it's possible to choose its title. It's also possible to choose a priority, by clicking on the priority field. When clicking the "+" button or hitting the "Enter" key, the task is created and it's possible to see it on the application dashboard. In this state machine there are 3 states, 10 transitions and 4 events.
+The idle state is the application's initial dashboard, where it's possible to see the projects, categories and list of tasks, as well as create new ones. It's possible to create a new task by clicking on the new task text field, where it's possible to choose its title. It's also possible to choose a priority, by clicking on the priority field. When clicking the "+" button or hitting the "Enter" key, the task is created and it's possible to see it on the application dashboard. In this state machine there are 3 states, 10 transitions and 4 events.
 
 ### Transition Tree
 
@@ -32,13 +33,13 @@ The transition tree describes all the possible paths of this use case. There are
 
 ### Transition Table
 
-| States\\Events     | Click on text field | Click on priority field  | Click on "+" | Hit the "Enter" key | 
-| ------------------ | ------------------- | ------------------------ | ------------ | ------------------- | 
-| Idle               |     Task Text Edit  | Task Priority Edit       |              |                     | 
-| Task Text Edit     | Task Text Edit                    | Task Priority Edit       | Idle         | Idle                | 
-| Task Priority Edit |  Task Text Edit                   | Task Priority Edit                         | Idle         | Idle                | 
+| States\\Events     | Click on text field | Click on priority field | Click on "+" | Hit the "Enter" key |
+| ------------------ | ------------------- | ----------------------- | ------------ | ------------------- |
+| Idle               | Task Text Edit      | Task Priority Edit      |              |                     |
+| Task Text Edit     | Task Text Edit      | Task Priority Edit      | Idle         | Idle                |
+| Task Priority Edit | Task Text Edit      | Task Priority Edit      | Idle         | Idle                |
 
-The transition table of this use case allows us to identify the sneak paths, i.e., identify paths with unspecified behavior. In this case, there are 2 sneak paths.
+The transition table of this use case allows us to identify the sneaky paths, i.e., identify paths with unspecified behavior. In this case, there are 2 sneaky paths.
 
 ### Test cases
 
@@ -50,13 +51,14 @@ This test aims to check if the create task feature is working properly when ther
 
 ### testCreateTaskWithPriority
 
- This test aims to check if the create task with a priority feature is working properly. As the previous test, it starts by checking if the application is on the "Idle" state. Then, it goes to the "Task Text Edit" and checks if it's there. After that, it goes to the "Task Priority Edit", by clicking on the priority field and typing a priority, and checks that state by making sure the priority field is editable. It goes back to the "Task Text Edit" by clicking the task text field, goes again to the "Task Priority Edit" by clicking the priority field and finalizes de creation of the task by clicking the "Enter" key. Finally, it checks if the task was created, by checking the text and the priority of the created task on the tasks dashboard. The test passes, which means the feature is working as expected.
+This test aims to check if the create task with a priority feature is working properly. As the previous test, it starts by checking if the application is on the "Idle" state. Then, it goes to the "Task Text Edit" and checks if it's there. After that, it goes to the "Task Priority Edit", by clicking on the priority field and typing a priority, and checks that state by making sure the priority field is editable. It goes back to the "Task Text Edit" by clicking the task text field, goes again to the "Task Priority Edit" by clicking the priority field and finalizes the creation of the task by clicking the "Enter" key. Finally, it checks if the task was created, by checking the text and the priority of the created task on the tasks dashboard. The test passes, which means the feature is working as expected.
 
- ![](https://i.imgur.com/oYzWYOv.png)
+![](https://i.imgur.com/oYzWYOv.png)
 
- ### testOtherTransitions
+### testOtherTransitions
 
 This test aims to test the transitions that were not used on the previous tests, namely:
+
 - "Hit the Enter key", from "Task Test Edit" to "Idle"
 - "Click the +", from "Task Priority Edit" to "Idle"
 - "Click on priority field", from "Idle" to "Task Priority Edit"
@@ -67,13 +69,13 @@ The test passes, which means the transitions are working as expected.
 
 ### testSneakPathIdleEnter
 
-This is a sneak path, because when the application is on the "Idle" state and we click the "Enter" key, the behavior is unexpected. In the test, we start by checking if the application is on the "Idle" state, then we click the "Enter" key, and finally we check if the state did not change. The test passes, which means that, in fact, nothing happens when the application is on the "Idle" state and the user clicks the "Enter" key.
+This is a sneaky path, because when the application is on the "Idle" state and we click the "Enter" key, the behavior is unexpected. In the test, we start by checking if the application is on the "Idle" state, then we click the "Enter" key, and finally we check if the state did not change. The test passes, which means that, in fact, nothing happens when the application is on the "Idle" state and the user clicks the "Enter" key.
 
 ![](https://i.imgur.com/5M5mPos.png)
 
 ### testSneakPathIdleClickPlus
 
-This is a sneak path, because when the application is on the "Idle" state and we click the plus button, the behavior is unexpected. As the previous sneak path test, we start by checking if the application is on the "Idle" state, then we click the plus button, and finally we check if the state did not change. The test fails, because the a default task was created. We could say that this is not a sneak path, because the application is expected to create a default task when the user clicks the plus button without editing the task text, but we decided to consider it a sneak path, because a task should have an associated text.
+This is a sneaky path, because when the application is on the "Idle" state and we click the plus button, the behavior is unexpected. As the previous sneaky path test, we start by checking if the application is on the "Idle" state, then we click the plus button, and finally we check if the state did not change. The test fails, because a default task was created. We could say that this is not a sneaky path, because the application is expected to create a default task when the user clicks the plus button without editing the task text, but we decided to consider it a sneaky path, because a task should have an associated text.
 
 ![](https://i.imgur.com/lpYM6BR.png)
 
@@ -81,7 +83,7 @@ This is a sneak path, because when the application is on the "Idle" state and we
 
 ### State Machine
 
-This use case assumes there is a task on the dashboard, which is not marked as done. If the user clicks the check box, the task is marked as done, and if it clicks it again, the task is marked as not done. In the two states, when the user clicks the delete button, the task is deleted from the dashboard. Once a task is deleted, there is no way of going back to the other states. There are 3 states, 4 transitions and 2 events.
+This use case assumes there is a task on the dashboard, which is not marked as done. If the user clicks the check box, the task is marked as done, and if it is clicked again, the task is marked as not done. In the two states, when the user clicks the delete button, the task is deleted from the dashboard. Once a task is deleted, there is no way of going back to the other states. There are 3 states, 4 transitions and 2 events.
 
 ![](https://i.imgur.com/Rxe790M.png)
 
@@ -93,11 +95,11 @@ The transition tree describes all the possible paths of this use case. There are
 
 ### Transition Table
 
-| States\\Events     | Click the check box on the task | Click the delete button on the task  |
-| ------------------ | ------------------------------- | ------------------------------------ |
-| Task not done      | Task done                       | Task deleted                         |
-| Task done          | Task not done                   | Task deleted                         |
-| Task deleted       |                                 |                                      |
+| States\\Events | Click the check box on the task | Click the delete button on the task |
+| -------------- | ------------------------------- | ----------------------------------- |
+| Task not done  | Task done                       | Task deleted                        |
+| Task done      | Task not done                   | Task deleted                        |
+| Task deleted   |                                 |                                     |
 
 This is the transition table for this use case. We can see that there are 2 sneaky paths.
 
@@ -111,13 +113,13 @@ This test starts by creating a task, to reach the initial state of having a task
 
 #### testDeleteDoneTask
 
-This test aims to test the transition which was not tested on the previous test, namely when a task is marked as done and the user deletes it. The test passes, which means the feature is working as expected. 
+This test aims to test the transition which was not tested on the previous test, namely when a task is marked as done and the user deletes it. The test passes, which means the feature is working as expected.
 
 ![](https://i.imgur.com/jfG2uFi.png)
 
-#### Sneak paths
+#### Sneaky paths
 
-Even though there are 2 sneak paths in this use case, it's not possible to test them, as it's impossible to mark a deleted task as done and undone or delete it again.
+Even though there are 2 sneaky paths in this use case, it's not possible to test them, as it's impossible to mark a deleted task as done and undone or delete it again.
 
 ## Search for a task's text
 
@@ -125,21 +127,21 @@ Even though there are 2 sneak paths in this use case, it's not possible to test 
 
 ![](./images/search_state_diagram.png)
 
-Like the previous use case, we start with the idle state, which is the state we get to by just opening the app. Here, if we click the search bar that field gains focus and we can start working on our query but no results are shown yet. Here, if we click the "X" icon in the corner of the bar, the bar loses focus and we go back to the initial state. However, if we start typing, only notes that match our query are shown, with the remaining ones being hidden. At this point, we are in a different state (query processing) and if we keep editing the query's text the results will change accordingly. If we hit the "Esc" key, we go back to the query start case where all the notes are shown again but the search field is still focused. Another way of going back to this state is by just deleting all the text in the search bar. Finally, if we click on the "X" icon again, we go back to the idle state. This state machine has 3 states, 7 transitions and 6 events.
+We start with the idle state, which is the state we get to by just opening the app. Here, if we click the search bar that field gains focus and we can start working on our query but no results are shown yet. Here, if we click the "X" icon in the corner of the bar, the bar loses focus and we go back to the initial state. However, if we start typing, only notes that match our query are shown, with the remaining ones being hidden. At this point, we are in a different state (query processing) and if we keep editing the query's text the results will change accordingly. If we hit the "Esc" key, we go back to the query start case where all the notes are shown again but the search field is still focused. Another way of going back to this state is by just deleting all the text in the search bar. Finally, if we click on the "X" icon again, we go back to the idle state. This state machine has 3 states, 7 transitions and 6 events.
 
 ### Transition Tree
 
 ![](./images/search_transition_tree.png)
 
-This is the transition tree for this use case. There are 4 possible paths. We start in the idle state (Idle_0) and have no choice but to click the search bar and go to the query start state (Query_Start_0). At this point we can go back to the idle state (Idle_1) or go the query processing state (Query_Processing_0). In the query processing state we can go to one of the other 2 states (Query_Start_1 and Idle_2) or stay in the same state (Query_Processing_1).   
+This is the transition tree for this use case. There are 4 possible paths. We start in the idle state (Idle_0) and have no choice but to click the search bar and go to the query start state (Query_Start_0). At this point we can go back to the idle state (Idle_1) or go the query processing state (Query_Processing_0). In the query processing state we can go to one of the other 2 states (Query_Start_1 and Idle_2) or stay in the same state (Query_Processing_1).
 
 ### Transition Table
 
-| States\\Events  | Click the search bar | Type something   | Hit the "Esc" key | Edit text        | Delete all the text in the search bar | Click on the "X" icon |
+| States\\Events   | Click the search bar | Type something   | Hit the "Esc" key | Edit text        | Delete all the text in the search bar | Click on the "X" icon |
 | ---------------- | -------------------- | ---------------- | ----------------- | ---------------- | ------------------------------------- | --------------------- |
 | Idle             | Query Start          |                  |                   |                  |                                       |                       |
 | Query Start      |                      | Query Processing |                   |                  |                                       | Idle                  |
-| Query Processing |                      |                  | Query Start       | Query Processing | Query Start                           | Idle                      |
+| Query Processing |                      |                  | Query Start       | Query Processing | Query Start                           | Idle                  |
 
 This is the transition table for this use case. We can see that there are 11 sneaky paths.
 
@@ -183,7 +185,7 @@ This case clicks the search bar, types something, asserts that we are in the Que
 
 #### Sneaky paths
 
-This test suite had 3 test cases. They are all performed in the Idle state and the events used are "Type something", "Hit the Esc key" and "Delete all the text in the search bar". All these tests fail.
+This test suite has 3 test cases. They are all performed in the Idle state and the events used are "Type something", "Hit the Esc key" and "Delete all the text in the search bar". All these tests fail.
 
 ![](./images/sneaky_path_suite.png)
 
@@ -193,12 +195,12 @@ This case asserts that we are in the Idle state, types something and asserts tha
 
 ##### sneakyPathIdleEsc
 
-This case asserts that we are in the Idle state, hits the "Esc" key and asserts that we are still in the Idle state. This last assertion fails because hitting the "Esc" key actually takes us to the Query Start state even though we had not clicked or typed anything.
+This case asserts that we are in the Idle state, hits the "Esc" key and asserts that we are still in the Idle state. This last assertion fails because hitting the "Esc" key actually takes us to the Query Start state even though we have not clicked or typed anything.
 
 ##### sneakyPathIdleDelete
 
-This case asserts that we are in the Idle state, tries to delete all the text in the search bar and asserts that we are still in the Idle state. This last assertion fails because we are actually taken to the Query Start state, even though we had not typed anything.
+This case asserts that we are in the Idle state, tries to delete all the text in the search bar and asserts that we are still in the Idle state. This last assertion fails because we are actually taken to the Query Start state, even though we have not typed anything.
 
 ## QF-Test Feedback
 
-Overall, *QF-Test* proved to be very useful when creating test cases that require interaction with the UI. However, one problem that we found is that the configuration file used makes it harder to collaborate with other people when using the tool. The configuration file contains information that is specific to each developer's machine. We edited this file in an attempt to use it in a different machine. Unfortunately, *QF-Test* signs the configuration file and checks its integrity upon loading, making it impossible to use a file that's been edited. Perhaps, if the test suite data was stored in a separate file, it could be used with VCS, while the file with user specific information is ignored.
+Overall, _QF-Test_ proved to be very useful when creating test cases that require interaction with the UI. However, one problem that we found is that the configuration file used makes it harder to collaborate with other people when using the tool. The configuration file contains information that is specific to each developer's machine. We edited this file in an attempt to use it in a different machine. Unfortunately, _QF-Test_ signs the configuration file and checks its integrity upon loading, making it impossible to use a file that's been edited. Perhaps, if the test suite data was stored in a separate file, it could be used with VCS, while the file with user specific information is ignored.
