@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE RootStep>
 <RootStep id="_0" name="root"
-          signature="68112903F5F89E0BBE0E441758423FE708D0FD6C"
+          signature="AD6331E96E8D4DA2C3593B24958556AABCFD046D"
           version="6.0.3">
   <include>qfs.qft</include>
   <TestSet id="_1" name="jdotxtTest">
@@ -24,74 +24,66 @@
         <ClientWaiter client="$(client)" id="_B"/>
       </IfSequence>
     </SetupSequence>
-    <TestCase id="_1R" name="testCreateTaskWithoutPriority">
-      <BasicSequence id="_1L" name="Dashboard visible">
-        <CheckBooleanStep checktype="visible" client="$(client)"
-                          component="frameJdotxt.panel" id="_1M"/>
-      </BasicSequence>
-      <BasicSequence id="_1b" name="Type text on the &#34;Idle&#34; state">
-        <KeyEventStep client="$(client)" component="frameJdotxt.labelSearch"
-                      event="KEY_PTR" id="_1c" keychar="97" keycode="65"
-                      modifiers="0"/>
-        <KeyEventStep client="$(client)" component="frameJdotxt.labelSearch"
-                      event="KEY_PTR" id="_1d" keychar="104" keycode="72"
-                      modifiers="0"/>
-        <KeyEventStep client="$(client)" component="frameJdotxt.labelSearch"
-                      event="KEY_PTR" id="_1e" keychar="103" keycode="71"
-                      modifiers="0"/>
-        <KeyEventStep client="$(client)" component="frameJdotxt.labelSearch"
-                      event="KEY_PTR" id="_1f" keychar="104" keycode="72"
-                      modifiers="0"/>
-        <KeyEventStep client="$(client)" component="frameJdotxt.labelSearch"
-                      event="KEY_PTR" id="_1g" keychar="100" keycode="68"
-                      modifiers="0"/>
-        <KeyEventStep client="$(client)" component="frameJdotxt.labelSearch"
-                      event="KEY_PTR" id="_1h" keychar="115" keycode="83"
-                      modifiers="0"/>
-        <KeyEventStep client="$(client)" component="frameJdotxt.labelSearch"
-                      event="KEY_PTR" id="_1i" keychar="103" keycode="71"
-                      modifiers="0"/>
-        <KeyEventStep client="$(client)" component="frameJdotxt.labelSearch"
-                      event="KEY_PTR" id="_1j" keychar="104" keycode="72"
-                      modifiers="0"/>
-      </BasicSequence>
-      <BasicSequence id="_1k"
-                     name="Check if it's not on the &#34;Task Text Edit&#34; state">
-        <CheckStringStep client="$(client)" component="frameJdotxt.text"
-                         id="_1l">
-          <text>New task</text>
-        </CheckStringStep>
-      </BasicSequence>
-      <BasicSequence id="_1n" name="Go to the &#34;Task Text Edit&#34; state">
+    <TestCase id="_1R" name="testMarkAsDoneAndUndoneAndDelete">
+      <BasicSequence id="_5G" name="Create a task">
+        <MouseEventStep clicks="0" client="$(client)"
+                        component="frameJdotxt.text" event="MOUSE_MOVED"
+                        id="_5H" modifiers="0" x="78" y="19"/>
         <MouseEventStep clicks="1" client="$(client)"
-                        component="frameJdotxt.text" event="MOUSE_MPRC"
-                        id="_1o" modifiers="16" x="59" y="16"/>
+                        component="frameJdotxt.text" event="MOUSE_PRESSED"
+                        id="_5I" modifiers="16" x="78" y="19"/>
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.text" event="MOUSE_DRAGGED"
+                        id="_5J" modifiers="16" x="111" y="21"/>
+        <MouseEventStep clicks="0" client="$(client)"
+                        component="frameJdotxt.text" event="MOUSE_RELEASED"
+                        id="_5K" modifiers="16" x="111" y="21"/>
         <TextInputStep clear="true" client="$(client)"
-                       component="frameJdotxt.text" id="_1p">
+                       component="frameJdotxt.text" id="_5L">
           <text>Study</text>
         </TextInputStep>
-      </BasicSequence>
-      <BasicSequence id="_1s"
-                     name="Check if it's on the &#34;Task Text Edit&#34; state">
-        <CheckBooleanStep checktype="editable" client="$(client)"
-                          component="frameJdotxt.text" id="_1t"/>
-      </BasicSequence>
-      <BasicSequence id="_1u"
-                     name="Create the task by clicking the plus button">
         <MouseEventStep clicks="1" client="$(client)"
                         component="frameJdotxt.labelAdd" event="MOUSE_MPRC"
-                        id="_1v" modifiers="16" x="35" y="29"/>
+                        id="_5M" modifiers="16" x="29" y="27"/>
       </BasicSequence>
-      <BasicSequence id="_1w" name="Check if task was created">
+      <BasicSequence id="_5N" name="Check if task was created">
         <CheckStringStep client="$(client)" component="frameJdotxt.text3"
-                         id="_1x">
+                         id="_5O">
           <text>Study</text>
         </CheckStringStep>
       </BasicSequence>
-      <BasicSequence id="_1z" name="Check if task has no priority">
-        <CheckStringStep client="$(client)" component="frameJdotxt.text5"
-                         id="_1+">
-          <text>(-)</text>
+      <BasicSequence id="_5Q" name="Check if task is not marked as done">
+        <CheckStringStep client="$(client)"
+                         component="frameJdotxt.labelUncheck" id="_5R"/>
+      </BasicSequence>
+      <BasicSequence id="_5S" name="Mark the task as done">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.labelUncheck"
+                        event="MOUSE_MPRC" id="_5T" modifiers="16" x="12"
+                        y="9"/>
+      </BasicSequence>
+      <BasicSequence id="_5V" name="Check if the task was marked as done">
+        <CheckStringStep client="$(client)" component="frameJdotxt.labelCheck"
+                         id="_5W"/>
+      </BasicSequence>
+      <BasicSequence id="_5X" name="Mark the task as not done">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.labelCheck" event="MOUSE_MPRC"
+                        id="_5Y" modifiers="16" x="16" y="10"/>
+      </BasicSequence>
+      <BasicSequence id="_5Z" name="Check if the task was marked as not done">
+        <CheckStringStep client="$(client)"
+                         component="frameJdotxt.labelUncheck" id="_5a"/>
+      </BasicSequence>
+      <BasicSequence id="_5c" name="Delete the task">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.labelDelete" event="MOUSE_MPRC"
+                        id="_5d" modifiers="16" x="16" y="4"/>
+      </BasicSequence>
+      <BasicSequence id="_5h" name="Check if the task was deleted">
+        <CheckStringStep client="$(client)"
+                         component="labelOpen:_0___Total:_0" id="_5i">
+          <text>Open: 0   Total: 0</text>
         </CheckStringStep>
       </BasicSequence>
       <CleanupSequence id="_1W" name="Teardown when there are changes">
@@ -101,6 +93,64 @@
                          id="_1Y"/>
         <MouseEventStep clicks="1" client="$(client)" component="buttonNo"
                         event="MOUSE_MPRC" id="_1Z" modifiers="16"/>
+      </CleanupSequence>
+    </TestCase>
+    <TestCase id="_5j" name="testDeleteDoneTask">
+      <BasicSequence id="_5k" name="Create a task">
+        <MouseEventStep clicks="0" client="$(client)"
+                        component="frameJdotxt.text" event="MOUSE_MOVED"
+                        id="_5l" modifiers="0" x="78" y="19"/>
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.text" event="MOUSE_PRESSED"
+                        id="_5m" modifiers="16" x="78" y="19"/>
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.text" event="MOUSE_DRAGGED"
+                        id="_5n" modifiers="16" x="111" y="21"/>
+        <MouseEventStep clicks="0" client="$(client)"
+                        component="frameJdotxt.text" event="MOUSE_RELEASED"
+                        id="_5o" modifiers="16" x="111" y="21"/>
+        <TextInputStep clear="true" client="$(client)"
+                       component="frameJdotxt.text" id="_5p">
+          <text>Study</text>
+        </TextInputStep>
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.labelAdd" event="MOUSE_MPRC"
+                        id="_5q" modifiers="16" x="29" y="27"/>
+      </BasicSequence>
+      <BasicSequence id="_5r" name="Check if task was created">
+        <CheckStringStep client="$(client)" component="frameJdotxt.text3"
+                         id="_5s">
+          <text>Study</text>
+        </CheckStringStep>
+      </BasicSequence>
+      <BasicSequence id="_5t" name="Check if task is not marked as done">
+        <CheckStringStep client="$(client)"
+                         component="frameJdotxt.labelUncheck" id="_5u"/>
+      </BasicSequence>
+      <BasicSequence id="_5v" name="Mark the task as done">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.labelUncheck"
+                        event="MOUSE_MPRC" id="_5w" modifiers="16" x="12"
+                        y="9"/>
+      </BasicSequence>
+      <BasicSequence id="_61" name="Delete the task">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.labelDelete" event="MOUSE_MPRC"
+                        id="_62" modifiers="16" x="16" y="4"/>
+      </BasicSequence>
+      <BasicSequence id="_63" name="Check if the task was deleted">
+        <CheckStringStep client="$(client)"
+                         component="labelOpen:_0___Total:_0" id="_64">
+          <text>Open: 0   Total: 0</text>
+        </CheckStringStep>
+      </BasicSequence>
+      <CleanupSequence id="_65" name="Teardown when there are changes">
+        <WindowEventStep client="$(client)" component="frameJdotxt"
+                         event="WINDOW_CLOSING" id="_66"/>
+        <ComponentWaiter client="$(client)" component="dialogJdotxt"
+                         id="_67"/>
+        <MouseEventStep clicks="1" client="$(client)" component="buttonNo"
+                        event="MOUSE_MPRC" id="_68" modifiers="16"/>
       </CleanupSequence>
     </TestCase>
   </TestSet>
@@ -274,6 +324,48 @@
           <extrafeature name="qfs:systemclass" negate="false" regexp="false"
                         state="0">javax.swing.JLabel</extrafeature>
         </ComponentStep>
+        <ComponentStep class="Label" classcount="5" classindex="3" height="24"
+                       id="frameJdotxt.labelUncheck" uid="_5P" width="24"
+                       x="218" y="52">
+          <extrafeature name="imagehash" negate="false" regexp="false"
+                        state="1">-871109906</extrafeature>
+          <extrafeature name="qfs:class" negate="false" regexp="false"
+                        state="0">com.chschmid.jdotxt.gui.controls.JdotxtImageCheckBox</extrafeature>
+          <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                        state="0">Label</extrafeature>
+          <extrafeature name="qfs:label" negate="false" regexp="false"
+                        state="1">uncheck</extrafeature>
+          <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                        state="0">javax.swing.JLabel</extrafeature>
+        </ComponentStep>
+        <ComponentStep class="Label" classcount="5" classindex="3" height="24"
+                       id="frameJdotxt.labelCheck" uid="_5U" width="24"
+                       x="218" y="52">
+          <extrafeature name="imagehash" negate="false" regexp="false"
+                        state="1">-283907346</extrafeature>
+          <extrafeature name="qfs:class" negate="false" regexp="false"
+                        state="0">com.chschmid.jdotxt.gui.controls.JdotxtImageCheckBox</extrafeature>
+          <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                        state="0">Label</extrafeature>
+          <extrafeature name="qfs:label" negate="false" regexp="false"
+                        state="1">check</extrafeature>
+          <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                        state="0">javax.swing.JLabel</extrafeature>
+        </ComponentStep>
+        <ComponentStep class="Label" classcount="5" classindex="4" height="24"
+                       id="frameJdotxt.labelDelete" uid="_5b" width="24"
+                       x="218" y="76">
+          <extrafeature name="imagehash" negate="false" regexp="false"
+                        state="1">1746989883</extrafeature>
+          <extrafeature name="qfs:class" negate="false" regexp="false"
+                        state="0">com.chschmid.jdotxt.gui.controls.JdotxtImageButton</extrafeature>
+          <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                        state="0">Label</extrafeature>
+          <extrafeature name="qfs:label" negate="false" regexp="false"
+                        state="1">delete</extrafeature>
+          <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                        state="0">javax.swing.JLabel</extrafeature>
+        </ComponentStep>
       </ComponentStep>
       <ComponentStep class="Label" classcount="16" classindex="10" height="12"
                      id="frameJdotxt.labelSearch" uid="_1a" width="12" x="898"
@@ -341,6 +433,19 @@
           <extrafeature name="qfs:systemclass" negate="false" regexp="false"
                         state="0">javax.swing.JTextField</extrafeature>
         </ComponentStep>
+      </ComponentStep>
+      <ComponentStep class="Label" classcount="16" classindex="15"
+                     feature="Open: 0   Total: 0" height="25"
+                     id="labelOpen:_0___Total:_0" uid="_5g" width="126" x="0"
+                     y="557">
+        <extrafeature name="qfs:class" negate="false" regexp="false"
+                      state="0">javax.swing.JLabel</extrafeature>
+        <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                      state="0">Label</extrafeature>
+        <extrafeature name="qfs:label" negate="false" regexp="false"
+                      state="1">Open: 0   Total: 0</extrafeature>
+        <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                      state="0">javax.swing.JLabel</extrafeature>
       </ComponentStep>
     </WindowStep>
     <WindowStep class="Dialog" feature="jdotxt" height="173" id="dialogJdotxt"
