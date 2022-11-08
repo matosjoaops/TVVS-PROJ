@@ -139,4 +139,50 @@ public class TaskTest {
         task.markComplete(testDate);
         assertEquals(task.getCompletionDate(), "1970-01-01");
     }
+
+    @Test
+    public void fileFormat1() {
+        Task task = new Task(testId1, testText1);
+        String fileFormat = task.inFileFormat();
+        assertEquals(fileFormat, testText1);
+    }
+
+    @Test
+    public void fileFormat2() {
+        Task task = new Task(testId1, testText1);
+        task.setPriority(Priority.A);
+        String fileFormat = task.inFileFormat();
+        assertEquals(fileFormat, "(A)" + testText1);
+    }
+
+    @Test
+    public void fileFormat3() {
+        Task task = new Task(testId1, testText1, testDate);
+        String fileFormat = task.inFileFormat();
+        assertEquals(fileFormat, "1970-01-01" + testText1);
+    }
+
+    @Test
+    public void fileFormat4() {
+        Task task = new Task(testId1, testText1);
+        task.markComplete(testDate);
+        String fileFormat = task.inFileFormat();
+        assertEquals(fileFormat, "x 1970-01-01" + testText1);
+    }
+
+    @Test
+    public void fileFormat5() {
+        Task task = new Task(testId1, testText1);
+        task.markComplete(testDate);
+        String fileFormat = task.inFileFormatHeaderNoDate();
+        assertEquals(fileFormat, "x 1970-01-01" + testText1);
+    }
+
+    @Test
+    public void screenFormat() {
+        Task task = new Task(testId1, testText1, testDate);
+        task.markComplete(testDate);
+        String screenFormat = task.inScreenFormat();
+        assertEquals(screenFormat, "x 1970-01-01 1970-01-01 " + testText1);
+    }
 }
