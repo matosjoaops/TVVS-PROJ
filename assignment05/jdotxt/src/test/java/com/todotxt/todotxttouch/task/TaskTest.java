@@ -18,13 +18,20 @@ public class TaskTest {
     private final Date testDate = new Date(0);
 
     @Test
-    public void createTask() {
+    public void createTask1() {
         Task task = new Task(testId1, testText1);
         long taskId = task.getId();
         String taskText = task.getText();
 
         assertEquals(taskId, 1);
         assertEquals(taskText, "Some text");
+    }
+
+    @Test
+    public void createTask2() {
+        Task task = new Task();
+        assertEquals(task.getId(), 0);
+        assertEquals(task.getText(), "");
     }
 
     @Test
@@ -81,6 +88,42 @@ public class TaskTest {
         assertNotEquals(task1, task2);
     }
 
+    @Test
+    public void compareTask6() {
+        Task task1 = new Task(testId1, testText1);
+        Object object = new Object();
+        assertNotEquals(task1, object);
+    }
+
+    @Test
+    public void compareTask7() {
+        Task task1 = new Task(testId1, testText1);
+        assertEquals(task1, task1);
+    }
+
+    @Test
+    public void compareTask8() {
+        Task task1 = new Task(testId1, testText1);
+        Task task2 = new Task(testId1, testText1);
+        task1.markComplete(new Date());
+        task2.markComplete(testDate);
+        assertNotEquals(task1, task2);
+    }
+
+    @Test
+    public void compareTask9() {
+        Task task1 = new Task(testId1, testText1);
+        Task task2 = new Task(testId1, testText1);
+        task1.setPriority(Priority.A);
+        assertNotEquals(task1, task2);
+    }
+
+    @Test
+    public void compareTask10() {
+        Task task1 = new Task(testId1, testText1);
+        Task task2 = new Task(testId1, testText2);
+        assertNotEquals(task1, task2);
+    }
 
     @Test
     public void hash() {
