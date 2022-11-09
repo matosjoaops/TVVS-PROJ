@@ -1,7 +1,7 @@
 package com.todotxt.todotxttouch.util;
 
 import static org.junit.Assert.*;
-import static org.junit.jupiter.params.provider.Arguments.arguments;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -22,9 +22,9 @@ public class StringsTest {
 
     static Stream<Arguments> stringIntStringProvider() {
         return Stream.of(
-                arguments("apple", 1, "pear", "a pear pple"), // partition #1
-                arguments("test", 4, "", "test"), // partition #4
-                arguments("", 0, "a", "a ") // partition #5
+                Arguments.of("apple", 1, "pear", "a pear pple"), // partition #1
+                Arguments.of("test", 4, "", "test"), // partition #4
+                Arguments.of("", 0, "a", "a ") // partition #5
         );
     }
 
@@ -36,9 +36,9 @@ public class StringsTest {
 
     static Stream<Arguments> stringInvalidPositionStringProvider() {
         return Stream.of(
-                arguments("a", -1, "b"), // partition #2
-                arguments("a", 5, "b"), // partition #3
-                arguments("test", -1, "") // partition #6
+                Arguments.of("a", -1, "b"), // partition #2
+                Arguments.of("a", 5, "b"), // partition #3
+                Arguments.of("test", -1, "") // partition #6
         );
     }
 
@@ -54,14 +54,14 @@ public class StringsTest {
 
     static Stream<Arguments> stringProvider() {
     return Stream.of(
-        arguments(null, true), // Partition #1; Between Partition #1 and Partition #2 On-point
-        arguments("", true), // Partition #2; Between Partition #1 and Partition #2 Off-point; 
+            Arguments.of(null, true), // Partition #1; Between Partition #1 and Partition #2 On-point
+            Arguments.of("", true), // Partition #2; Between Partition #1 and Partition #2 Off-point;
                              // Between Partition #2 and Partition #3 On-point;
                              // Between Partition #2 and Partition #4 On-point
-        arguments("   ", true), // Partition #3
-        arguments("123", false), // Partition #4
-        arguments(" ", true), // Between Partition #2 and Partition #3 Off-point
-        arguments("a", false) // Between Partition #2 and Partition #4 Off-point
+            Arguments.of("   ", true), // Partition #3
+            Arguments.of("123", false), // Partition #4
+            Arguments.of(" ", true), // Between Partition #2 and Partition #3 Off-point
+            Arguments.of("a", false) // Between Partition #2 and Partition #4 Off-point
     );
 }
 

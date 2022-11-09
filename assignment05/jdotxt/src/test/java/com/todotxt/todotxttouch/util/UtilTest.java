@@ -10,9 +10,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
-import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.params.provider.Arguments.arguments;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class UtilTest {
 
@@ -50,12 +49,12 @@ public class UtilTest {
         ArrayList<String> expectedList4 = new ArrayList<>(Arrays.asList("ab"));
 
         return Stream.of(
-                arguments(testList1, normalString, expectedList1), //On-point between partitions 2 and 3 for list parameter
+                Arguments.of(testList1, normalString, expectedList1), //On-point between partitions 2 and 3 for list parameter
                                                                    //Off-point between partitions 1 and 2 for list parameter
-                arguments(testList2, normalString, expectedList2), //Off-point between partitions 2 and 3 for list parameter
-                arguments(normalList1, testString1, expectedList3),//On-point between partitions 2 and 3 for prepend parameter
+                Arguments.of(testList2, normalString, expectedList2), //Off-point between partitions 2 and 3 for list parameter
+                Arguments.of(normalList1, testString1, expectedList3),//On-point between partitions 2 and 3 for prepend parameter
                                                                    //Off-point between partitions 1 and 2 for prepend parameter
-                arguments(normalList2, testString2, expectedList4) //Off-point between partitions 2 and 3 for prepend parameter
+                Arguments.of(normalList2, testString2, expectedList4) //Off-point between partitions 2 and 3 for prepend parameter
         );
     }
 

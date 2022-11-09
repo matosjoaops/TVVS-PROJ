@@ -15,7 +15,6 @@ import java.util.GregorianCalendar;
 import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 public class RelativeDateTest {
 
@@ -56,13 +55,13 @@ public class RelativeDateTest {
         String after1DayString = getRelativeDateUtil(now, after1Day);
 
         return Stream.of(
-                arguments(before, beforeString), // Partition #1; Between Partition #4 and Partition #1 Off-point
-                arguments(now, nowString), // Partition #2; Between Partition #1 and Partition #2 Off-point;
+                Arguments.of(before, beforeString), // Partition #1; Between Partition #4 and Partition #1 Off-point
+                Arguments.of(now, nowString), // Partition #2; Between Partition #1 and Partition #2 Off-point;
                                            // Between Partition #2 and Partition #3 On-point;
                                            // Between Partition #4 and Partition #2 Off-point
-                arguments(after, afterString), // Partition #3; Between Partition #4 and Partition #3 Off-point
-                arguments(before1Day, before1DayString), // Between Partition #1 and Partition #2
-                arguments(after1Day, after1DayString) // Between Partition #2 and Partition #3
+                Arguments.of(after, afterString), // Partition #3; Between Partition #4 and Partition #3 Off-point
+                Arguments.of(before1Day, before1DayString), // Between Partition #1 and Partition #2
+                Arguments.of(after1Day, after1DayString) // Between Partition #2 and Partition #3
         );
     }
 

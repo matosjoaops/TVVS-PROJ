@@ -9,7 +9,6 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 public class PathTest {
 
@@ -27,12 +26,12 @@ public class PathTest {
 
     static Stream<Arguments> pathProvider() {
         return Stream.of(
-                arguments("/home/user/file1.txt", "file1.txt"),
-                arguments("dir/file2.txt", "file2.txt"),
-                arguments("file3.txt", "file3.txt"),
-                arguments("/home/user/\"space dir\"/file4.txt", "file4.txt"),
-                arguments("/home/user/space\\ dir/file5.txt", "file5.txt"),
-                arguments("", "")
+                Arguments.of("/home/user/file1.txt", "file1.txt"),
+                Arguments.of("dir/file2.txt", "file2.txt"),
+                Arguments.of("file3.txt", "file3.txt"),
+                Arguments.of("/home/user/\"space dir\"/file4.txt", "file4.txt"),
+                Arguments.of("/home/user/space\\ dir/file5.txt", "file5.txt"),
+                Arguments.of("", "")
         );
     }
 }
