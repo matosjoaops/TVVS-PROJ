@@ -18,9 +18,9 @@
         <jacoco.plugin.version>0.8.8</jacoco.plugin.version>
 
         <!-- JUnit related -->
-        <junit.jupiter.version>5.1.1</junit.jupiter.version>
-        <junit.vintage.version>5.1.1</junit.vintage.version>
-        <junit.version>5.1.1</junit.version>
+        <junit.jupiter.version>5.9.1</junit.jupiter.version>
+        <junit.vintage.version>5.9.1</junit.vintage.version>
+        <junit.version>5.9.1</junit.version>
         <mockito.version>2.18.0</mockito.version>
     </properties>
 
@@ -96,20 +96,20 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${surefire.plugin.version}</version>
                 <dependencies>
-                <dependency>
+                <!--<dependency>
                     <groupId>org.junit.platform</groupId>
                     <artifactId>junit-platform-surefire-provider</artifactId>
                     <version>1.1.1</version>
-                </dependency>
+                </dependency>-->
                 <dependency>
                     <groupId>org.junit.jupiter</groupId>
                     <artifactId>junit-jupiter-engine</artifactId>
-                    <version>5.1.1</version>
+                    <version>5.9.1</version>
                 </dependency>
                 <dependency>
                     <groupId>org.junit.vintage</groupId>
                     <artifactId>junit-vintage-engine</artifactId>
-                    <version>5.1.1</version>
+                    <version>5.9.1</version>
                 </dependency>
                 </dependencies>
                 <configuration>
