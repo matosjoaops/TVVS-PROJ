@@ -4,9 +4,11 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.mock;
 
@@ -57,5 +59,15 @@ public class TaskBagImplTest {
         taskList.add(task);
         assertEquals(bagImpl.getTasks(), taskList);
 
+    }
+
+    @Test
+    public void update() {
+        TaskBagImpl bagImpl = new TaskBagImpl(repository);
+        bagImpl.addAsTask("Some text");
+        Task task = new Task(1, "Some text", new Date());
+        assertNotEquals(task, bagImpl.getTasks().get(0));
+        bagImpl.update(task);
+        assertEquals(task, bagImpl.getTasks().get(0));
     }
 }
