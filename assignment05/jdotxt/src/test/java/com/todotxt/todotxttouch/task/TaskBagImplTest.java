@@ -80,4 +80,22 @@ public class TaskBagImplTest {
         ArrayList<Priority> expected = new ArrayList<>(Arrays.asList(Priority.A));
         assertEquals(expected, bagImpl.getPriorities());
     }
+
+    @Test
+    public void getContexts() {
+        TaskBagImpl bagImpl = new TaskBagImpl(repository);
+        bagImpl.addAsTask("Some text @test some text");
+        List<String> contexts = bagImpl.getContexts(true);
+        List<String> expected = new ArrayList<>(Arrays.asList("-", "test"));
+        assertEquals(expected, contexts);
+    }
+
+    @Test
+    public void getProjects() {
+        TaskBagImpl bagImpl = new TaskBagImpl(repository);
+        bagImpl.addAsTask("Some text +test some text");
+        List<String> contexts = bagImpl.getContexts(true);
+        List<String> expected = new ArrayList<>(Arrays.asList("-", "test"));
+        assertEquals(expected, contexts);
+    }
 }

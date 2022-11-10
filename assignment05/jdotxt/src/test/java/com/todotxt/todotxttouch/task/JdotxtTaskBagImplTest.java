@@ -80,4 +80,22 @@ public class JdotxtTaskBagImplTest {
         ArrayList<Priority> expected = new ArrayList<>(Arrays.asList(Priority.A));
         assertEquals(expected, bagImpl.getPriorities());
     }
+
+    @Test
+    public void getContexts() {
+        JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
+        bagImpl.addAsTask("Some text @test some text");
+        List<String> contexts = bagImpl.getContexts(true);
+        List<String> expected = new ArrayList<>(Arrays.asList("-", "test"));
+        assertEquals(expected, contexts);
+    }
+
+    @Test
+    public void getProjects() {
+        JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
+        bagImpl.addAsTask("Some text +test some text");
+        List<String> contexts = bagImpl.getContexts(true);
+        List<String> expected = new ArrayList<>(Arrays.asList("-", "test"));
+        assertEquals(expected, contexts);
+    }
 }
