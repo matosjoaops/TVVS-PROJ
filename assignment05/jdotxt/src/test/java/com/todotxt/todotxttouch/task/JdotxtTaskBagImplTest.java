@@ -94,7 +94,7 @@ public class JdotxtTaskBagImplTest {
     public void getProjects() {
         JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
         bagImpl.addAsTask("Some text +test some text");
-        List<String> contexts = bagImpl.getContexts(true);
+        List<String> contexts = bagImpl.getProjects(true);
         List<String> expected = new ArrayList<>(Arrays.asList("-", "test"));
         assertEquals(expected, contexts);
     }
