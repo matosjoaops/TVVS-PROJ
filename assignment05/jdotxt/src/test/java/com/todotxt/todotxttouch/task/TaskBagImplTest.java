@@ -98,4 +98,15 @@ public class TaskBagImplTest {
         List<String> expected = new ArrayList<>(Arrays.asList("-", "test"));
         assertEquals(expected, contexts);
     }
+
+    @Test
+    public void clear() {
+        TaskBagImpl bagImpl = new TaskBagImpl(repository);
+        bagImpl.addAsTask("Some text");
+        List<Task> initialTasks = bagImpl.getTasks();
+        assertEquals(initialTasks.size(), 1);
+        bagImpl.clear();
+        List<Task> finalTasks = bagImpl.getTasks();
+        assertEquals(finalTasks.size(), 0);
+    }
 }
