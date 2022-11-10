@@ -9,8 +9,7 @@ public class LanguagesControllerTest {
 
     @Test
     public void languagesControllerTest() {
-        String language = "English";
-        LanguagesController languagesController = new LanguagesController(language);
+        LanguagesController languagesController = new LanguagesController("English");
         String word = languagesController.getWord("dates_today");
 
         assertEquals(word, "today");
