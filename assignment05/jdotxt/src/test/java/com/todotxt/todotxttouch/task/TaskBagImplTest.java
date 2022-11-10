@@ -70,4 +70,14 @@ public class TaskBagImplTest {
         bagImpl.update(task);
         assertEquals(task, bagImpl.getTasks().get(0));
     }
+
+    @Test
+    public void getPriorities() {
+        TaskBagImpl bagImpl = new TaskBagImpl(repository);
+        Task task = new Task(1, "Some text");
+        task.setPriority(Priority.A);
+        bagImpl.store(new ArrayList<>(Arrays.asList(task)));
+        ArrayList<Priority> expected = new ArrayList<>(Arrays.asList(Priority.A));
+        assertEquals(expected, bagImpl.getPriorities());
+    }
 }
