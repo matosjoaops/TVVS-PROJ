@@ -1,4 +1,4 @@
-package com.todotxt.util;
+package com.jdotxt.util;
 
 import com.chschmid.jdotxt.util.DelayedActionHandler;
 import org.junit.Test;
