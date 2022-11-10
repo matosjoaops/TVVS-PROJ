@@ -35,6 +35,18 @@ public class TaskTest {
     }
 
     @Test
+    public void rec() {
+        Task task = new Task(testId1, "rec:+9d");
+        assertTrue(task.isRec());
+    }
+
+    @Test
+    public void hidden() {
+        Task task = new Task(testId1, "h:1");
+        assertTrue(task.isHidden());
+    }
+
+    @Test
     public void markComplete() {
         Task task = new Task(testId1, testText1);
         assertFalse(task.isCompleted());
@@ -122,6 +134,41 @@ public class TaskTest {
     public void compareTask10() {
         Task task1 = new Task(testId1, testText1);
         Task task2 = new Task(testId1, testText2);
+        assertNotEquals(task1, task2);
+    }
+
+    @Test
+    public void compareTask11() {
+        Task task1 = new Task(testId1, "example@email.com");
+        Task task2 = new Task(testId1, testText2);
+        assertNotEquals(task1, task2);
+    }
+
+    @Test
+    public void compareTask12() {
+        Task task1 = new Task(testId1, "https://www.google.com");
+        Task task2 = new Task(testId1, testText2);
+        assertNotEquals(task1, task2);
+    }
+
+    @Test
+    public void compareTask13() {
+        Task task1 = new Task(testId1, "rec:+9w");
+        Task task2 = new Task(testId1, testText2);
+        assertNotEquals(task1, task2);
+    }
+
+    @Test
+    public void compareTask14() {
+        Task task1 = new Task(testId1, "Some text @test some text");
+        Task task2 = new Task(testId1, testText1);
+        assertNotEquals(task1, task2);
+    }
+
+    @Test
+    public void compareTask15() {
+        Task task1 = new Task(testId1, "Some text +test some text");
+        Task task2 = new Task(testId1, testText1);
         assertNotEquals(task1, task2);
     }
 
