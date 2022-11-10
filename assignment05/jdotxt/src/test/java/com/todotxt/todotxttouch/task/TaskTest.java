@@ -2,6 +2,8 @@ package com.todotxt.todotxttouch.task;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -37,6 +39,18 @@ public class TaskTest {
     @Test
     public void rec() {
         Task task = new Task(testId1, "rec:+9d");
+        assertTrue(task.isRec());
+    }
+
+    @Test
+    public void rec2() {
+        Task task = new Task(testId1, "rec:+9m");
+        assertTrue(task.isRec());
+    }
+
+    @Test
+    public void rec3() {
+        Task task = new Task(testId1, "rec:+9y");
         assertTrue(task.isRec());
     }
 
@@ -274,5 +288,17 @@ public class TaskTest {
         task.markComplete(testDate);
         String screenFormat = task.inScreenFormat();
         assertEquals(screenFormat, "x 1970-01-01 1970-01-01 " + testText1);
+    }
+
+    @Test
+    public void initWithFilters() {
+        Task task = new Task(testId1, testText1);
+        ArrayList<Priority> priorities = new ArrayList<>(Arrays.asList(Priority.A));
+        ArrayList<String> contexts = new ArrayList<>(Arrays.asList("testContext"));
+        ArrayList<String> projects = new ArrayList<>(Arrays.asList("testProject"));
+        task.initWithFilters(priorities, contexts, projects);
+        assertEquals(task.getPriority(), Priority.A);
+        assertEquals(task.getContexts(), contexts);
+        assertEquals(task.getProjects(), projects);
     }
 }
