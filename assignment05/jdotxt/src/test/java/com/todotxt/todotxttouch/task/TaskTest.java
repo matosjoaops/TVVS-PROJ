@@ -306,9 +306,245 @@ public class TaskTest {
     }
 
     @Test
-    public void hash() {
+    public void hash1() {
         Task task1 = new Task(testId1, testText1);
         Task task2 = new Task(testId2, testText2);
+
+        String value1 = "A value";
+        String value2 = "Another value";
+
+        HashMap<Task, String> map = new HashMap<>();
+        String putResult1 = map.put(task1, value1);
+        assertNull(putResult1);
+
+        String putResult2 = map.put(task2, value2);
+        assertNull(putResult2);
+    }
+
+    @Test
+    public void hash2() {
+        Task task1 = new Task(testId1, testText1);
+        Task task2 = new Task(testId1, testText1);
+
+        task1.markComplete(new Date());
+
+        String value1 = "A value";
+        String value2 = "Another value";
+
+        HashMap<Task, String> map = new HashMap<>();
+        String putResult1 = map.put(task1, value1);
+        assertNull(putResult1);
+
+        String putResult2 = map.put(task2, value2);
+        assertNull(putResult2);
+    }
+
+    @Test
+    public void hash3() throws NoSuchFieldException, IllegalAccessException {
+        Task task1 = new Task(testId1, testText1);
+        Task task2 = new Task(testId1, testText1);
+
+        Field field = task2.getClass().getDeclaredField("completionDate");
+        field.setAccessible(true);
+        field.set(task2, null);
+
+        String value1 = "A value";
+        String value2 = "Another value";
+
+        HashMap<Task, String> map = new HashMap<>();
+        String putResult1 = map.put(task1, value1);
+        assertNull(putResult1);
+
+        String putResult2 = map.put(task2, value2);
+        assertNull(putResult2);
+    }
+
+    @Test
+    public void hash4() throws NoSuchFieldException, IllegalAccessException {
+        Task task1 = new Task(testId1, testText1);
+        Task task2 = new Task(testId1, testText1);
+
+        Field field = task2.getClass().getDeclaredField("contexts");
+        field.setAccessible(true);
+        field.set(task2, null);
+
+        String value1 = "A value";
+        String value2 = "Another value";
+
+        HashMap<Task, String> map = new HashMap<>();
+        String putResult1 = map.put(task1, value1);
+        assertNull(putResult1);
+
+        String putResult2 = map.put(task2, value2);
+        assertNull(putResult2);
+    }
+
+    @Test
+    public void hash5() throws NoSuchFieldException, IllegalAccessException {
+        Task task1 = new Task(testId1, testText1);
+        Task task2 = new Task(testId1, testText1);
+
+        Field field = task2.getClass().getDeclaredField("links");
+        field.setAccessible(true);
+        field.set(task2, null);
+
+        String value1 = "A value";
+        String value2 = "Another value";
+
+        HashMap<Task, String> map = new HashMap<>();
+        String putResult1 = map.put(task1, value1);
+        assertNull(putResult1);
+
+        String putResult2 = map.put(task2, value2);
+        assertNull(putResult2);
+    }
+
+    @Test
+    public void hash6() throws NoSuchFieldException, IllegalAccessException {
+        Task task1 = new Task(testId1, testText1);
+        Task task2 = new Task(testId1, testText1);
+
+        Field field = task2.getClass().getDeclaredField("mailAddresses");
+        field.setAccessible(true);
+        field.set(task2, null);
+
+        String value1 = "A value";
+        String value2 = "Another value";
+
+        HashMap<Task, String> map = new HashMap<>();
+        String putResult1 = map.put(task1, value1);
+        assertNull(putResult1);
+
+        String putResult2 = map.put(task2, value2);
+        assertNull(putResult2);
+    }
+
+    @Test
+    public void hash7() throws NoSuchFieldException, IllegalAccessException {
+        Task task1 = new Task(testId1, testText1);
+        Task task2 = new Task(testId1, testText1);
+
+        task1.delete();
+
+        String value1 = "A value";
+        String value2 = "Another value";
+
+        HashMap<Task, String> map = new HashMap<>();
+        String putResult1 = map.put(task1, value1);
+        assertNull(putResult1);
+
+        String putResult2 = map.put(task2, value2);
+        assertNull(putResult2);
+    }
+
+    @Test
+    public void hash8() throws NoSuchFieldException, IllegalAccessException {
+        Task task1 = new Task(testId1, testText1);
+        Task task2 = new Task(testId1, testText1);
+
+        Field field = task2.getClass().getDeclaredField("phoneNumbers");
+        field.setAccessible(true);
+        field.set(task2, null);
+
+        String value1 = "A value";
+        String value2 = "Another value";
+
+        HashMap<Task, String> map = new HashMap<>();
+        String putResult1 = map.put(task1, value1);
+        assertNull(putResult1);
+
+        String putResult2 = map.put(task2, value2);
+        assertNull(putResult2);
+    }
+
+    @Test
+    public void hash9() throws NoSuchFieldException, IllegalAccessException {
+        Task task1 = new Task(testId1, testText1);
+        Task task2 = new Task(testId1, testText1);
+
+        Field field = task2.getClass().getDeclaredField("prependedDate");
+        field.setAccessible(true);
+        field.set(task2, null);
+
+        String value1 = "A value";
+        String value2 = "Another value";
+
+        HashMap<Task, String> map = new HashMap<>();
+        String putResult1 = map.put(task1, value1);
+        assertNull(putResult1);
+
+        String putResult2 = map.put(task2, value2);
+        assertNull(putResult2);
+    }
+
+    @Test
+    public void hash10() throws NoSuchFieldException, IllegalAccessException {
+        Task task1 = new Task(testId1, testText1);
+        Task task2 = new Task(testId1, testText1);
+
+        Field field = task2.getClass().getDeclaredField("priority");
+        field.setAccessible(true);
+        field.set(task2, null);
+
+        String value1 = "A value";
+        String value2 = "Another value";
+
+        HashMap<Task, String> map = new HashMap<>();
+        String putResult1 = map.put(task1, value1);
+        assertNull(putResult1);
+
+        String putResult2 = map.put(task2, value2);
+        assertNull(putResult2);
+    }
+
+    @Test
+    public void has11() throws NoSuchFieldException, IllegalAccessException {
+        Task task1 = new Task(testId1, testText1);
+        Task task2 = new Task(testId1, testText1);
+
+        Field field = task2.getClass().getDeclaredField("projects");
+        field.setAccessible(true);
+        field.set(task2, null);
+
+        String value1 = "A value";
+        String value2 = "Another value";
+
+        HashMap<Task, String> map = new HashMap<>();
+        String putResult1 = map.put(task1, value1);
+        assertNull(putResult1);
+
+        String putResult2 = map.put(task2, value2);
+        assertNull(putResult2);
+    }
+
+    @Test
+    public void hash12() throws NoSuchFieldException, IllegalAccessException {
+        Task task1 = new Task(testId1, testText1);
+        Task task2 = new Task(testId1, testText1);
+
+        Field field = task2.getClass().getDeclaredField("relativeAge");
+        field.setAccessible(true);
+        field.set(task2, null);
+
+        String value1 = "A value";
+        String value2 = "Another value";
+
+        HashMap<Task, String> map = new HashMap<>();
+        String putResult1 = map.put(task1, value1);
+        assertNull(putResult1);
+
+        String putResult2 = map.put(task2, value2);
+        assertNull(putResult2);
+    }
+
+    @Test
+    public void hash13() throws NoSuchFieldException, IllegalAccessException {
+        Task task1 = new Task(testId1, testText1);
+        Task task2 = new Task(testId1, testText1);
+
+        Field field = task2.getClass().getDeclaredField("text");
+        field.setAccessible(true);
+        field.set(task2, null);
 
         String value1 = "A value";
         String value2 = "Another value";

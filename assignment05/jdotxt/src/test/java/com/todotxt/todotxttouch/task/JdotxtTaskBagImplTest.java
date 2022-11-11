@@ -169,6 +169,8 @@ public class JdotxtTaskBagImplTest {
         JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
         bagImpl.pullFromRemote();
         bagImpl.pushToRemote(true);
+        bagImpl.pushToRemote(true, true);
+        bagImpl.pullFromRemote(true);
     }
 
     @Test
@@ -178,4 +180,6 @@ public class JdotxtTaskBagImplTest {
         bagImpl.addAsTask("asfa");
         assertEquals(bagImpl.size(), 1);
     }
+
+
 }
