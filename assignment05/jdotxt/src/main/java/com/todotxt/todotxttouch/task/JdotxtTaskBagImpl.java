@@ -251,7 +251,7 @@ class JdotxtTaskBagImpl implements TaskBag {
 		return ret;
 	}
 
-	private static Task find(List<Task> tasks, Task task) {
+	public static Task find(List<Task> tasks, Task task) {
 		Task partialMatch1 = null;
 		Task partialMatch2 = null;
 		for (Task task2 : tasks) {

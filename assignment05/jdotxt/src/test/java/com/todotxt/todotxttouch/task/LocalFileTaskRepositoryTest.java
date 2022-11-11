@@ -18,9 +18,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LocalFileTaskRepositoryTest {
 
-    private final String DEFAULTDIR = System.getProperty("user.home") + File.separator + "jdotxt";
-    private final String TODOPATH = DEFAULTDIR + File.separator + "todo.txt";
-    private final String DONEPATH = DEFAULTDIR + File.separator + "done.txt";
+    private static final String DEFAULTDIR = System.getProperty("user.home") + File.separator + "jdotxt";
+    public static final String TODOPATH = DEFAULTDIR + File.separator + "todo.txt";
+    public static final String DONEPATH = DEFAULTDIR + File.separator + "done.txt";
 
     private boolean findStringInFile(String string, File file) {
         try {
