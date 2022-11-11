@@ -12,6 +12,25 @@ import java.util.stream.Stream;
 public class StringsTest {
 
     @ParameterizedTest
+    @MethodSource("stringIntStringProvider2")
+    public void insertPaddedIfNeeded(String baseString, int position, String stringToInsert, String expectedResult) {
+
+        String result = Strings.insertPaddedIfNeeded(baseString, position, stringToInsert);
+
+        assertEquals(result, expectedResult);
+    }
+
+    static Stream<Arguments> stringIntStringProvider2() {
+        return Stream.of(
+                Arguments.of("A ", 1, "pear", "A pear"),
+                Arguments.of("A", 1, "pear", "A pear"),
+                Arguments.of("A ", 1, " pear", "A pear"),
+                Arguments.of("A string", 7,  "string", "A string string"),
+                Arguments.of("A", 1,  "", "A")
+        );
+    }
+
+    @ParameterizedTest
     @MethodSource("stringIntStringProvider")
     public void insertPadded(String baseString, int position, String stringToInsert, String expectedResult) {
 
@@ -62,7 +81,7 @@ public class StringsTest {
             Arguments.of("123", false), // Partition #4
             Arguments.of(" ", true), // Between Partition #2 and Partition #3 Off-point
             Arguments.of("a", false) // Between Partition #2 and Partition #4 Off-point
-    );
-}
+        );
+    }
 
 }

@@ -1,6 +1,5 @@
 package com.todotxt.todotxttouch.util;
 
-import com.sun.tools.javac.comp.Todo;
 import com.todotxt.todotxttouch.TodoException;
 import org.junit.Test;
 import org.junit.jupiter.params.ParameterizedTest;
