@@ -29,3 +29,9 @@ A variety of JUnit features were used in the developed unit tests, such as:
   - **assertNull**: to assert that a value is null
   - **assertNotNull**: to assert that a value is not null
 
+## Line and branch coverage after this assignment
+
+![](./images/Captura%20de%20ecr%C3%A3%20de%202022-11-11%2021-52-08.png)
+
+We were able to reach 90% for the line coverage. However, for the branch coverage we couldn't reach the same percentage due to several branches having conditions that would always be true (or false), leading to the code contained within becoming unreachable.
+
