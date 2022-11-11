@@ -174,4 +174,16 @@ public class SortersTest {
         assertEquals(Sorters.DATE.get(true).compare(task1, task2), 0);
         assertEquals(Sorters.DATE.get(false).compare(task1, task2), 0);
     }
+
+    @Test
+    public void sortersByCompletionDateTaskTest() {
+        Task task1 = new Task(1, "task1");
+        Task task2 = new Task(2, "task2");
+
+        task1.markComplete(new Date());
+        task2.markComplete(new Date());
+
+        assertEquals(Sorters.COMPLETION_DATE.get(true).compare(task1, task2), 0);
+        assertEquals(Sorters.COMPLETION_DATE.get(false).compare(task1, task2), 0);
+    }
 }
