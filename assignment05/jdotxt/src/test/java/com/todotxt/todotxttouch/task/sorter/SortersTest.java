@@ -32,7 +32,7 @@ public class SortersTest {
     }
 
     @Test
-    public void compareListsTest() {
+    public void g() {
         ArrayList<Integer> integerList1 = new ArrayList<>();
         integerList1.add(1);
 
@@ -53,6 +53,8 @@ public class SortersTest {
         assertEquals(Sorters.compareLists(integerList1, integerList3), -1);
         assertEquals(Sorters.compareLists(integerList3, integerList2), 1);
         assertEquals(Sorters.compareLists(integerList3, integerList4), -1);
+        assertEquals(Sorters.compareLists(integerList4, integerList3), 1);
+        assertEquals(Sorters.compareLists(new ArrayList<>(), integerList3), -1);
     }
 
     @Test
