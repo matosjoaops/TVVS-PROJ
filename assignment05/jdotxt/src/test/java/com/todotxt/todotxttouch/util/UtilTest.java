@@ -1,19 +1,25 @@
 package com.todotxt.todotxttouch.util;
 
+import com.sun.tools.javac.comp.Todo;
+import com.todotxt.todotxttouch.TodoException;
 import org.junit.Test;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class UtilTest {
+
+    private final String DEFAULTDIR = System.getProperty("user.home") + File.separator + "jdotxt";
+    private final String TODOPATH = DEFAULTDIR + File.separator + "todo.txt";
+    private final String DONEPATH = DEFAULTDIR + File.separator + "done.txt";
 
     @ParameterizedTest
     @MethodSource("prependProvider")
@@ -58,4 +64,42 @@ public class UtilTest {
         );
     }
 
+    @Test(expected = TodoException.class)
+    public void copyNonExistingFileTest() {
+        File origFile = new File("./origFileNonExistent.txt");
+        File newFile = new File("./newFile.txt");
+
+        Util.copyFile(origFile, newFile, false);
+    }
+
+    @Test
+    public void copyExistingFileTest() {
+        File origFile = new File(TODOPATH);
+        File newFile = new File("./new_file.txt");
+
+        assertTrue(origFile.exists());
+        Util.copyFile(origFile, newFile, false);
+
+        newFile.delete();
+        assertFalse(newFile.exists());
+    }
+
+    @Test(expected = TodoException.class)
+    public void renameNonExistingFileTest() {
+        File origFile = new File("./nonExistingFile.txt");
+        File newFile = new File("./newFile.txt");
+
+        Util.renameFile(origFile, newFile, false);
+    }
+
+    @Test
+    public void renameFileTest() throws IOException {
+        File origFile = new File(DONEPATH);
+        File newFile = new File("./newFile.txt");
+
+        assertTrue(origFile.exists());
+        Util.renameFile(origFile, newFile, false);
+
+        new File(DONEPATH).createNewFile();
+    }
 }
