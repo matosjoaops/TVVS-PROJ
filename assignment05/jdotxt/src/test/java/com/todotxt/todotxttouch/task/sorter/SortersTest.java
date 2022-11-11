@@ -186,4 +186,31 @@ public class SortersTest {
         assertEquals(Sorters.COMPLETION_DATE.get(true).compare(task1, task2), 0);
         assertEquals(Sorters.COMPLETION_DATE.get(false).compare(task1, task2), 0);
     }
+
+    @Test
+    public void sortersByProjectsTaskTest() {
+        Task task1 = new Task(1, "task1");
+        Task task2 = new Task(2, "task2");
+
+        assertEquals(Sorters.PROJECTS.get(true).compare(task1, task2), 0);
+        assertEquals(Sorters.PROJECTS.get(false).compare(task1, task2), 0);
+    }
+
+    @Test
+    public void sortersByContextsTaskTest() {
+        Task task1 = new Task(1, "task1");
+        Task task2 = new Task(2, "task2");
+
+        assertEquals(Sorters.CONTEXTS.get(true).compare(task1, task2), 0);
+        assertEquals(Sorters.CONTEXTS.get(false).compare(task1, task2), 0);
+    }
+
+    @Test
+    public void sortersByThresholdDateTaskTest() {
+        Task task1 = new Task(1, "task1");
+        Task task2 = new Task(2, "task2");
+
+        assertEquals(Sorters.THRESHOLD_DATE.get(true).compare(task1, task2), 0);
+        assertEquals(Sorters.THRESHOLD_DATE.get(false).compare(task1, task2), 0);
+    }
 }
