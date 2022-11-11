@@ -146,10 +146,32 @@ public class JdotxtTaskBagImplTest {
     }
 
     @Test
-    public void getTasks() {
+    public void getTasks1() {
         JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
         Filter<Task> filter = new ByTextFilter("test", true);
         bagImpl.addAsTask("Some test");
+        bagImpl.addAsTask("Some text");
+        List<Task> tasks = bagImpl.getTasks(filter, null);
+        assertEquals(tasks.size(), 1);
+    }
+
+    @Test
+    public void getTasks2() {
+        JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
+        List<String> projects = new ArrayList<>(Arrays.asList("test"));
+        Filter<Task> filter = new ByProjectFilter(projects);
+        bagImpl.addAsTask("Some +test @test");
+        bagImpl.addAsTask("Some text");
+        List<Task> tasks = bagImpl.getTasks(filter, null);
+        assertEquals(tasks.size(), 1);
+    }
+
+    @Test
+    public void getTasks3() {
+        JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
+        List<String> contexts = new ArrayList<>(Arrays.asList("test"));
+        Filter<Task> filter = new ByContextFilter(contexts);
+        bagImpl.addAsTask("Some +test @test");
         bagImpl.addAsTask("Some text");
         List<Task> tasks = bagImpl.getTasks(filter, null);
         assertEquals(tasks.size(), 1);
