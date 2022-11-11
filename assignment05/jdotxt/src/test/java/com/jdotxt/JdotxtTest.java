@@ -3,7 +3,6 @@ package com.jdotxt;
 import com.chschmid.jdotxt.Jdotxt;
 import com.chschmid.jdotxt.util.FileModifiedListener;
 import com.todotxt.todotxttouch.task.Task;
-import com.todotxt.todotxttouch.util.TaskIo;
 import org.junit.Test;
 
 import java.io.File;
@@ -15,7 +14,6 @@ import static org.junit.Assert.assertTrue;
 public class JdotxtTest {
     private static final String DEFAULTDIR = System.getProperty("user.home") + File.separator + "jdotxt";
     private static final String TODOPATH = DEFAULTDIR + File.separator + "todo.txt";
-    private static final String DONEPATH = DEFAULTDIR + File.separator + "done.txt";
 
     @Test
     public void jdotxtTest() {
