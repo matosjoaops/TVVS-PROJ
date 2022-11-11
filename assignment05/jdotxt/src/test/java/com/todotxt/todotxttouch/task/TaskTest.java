@@ -231,9 +231,9 @@ public class TaskTest {
     public void compareTask20() throws NoSuchFieldException, IllegalAccessException {
         Task task1 = new Task(testId1, "example@email.com");
         Task task2 = new Task(testId1, testText1);
-        Field field2 = task2.getClass().getDeclaredField("phoneNumbers");
-        field2.setAccessible(true);
-        field2.set(task2, null);
+        Field field = task2.getClass().getDeclaredField("phoneNumbers");
+        field.setAccessible(true);
+        field.set(task2, null);
         assertNotEquals(task2, task1);
     }
 
@@ -275,6 +275,34 @@ public class TaskTest {
         field.setAccessible(true);
         field.set(task2, null);
         assertNotEquals(task2, task1);
+    }
+
+    @Test
+    public void compareTask25() {
+        Task task1 = new Task(testId1, testText1);
+        Task task2 = new Task(testId1, testText1);
+        task1.delete();
+        assertNotEquals(task2, task1);
+    }
+
+    @Test
+    public void compareTask26() throws NoSuchFieldException, IllegalAccessException {
+        Task task1 = new Task(testId1, testText1);
+        Task task2 = new Task(testId1, testText1);
+        Field field = task2.getClass().getDeclaredField("relativeAge");
+        field.setAccessible(true);
+        field.set(task2, null);
+        assertNotEquals(task1, task2);
+    }
+
+    @Test
+    public void compareTask27() throws NoSuchFieldException, IllegalAccessException {
+        Task task1 = new Task(testId1, "example@email.com");
+        Task task2 = new Task(testId1, testText1);
+        Field field = task2.getClass().getDeclaredField("phoneNumbers");
+        field.setAccessible(true);
+        field.set(task2, null);
+        assertNotEquals(task1, task2);
     }
 
     @Test
