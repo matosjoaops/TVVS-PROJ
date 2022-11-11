@@ -213,4 +213,46 @@ public class SortersTest {
         assertEquals(Sorters.THRESHOLD_DATE.get(true).compare(task1, task2), 0);
         assertEquals(Sorters.THRESHOLD_DATE.get(false).compare(task1, task2), 0);
     }
+
+    @Test
+    public void sortersByDueDateTaskTest() {
+        Task task1 = new Task(1, "task1");
+        Task task2 = new Task(2, "task2");
+
+        assertEquals(Sorters.DUE_DATE.get(true).compare(task1, task2), 0);
+        assertEquals(Sorters.DUE_DATE.get(false).compare(task1, task2), 0);
+    }
+
+    @Test
+    public void sortersByCompletionTaskTest() {
+        Task task1 = new Task(1, "task1");
+        Task task2 = new Task(2, "task2");
+
+        assertEquals(Sorters.COMPLETION.get(true).compare(task1, task2), 0);
+        assertEquals(Sorters.COMPLETION.get(false).compare(task1, task2), 0);
+
+        task1.markComplete(new Date());
+
+        assertEquals(Sorters.COMPLETION.get(true).compare(task1, task2), 1);
+        assertEquals(Sorters.COMPLETION.get(true).compare(task2, task1), -1);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void sortersByCompletionNullTaskTest1() {
+        Task task1 = new Task(1, "task1");
+
+        Sorters.COMPLETION.get(true).compare(null, task1);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void sortersByCompletionNullTaskTest2() {
+        Task task1 = new Task(1, "task1");
+
+        Sorters.COMPLETION.get(true).compare(task1, null);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void sortersByCompletionNullTaskTest3() {
+        Sorters.COMPLETION.get(true).compare(null, null);
+    }
 }
