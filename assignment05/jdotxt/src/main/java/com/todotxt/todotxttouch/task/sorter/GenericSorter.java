@@ -6,7 +6,7 @@ public abstract class GenericSorter<T> implements Sorter<T> {
         return buildGenericSorter(this, next);
     }
 
-    private Sorter<T> buildGenericSorter(final Sorter<T> first, final Sorter<T> next) {
+    public Sorter<T> buildGenericSorter(final Sorter<T> first, final Sorter<T> next) {
         return new GenericSorter<T>() {
             @Override
             public int compare(T t1, T t2) {
