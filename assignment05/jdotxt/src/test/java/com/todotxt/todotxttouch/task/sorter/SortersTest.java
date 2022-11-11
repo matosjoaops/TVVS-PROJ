@@ -52,4 +52,35 @@ public class SortersTest {
         assertEquals(Sorters.compareLists(integerList3, integerList2), 1);
         assertEquals(Sorters.compareLists(integerList3, integerList4), -1);
     }
+
+    @Test
+    public void sortersByIDTest() {
+        Task task1 = new Task(1, "task1");
+        Task task2 = new Task(2, "task2");
+
+        assertEquals(Sorters.ID.get(true).compare(task1, task2), -1);
+        assertEquals(Sorters.ID.get(true).compare(task2, task1), 1);
+
+        assertEquals(Sorters.ID.get(false).compare(task1, task2), 1);
+        assertEquals(Sorters.ID.get(false).compare(task2, task1), -1);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void sortersByIDNullTaskTest1() {
+        Task task1 = new Task(1, "task1");
+
+        Sorters.ID.get(true).compare(null, task1);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void sortersByIDNullTaskTest2() {
+        Task task1 = new Task(1, "task1");
+
+        Sorters.ID.get(true).compare(task1, null);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void sortersByIDNullTaskTest3() {
+        Sorters.ID.get(true).compare(null, null);
+    }
 }
