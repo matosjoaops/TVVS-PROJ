@@ -165,4 +165,13 @@ public class SortersTest {
     public void sortersByTextNullTaskTest3() {
         Sorters.TEXT.get(true).compare(null, null);
     }
+
+    @Test
+    public void sortersByCreationDateTaskTest() {
+        Task task1 = new Task(1, "task1");
+        Task task2 = new Task(2, "task2");
+
+        assertEquals(Sorters.DATE.get(true).compare(task1, task2), 0);
+        assertEquals(Sorters.DATE.get(false).compare(task1, task2), 0);
+    }
 }
