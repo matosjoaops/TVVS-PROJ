@@ -178,6 +178,38 @@ public class JdotxtTaskBagImplTest {
     }
 
     @Test
+    public void getTasks4() {
+        JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
+        List<String> contexts = new ArrayList<>(Arrays.asList("test"));
+        Filter<Task> contextFilter = new ByContextFilter(contexts);
+        List<String> projects = new ArrayList<>(Arrays.asList("test"));
+        Filter<Task> projectFilter = new ByProjectFilter(projects);
+        AndFilter filter = new AndFilter();
+        filter.addFilter(contextFilter);
+        filter.addFilter(projectFilter);
+        bagImpl.addAsTask("Some +test @test");
+        bagImpl.addAsTask("Some text");
+        List<Task> tasks = bagImpl.getTasks(filter, null);
+        assertEquals(tasks.size(), 1);
+    }
+
+    @Test
+    public void getTasks5() {
+        JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
+        List<String> contexts = new ArrayList<>(Arrays.asList("test"));
+        Filter<Task> contextFilter = new ByContextFilter(contexts);
+        List<String> projects = new ArrayList<>(Arrays.asList("test"));
+        Filter<Task> projectFilter = new ByProjectFilter(projects);
+        OrFilter filter = new OrFilter();
+        filter.addFilter(contextFilter);
+        filter.addFilter(projectFilter);
+        bagImpl.addAsTask("Some +test @test");
+        bagImpl.addAsTask("Some text");
+        List<Task> tasks = bagImpl.getTasks(filter, null);
+        assertEquals(tasks.size(), 1);
+    }
+
+    @Test
     public void find() {
         Task task1 = new Task(1, "Some text");
         Task task2 = new Task(2, "Some text");
