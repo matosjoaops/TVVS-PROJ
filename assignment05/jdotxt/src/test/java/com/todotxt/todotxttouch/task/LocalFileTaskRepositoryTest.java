@@ -106,4 +106,26 @@ public class LocalFileTaskRepositoryTest {
         ArrayList<Task> tasks = repository.loadDoneTasks();
         assertEquals(tasks.size(), 1);
     }
+
+    @Test
+    public void doneFileModifiedSince() throws IOException {
+        LocalFileTaskRepository repository = new LocalFileTaskRepository();
+
+        FileWriter fileWriter = new FileWriter(DONEPATH, true);
+        fileWriter.write("afdaf");
+
+        boolean result = repository.doneFileModifiedSince(new Date(0));
+        assertTrue(result);
+    }
+
+    @Test
+    public void todoFileModifiedSince() throws IOException {
+        LocalFileTaskRepository repository = new LocalFileTaskRepository();
+
+        FileWriter fileWriter = new FileWriter(TODOPATH, true);
+        fileWriter.write("afdaf");
+
+        boolean result = repository.todoFileModifiedSince(new Date(0));
+        assertTrue(result);
+    }
 }
