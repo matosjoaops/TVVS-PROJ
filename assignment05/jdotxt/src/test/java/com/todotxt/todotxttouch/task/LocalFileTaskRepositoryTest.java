@@ -13,8 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class LocalFileTaskRepositoryTest {
 
@@ -127,5 +126,35 @@ public class LocalFileTaskRepositoryTest {
 
         boolean result = repository.todoFileModifiedSince(new Date(0));
         assertTrue(result);
+    }
+
+    @Test
+    public void initFiles() {
+        File file = new File(TODOPATH);
+        file.delete();
+        LocalFileTaskRepository.initFiles();
+    }
+
+    @Test
+    public void purge() {
+        LocalFileTaskRepository repository = new LocalFileTaskRepository();
+        repository.purge();
+        File todoFile = new File(TODOPATH);
+        File doneFile = new File(DONEPATH);
+        assertFalse(todoFile.exists());
+        assertFalse(doneFile.exists());
+    }
+
+    @Test
+    public void storeDoneTasks() {
+        LocalFileTaskRepository repository = new LocalFileTaskRepository();
+        repository.storeDoneTasks(new File(TODOPATH));
+        repository.storeDoneTasks(new ArrayList<>());
+    }
+
+    @Test
+    public void store() {
+        LocalFileTaskRepository repository = new LocalFileTaskRepository();
+        repository.store(new ArrayList<>());
     }
 }
