@@ -6,8 +6,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Stream;
@@ -113,5 +114,20 @@ public class UtilTest {
         assertFalse(origFile.exists());
         new File(TODOPATH).createNewFile();
         assertTrue(origFile.exists());
+    }
+
+    @Test
+    public void readStreamTest() throws IOException {
+        InputStream inputStream = Files.newInputStream(Paths.get(TODOPATH));
+        FileWriter fileWriter = new FileWriter(TODOPATH, false);
+        fileWriter.write("A task");
+        fileWriter.close();
+
+        String resultString = Util.readStream(inputStream);
+        assertEquals(resultString, "A task");
+
+        inputStream = null;
+        resultString = Util.readStream(inputStream);
+        assertNull(resultString);
     }
 }
