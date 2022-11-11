@@ -134,4 +134,35 @@ public class SortersTest {
     public void sortersByPriorityNullTaskTest3() {
         Sorters.PRIORITY.get(true).compare(null, null);
     }
+
+    @Test
+    public void sortersByTaskTextTest() {
+        Task task1 = new Task(1, "task1");
+        Task task2 = new Task(2, "task2");
+
+        assertEquals(Sorters.TEXT.get(true).compare(task1, task2), -1);
+        assertEquals(Sorters.TEXT.get(true).compare(task2, task1), 1);
+
+        assertEquals(Sorters.TEXT.get(false).compare(task1, task2), 1);
+        assertEquals(Sorters.TEXT.get(false).compare(task2, task1), -1);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void sortersByTextNullTaskTest1() {
+        Task task1 = new Task(1, "task1");
+
+        Sorters.TEXT.get(true).compare(null, task1);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void sortersByTextNullTaskTest2() {
+        Task task1 = new Task(1, "task1");
+
+        Sorters.TEXT.get(true).compare(task1, null);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void sortersByTextNullTaskTest3() {
+        Sorters.TEXT.get(true).compare(null, null);
+    }
 }
