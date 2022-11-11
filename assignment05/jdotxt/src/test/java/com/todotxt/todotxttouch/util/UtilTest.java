@@ -130,4 +130,26 @@ public class UtilTest {
         resultString = Util.readStream(inputStream);
         assertNull(resultString);
     }
+
+    @Test(expected = TodoException.class)
+    public void createParentDirectoryTest() {
+        Util.createParentDirectory(null);
+    }
+
+    @Test
+    public void writeFileTest() throws IOException {
+        InputStream inputStream = Files.newInputStream(Paths.get(TODOPATH));
+        FileWriter fileWriter = new FileWriter(TODOPATH, false);
+        fileWriter.write("A task");
+        fileWriter.close();
+        File todoFile = new File(TODOPATH);
+
+        Util.writeFile(inputStream, todoFile);
+        assertTrue(todoFile.exists());
+    }
+
+    @Test
+    public void isDeviceReadableTest() {
+        assertTrue(Util.isDeviceReadable());
+    }
 }
