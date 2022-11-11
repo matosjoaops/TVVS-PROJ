@@ -39,4 +39,29 @@ public class JdotxtTest {
 
         assertEquals(newString, "-23");
     }
+
+    @Test
+    public void insertReplaceString1() {
+        String original = "aaaaa";
+        String replace = "bbb";
+        int offset = 1;
+        String expected = "abbba";
+        String result = Jdotxt.insertReplaceString(original, replace, offset);
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void insertReplaceString2() {
+        String original = "aaaaa";
+        String replace = "bbbbb";
+        int offset = 1;
+        String expected = "abbbbb";
+        String result = Jdotxt.insertReplaceString(original, replace, offset);
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void onWindows() {
+        Jdotxt.onWindows();
+    }
 }
