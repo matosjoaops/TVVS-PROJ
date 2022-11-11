@@ -6,10 +6,12 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -99,6 +101,88 @@ public class UtilTest {
         assertTrue(origFile.exists());
         Util.renameFile(origFile, newFile, false);
 
+        assertFalse(origFile.exists());
         new File(DONEPATH).createNewFile();
+        assertTrue(origFile.exists());
+    }
+
+    @Test
+    public void renameFileOverwriteTest() throws IOException {
+        File origFile = new File(TODOPATH);
+        File newFile = new File(DONEPATH);
+
+        Util.renameFile(origFile, newFile, true);
+        assertFalse(origFile.exists());
+        new File(TODOPATH).createNewFile();
+        assertTrue(origFile.exists());
+    }
+
+    @Test
+    public void readStreamTest() throws IOException {
+        InputStream inputStream = Files.newInputStream(Paths.get(TODOPATH));
+        FileWriter fileWriter = new FileWriter(TODOPATH, false);
+        fileWriter.write("A task");
+        fileWriter.close();
+
+        String resultString = Util.readStream(inputStream);
+        assertEquals(resultString, "A task");
+
+        inputStream = null;
+        resultString = Util.readStream(inputStream);
+        assertNull(resultString);
+    }
+
+    @Test(expected = TodoException.class)
+    public void createParentDirectoryTest() {
+        Util.createParentDirectory(null);
+    }
+
+    @Test
+    public void writeFileTest() throws IOException {
+        InputStream inputStream = Files.newInputStream(Paths.get(TODOPATH));
+        FileWriter fileWriter = new FileWriter(TODOPATH, false);
+        fileWriter.write("A task");
+        fileWriter.close();
+        File todoFile = new File(TODOPATH);
+
+        Util.writeFile(inputStream, todoFile);
+        assertTrue(todoFile.exists());
+    }
+
+    @Test
+    public void isDeviceReadableTest() {
+        assertTrue(Util.isDeviceReadable());
+    }
+
+    @Test
+    public void joinTest() {
+        ArrayList<String> array = new ArrayList<>();
+        array.add("123");
+        array.add("456");
+
+        assertEquals(Util.join(array, "-"), "123-456");
+        assertEquals(Util.join(null, "-"), "");
+    }
+
+    @Test
+    public void splitTest() {
+        ArrayList<String> expectedResult = new ArrayList<>();
+        expectedResult.add("123");
+        expectedResult.add("456");
+
+        assertEquals(Util.split("123-456", "-"), expectedResult);
+        assertEquals(Util.split("  ", "-"), new ArrayList<>());
+    }
+
+    @Test
+    public void integerList2IntArrayTest() {
+        List<Integer> integerList = new ArrayList<>();
+        integerList.add(1);
+        integerList.add(2);
+        int[] array = {1, 2};
+
+        assertEquals(Util.integerList2IntArray(integerList)[0], array[0]);
+        assertEquals(Util.integerList2IntArray(integerList)[1], array[1]);
+        assertEquals(Util.integerList2IntArray(integerList).length, array.length);
     }
 }
