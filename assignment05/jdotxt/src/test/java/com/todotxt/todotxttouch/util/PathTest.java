@@ -34,4 +34,12 @@ public class PathTest {
                 Arguments.of("", "")
         );
     }
+
+    @Test
+    public void pathTest() {
+        assertEquals(Path.fileName("./test/fileName/"), "fileName");
+        assertEquals(Path.parentPath("./parentPath/fileName/"), "./parentPath/");
+        assertEquals(Path.parentPath("  "), "");
+        assertEquals(Path.parentPath("/"), "");
+    }
 }
