@@ -11,6 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -151,5 +152,37 @@ public class UtilTest {
     @Test
     public void isDeviceReadableTest() {
         assertTrue(Util.isDeviceReadable());
+    }
+
+    @Test
+    public void joinTest() {
+        ArrayList<String> array = new ArrayList<>();
+        array.add("123");
+        array.add("456");
+
+        assertEquals(Util.join(array, "-"), "123-456");
+        assertEquals(Util.join(null, "-"), "");
+    }
+
+    @Test
+    public void splitTest() {
+        ArrayList<String> expectedResult = new ArrayList<>();
+        expectedResult.add("123");
+        expectedResult.add("456");
+
+        assertEquals(Util.split("123-456", "-"), expectedResult);
+        assertEquals(Util.split("  ", "-"), new ArrayList<>());
+    }
+
+    @Test
+    public void integerList2IntArrayTest() {
+        List<Integer> integerList = new ArrayList<>();
+        integerList.add(1);
+        integerList.add(2);
+        int[] array = {1, 2};
+
+        assertEquals(Util.integerList2IntArray(integerList)[0], array[0]);
+        assertEquals(Util.integerList2IntArray(integerList)[1], array[1]);
+        assertEquals(Util.integerList2IntArray(integerList).length, array.length);
     }
 }
