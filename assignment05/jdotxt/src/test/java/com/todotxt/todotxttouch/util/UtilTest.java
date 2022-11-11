@@ -1,6 +1,5 @@
 package com.todotxt.todotxttouch.util;
 
-import com.sun.tools.javac.comp.Todo;
 import com.todotxt.todotxttouch.TodoException;
 import org.junit.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -100,6 +99,19 @@ public class UtilTest {
         assertTrue(origFile.exists());
         Util.renameFile(origFile, newFile, false);
 
+        assertFalse(origFile.exists());
         new File(DONEPATH).createNewFile();
+        assertTrue(origFile.exists());
+    }
+
+    @Test
+    public void renameFileOverwriteTest() throws IOException {
+        File origFile = new File(TODOPATH);
+        File newFile = new File(DONEPATH);
+
+        Util.renameFile(origFile, newFile, true);
+        assertFalse(origFile.exists());
+        new File(TODOPATH).createNewFile();
+        assertTrue(origFile.exists());
     }
 }
