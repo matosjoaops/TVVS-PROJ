@@ -69,7 +69,7 @@ public enum Priority {
 		return fileFormat;
 	}
 
-	private static Priority[] reverseValues() {
+	public static Priority[] reverseValues() {
 		Priority[] values = Priority.values();
 		Priority[] reversed = new Priority[values.length];
 		for (int i = 0; i < values.length; i++) {
