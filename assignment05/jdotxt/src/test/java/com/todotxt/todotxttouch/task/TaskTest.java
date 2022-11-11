@@ -638,6 +638,22 @@ public class TaskTest {
     }
 
     @Test
+    public void fileFormat6() {
+        Task task = new Task(testId1, testText1);
+        task.setPriority(Priority.A);
+        String fileFormat = task.inFileFormatHeaderNoDate();
+        assertEquals(fileFormat, "A " + testText1);
+    }
+
+    @Test
+    public void fileFormat7() {
+        Task task = new Task(testId1, testText1, testDate);
+        task.markComplete(testDate);
+        String fileFormat = task.inFileFormatHeader();
+        assertEquals(fileFormat, "x 1970-01-01 1970-01-01 " + testText1);
+    }
+
+    @Test
     public void screenFormat() {
         Task task = new Task(testId1, testText1, testDate);
         task.markComplete(testDate);
