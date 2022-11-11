@@ -1,5 +1,6 @@
 package com.todotxt.todotxttouch.task.sorter;
 
+import com.todotxt.todotxttouch.task.Priority;
 import com.todotxt.todotxttouch.task.Task;
 import org.junit.Test;
 
@@ -7,6 +8,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 import static org.junit.Assert.assertEquals;
@@ -82,5 +84,54 @@ public class SortersTest {
     @Test(expected = NullPointerException.class)
     public void sortersByIDNullTaskTest3() {
         Sorters.ID.get(true).compare(null, null);
+    }
+
+    @Test
+    public void sortersByPriorityTest() {
+        Task task1 = new Task(1, "task1");
+        Task task2 = new Task(2, "task2");
+
+        task1.setPriority(Priority.A);
+        task2.setPriority(Priority.B);
+
+        assertEquals(Sorters.PRIORITY.get(true).compare(task1, task2), -1);
+        assertEquals(Sorters.PRIORITY.get(true).compare(task2, task1), 1);
+
+        assertEquals(Sorters.PRIORITY.get(false).compare(task1, task2), 1);
+        assertEquals(Sorters.PRIORITY.get(false).compare(task2, task1), -1);
+
+        task2.setPriority(Priority.A);
+        assertEquals(Sorters.PRIORITY.get(true).compare(task1, task2), 0);
+
+        task2.setPriority(Priority.B);
+        task1.markComplete(new Date());
+        task2.markComplete(new Date());
+        assertEquals(Sorters.PRIORITY.get(true).compare(task1, task2), 0);
+
+        task1.markIncomplete();
+        assertEquals(Sorters.PRIORITY.get(true).compare(task1, task2), -1);
+
+        task1.markComplete(new Date());
+        task2.markIncomplete();
+        assertEquals(Sorters.PRIORITY.get(true).compare(task1, task2), 1);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void sortersByPriorityNullTaskTest1() {
+        Task task1 = new Task(1, "task1");
+
+        Sorters.PRIORITY.get(true).compare(null, task1);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void sortersByPriorityNullTaskTest2() {
+        Task task1 = new Task(1, "task1");
+
+        Sorters.PRIORITY.get(true).compare(task1, null);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void sortersByPriorityNullTaskTest3() {
+        Sorters.PRIORITY.get(true).compare(null, null);
     }
 }
