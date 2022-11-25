@@ -15,19 +15,19 @@
 
 ![](./images/fileName.png)
 
-(say why it was chosen and what it does)
+This function returns a file's name that is contained in the path that is provided as a parameter. It was chosen because it has multiple conditions and is simple.
 
 ### getRelativeDate
 
 ![](./images/getRelativeDate.png)
 
-(say why it was chosen and what it does)
+This function returns a String representation of the provided date relative to the current time (or at least that's what it claims to do). This function was chosen because it does not have any conditions and receives a `Date` as a parameter.
 
 ### setSelectedItem
 
 ![](./images/setSelectedItem.png)
 
-(say why it was chosen and what it does)
+This function is part of a GUI related class and is used to set the selected item in a combo box. It was chosen because it receives an `Object` as a parameter and has multiple conditions.
 
 ## Dataflow Testing
 
