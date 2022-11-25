@@ -115,6 +115,35 @@ public void setSelectedItem(Object o) {
 
 This function is part of a GUI related class and is used to set the selected item in a combo box. It was chosen because it receives an `Object` as a parameter and has multiple conditions.
 
+### Dataflow Testing
+
 #### CFG
 
 <img src="./images/setSelectedItem_cfg.png" width="1000"/>
+
+#### Paths table
+
+##### o
+
+| pair id | def | use     | path           |
+| ------- | --- | ------- | -------------- |
+| 1       | 1   | (2,T)   | <1,2,3>        |
+| 2       | 1   | (2,F)   | <1,2,4>        |
+| 3       | 1   | (4,T)   | <1,2,4,5>      |
+| 4       | 1   | (4,F)   | <1,2,4,6>      |
+| 5       | 1   | 5       | <1,2,4,5>      |
+| 6       | 1   | 8       | <1,2,4,6,7,8>  |
+
+##### placeholder
+
+| pair id | def | use     | path               |
+| ------- | --- | ------- | ------------------ |
+| 1       | 1   | 3       | <1,2,3>            |
+| 2       | 1   | 4       | <1,2,4>            |
+
+##### firstSelect
+
+| pair id | def | use     | path               |
+| ------- | --- | ------- | ------------------ |
+| 1       | 1   | (6,T)   | <1,2,4,6,7>        |
+| 2       | 1   | (6,F)   | <1,2,4,6>          |
