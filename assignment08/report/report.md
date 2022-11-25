@@ -60,3 +60,27 @@ This function is part of a GUI related class and is used to set the selected ite
 | ------- | --- | --- | ----- |
 | 1       | 5   | 7   | <5,7> |
 
+
+### getRelativeDate
+
+#### CFG
+
+![](./images/getRelativeDate_cfg.png)
+
+#### Paths table
+
+##### date
+
+| pair id | def | use | path    |
+| ------- | --- | --- | ------- |
+| 1       | 1   | 3   | <1,2,3> |
+
+
+##### converted
+
+| pair id | def | use | path    |
+| ------- | --- | --- | ------- |
+| 1       | 2   | 3   | <2,3>   |
+| 2       | 2   | 4   | <2,3,4> |
+
+
