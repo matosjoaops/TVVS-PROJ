@@ -9,29 +9,25 @@
   - João Matos, up201703884
   - Tiago Gomes, up201806658
 
-## Selected functions
+## `fileName` function
 
-### fileName
-
-![](./images/fileName.png)
+```java
+public static String fileName(String path) {
+  if (!Strings.isBlank(path)) {
+    // adapted from DropboxAPI.java v1.5.4
+    if (path.endsWith("/")) {
+      path = path.substring(0, path.length() - 1);
+    }
+    int ind = path.lastIndexOf('/');
+    return path.substring(ind + 1, path.length());
+  }
+  return "";
+}
+```
 
 This function returns a file's name that is contained in the path that is provided as a parameter. It was chosen because it has multiple conditions and is simple.
 
-### getRelativeDate
-
-![](./images/getRelativeDate.png)
-
-This function returns a String representation of the provided date relative to the current time (or at least that's what it claims to do). This function was chosen because it does not have any conditions and receives a `Date` as a parameter.
-
-### setSelectedItem
-
-![](./images/setSelectedItem.png)
-
-This function is part of a GUI related class and is used to set the selected item in a combo box. It was chosen because it receives an `Object` as a parameter and has multiple conditions.
-
-## Dataflow Testing
-
-### fileName
+### Dataflow Testing
 
 #### CFG
 
@@ -60,8 +56,26 @@ This function is part of a GUI related class and is used to set the selected ite
 | ------- | --- | --- | ----- |
 | 1       | 5   | 7   | <5,7> |
 
+## `getRelativeDate` function
 
-### getRelativeDate
+```java
+/**
+ * This method returns a String representing the relative date by comparing
+ * the Date being passed in to the date / time that it is right now.
+ * 
+ * @param date
+ * @return String representing the relative date
+ */
+public static String getRelativeDate(Date date) {
+  Calendar converted = GregorianCalendar.getInstance();
+  converted.setTime(date);
+  return getRelativeDate(converted);
+}
+```
+
+This function returns a String representation of the provided date relative to the current time (or at least that's what it claims to do). This function was chosen because it does not have any conditions and receives a `Date` as a parameter.
+
+### Dataflow Testing
 
 #### CFG
 
@@ -83,4 +97,21 @@ This function is part of a GUI related class and is used to set the selected ite
 | 1       | 2   | 3   | <2,3>   |
 | 2       | 2   | 4   | <2,3,4> |
 
+## `setSelectedItem` function
+
+```java
+@Override
+public void setSelectedItem(Object o) {
+    if (o == null) {
+        super.setSelectedItem(placeholder);
+    } else if (!placeholder.equals(o)) {
+        super.setSelectedItem(o);
+    } else if (firstSelect) {
+        firstSelect = false;
+        super.setSelectedItem(o);
+    }
+}
+```
+
+This function is part of a GUI related class and is used to set the selected item in a combo box. It was chosen because it receives an `Object` as a parameter and has multiple conditions.
 
