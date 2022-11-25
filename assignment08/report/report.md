@@ -31,7 +31,7 @@ This function returns a file's name that is contained in the path that is provid
 
 #### CFG
 
-![](./images/fileName_cfg.png)
+<img src="./images/fileName_cfg.png" width="1000"/>
 
 #### Paths table
 
@@ -79,7 +79,7 @@ This function returns a String representation of the provided date relative to t
 
 #### CFG
 
-![](./images/getRelativeDate_cfg.png)
+<img src="./images/getRelativeDate_cfg.png" width="700"/>
 
 #### Paths table
 
@@ -115,3 +115,6 @@ public void setSelectedItem(Object o) {
 
 This function is part of a GUI related class and is used to set the selected item in a combo box. It was chosen because it receives an `Object` as a parameter and has multiple conditions.
 
+#### CFG
+
+<img src="./images/setSelectedItem_cfg.png" width="1000"/>
