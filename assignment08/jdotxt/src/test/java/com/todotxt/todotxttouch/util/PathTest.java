@@ -31,7 +31,9 @@ public class PathTest {
                 Arguments.of("file3.txt", "file3.txt"),
                 Arguments.of("/home/user/\"space dir\"/file4.txt", "file4.txt"),
                 Arguments.of("/home/user/space\\ dir/file5.txt", "file5.txt"),
-                Arguments.of("", "")
+                Arguments.of("", ""),
+                Arguments.of("/test/path/", "path"),
+                Arguments.of("/test/file", "file")
         );
     }
 

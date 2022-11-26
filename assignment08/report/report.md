@@ -56,13 +56,25 @@ This function returns a file's name that is contained in the path that is provid
 | ------- | --- | --- | ----- |
 | 1       | 5   | 7   | <5,7> |
 
+#### Tests written
+
+For the functions we chose all-uses is equivalent to all-def-use paths, which means we have to test all the paths in all the tables we created for all the functions.
+
+For `fileName` the following tests were created:
+
+- one where `path` is `"/test/path/"`, this covers pair 1 for the `ind` variable as well as pairs 1, 3, 5, 8, 9 and 10 for the `path` variable, the expected output is `"path"`;
+- another where `path` is `"/test/file"`, this covers pairs 4, 6 and 7 for the `path` variable, the expected output is `"file"`;
+- another where `path` is `""`, this covers pair 2 for the `path` variable, the expected output is `""`.
+
+All the tests pass.
+
 ## `getRelativeDate` function
 
 ```java
 /**
  * This method returns a String representing the relative date by comparing
  * the Date being passed in to the date / time that it is right now.
- * 
+ *
  * @param date
  * @return String representing the relative date
  */
@@ -89,13 +101,16 @@ This function returns a String representation of the provided date relative to t
 | ------- | --- | --- | ------- |
 | 1       | 1   | 3   | <1,2,3> |
 
-
 ##### converted
 
 | pair id | def | use | path    |
 | ------- | --- | --- | ------- |
 | 1       | 2   | 3   | <2,3>   |
 | 2       | 2   | 4   | <2,3,4> |
+
+#### Tests written
+
+Like previously mentioned, all paths need to be covered. However, due to this function's simplicity, this can be accomplished with a single test. We created an instance of `Date` using the empty constructor, which corresponds to the current date. The expected output should be `"0000-00-00"`. The test fails because this function just returns a string representation of the provided date instead of calculating the relative date.
 
 ## `setSelectedItem` function
 
@@ -125,25 +140,25 @@ This function is part of a GUI related class and is used to set the selected ite
 
 ##### o
 
-| pair id | def | use     | path           |
-| ------- | --- | ------- | -------------- |
-| 1       | 1   | (2,T)   | <1,2,3>        |
-| 2       | 1   | (2,F)   | <1,2,4>        |
-| 3       | 1   | (4,T)   | <1,2,4,5>      |
-| 4       | 1   | (4,F)   | <1,2,4,6>      |
-| 5       | 1   | 5       | <1,2,4,5>      |
-| 6       | 1   | 8       | <1,2,4,6,7,8>  |
+| pair id | def | use   | path          |
+| ------- | --- | ----- | ------------- |
+| 1       | 1   | (2,T) | <1,2,3>       |
+| 2       | 1   | (2,F) | <1,2,4>       |
+| 3       | 1   | (4,T) | <1,2,4,5>     |
+| 4       | 1   | (4,F) | <1,2,4,6>     |
+| 5       | 1   | 5     | <1,2,4,5>     |
+| 6       | 1   | 8     | <1,2,4,6,7,8> |
 
 ##### placeholder
 
-| pair id | def | use     | path               |
-| ------- | --- | ------- | ------------------ |
-| 1       | 1   | 3       | <1,2,3>            |
-| 2       | 1   | 4       | <1,2,4>            |
+| pair id | def | use | path    |
+| ------- | --- | --- | ------- |
+| 1       | 1   | 3   | <1,2,3> |
+| 2       | 1   | 4   | <1,2,4> |
 
 ##### firstSelect
 
-| pair id | def | use     | path               |
-| ------- | --- | ------- | ------------------ |
-| 1       | 1   | (6,T)   | <1,2,4,6,7>        |
-| 2       | 1   | (6,F)   | <1,2,4,6>          |
+| pair id | def | use   | path        |
+| ------- | --- | ----- | ----------- |
+| 1       | 1   | (6,T) | <1,2,4,6,7> |
+| 2       | 1   | (6,F) | <1,2,4,6>   |

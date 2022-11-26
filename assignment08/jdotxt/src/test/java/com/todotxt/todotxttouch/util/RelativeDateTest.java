@@ -61,7 +61,8 @@ public class RelativeDateTest {
                                            // Between Partition #4 and Partition #2 Off-point
                 Arguments.of(after, afterString), // Partition #3; Between Partition #4 and Partition #3 Off-point
                 Arguments.of(before1Day, before1DayString), // Between Partition #1 and Partition #2
-                Arguments.of(after1Day, after1DayString) // Between Partition #2 and Partition #3
+                Arguments.of(after1Day, after1DayString), // Between Partition #2 and Partition #3
+                Arguments.of(new Date(), "0000-00-00")
         );
     }
 
