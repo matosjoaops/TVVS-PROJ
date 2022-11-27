@@ -162,3 +162,13 @@ This function is part of a GUI related class and is used to set the selected ite
 | ------- | --- | ----- | ----------- |
 | 1       | 1   | (6,T) | <1,2,4,6,7> |
 | 2       | 1   | (6,F) | <1,2,4,6>   |
+
+#### Tests written
+
+Like previously mentioned, all paths need to be covered. To satisfy this requirement, the following tests were created:
+
+- `o` is null. This covers the pair 1 for the `o` variable and pair 1 for the `firstSelected` variable. The expected result is that the selected item is set to the `placeholder` value;
+- `placeholder` is equal to `o`. This covers pairs 2, 3 and 5 for the `o` variable and pair 2 for the `placeholder` variable. The expected result is that the selected item is set to the `o` value;
+- `firstSelect` is `true`. This covers pairs 4 and 6 for the `o` variable and pairs 1 and 2 for the `firstSelect` variable. The expected result is that `firstSelected` is set to `false` and the selected item is set to the `o` value.
+
+All tests pass.
