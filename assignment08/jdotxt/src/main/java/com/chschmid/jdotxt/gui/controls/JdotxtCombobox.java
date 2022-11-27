@@ -7,7 +7,7 @@ import java.util.Vector;
 public class JdotxtCombobox extends JComboBox<String> {
     private String placeholder;
     private Vector<String> sorts = new Vector<>();
-    private boolean firstSelect = true;
+    public boolean firstSelect = true;
     private String more = "More...";
 
     public JdotxtCombobox(String placeholder) {
