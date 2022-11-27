@@ -40,7 +40,7 @@ public class JdotxtCombobox extends JComboBox<String> {
         return more;
     }
 
-    class PlaceholderComboBoxModel<E> extends DefaultComboBoxModel<E> {
+    public class PlaceholderComboBoxModel<E> extends DefaultComboBoxModel<E> {
 
         public PlaceholderComboBoxModel(String placeholder, Vector<E> list) {
             super(list);
