@@ -111,7 +111,7 @@ public class TaskTest {
     @Test
     public void compareTask5() {
         Task task1 = new Task(testId1, testText1, testDate);
-        Task task2 = new Task(testId1, testText1, new Date());
+        Task task2 = new Task(testId1, testText1, new Date(100000000));
         assertNotEquals(task1, task2);
     }
 
