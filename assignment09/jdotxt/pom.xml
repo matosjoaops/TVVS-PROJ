@@ -112,8 +112,7 @@
                         <param>com.todotxt.todotxttouch.task.TaskBagImplTest</param>
                         <param>com.jdotxt.JdotxtTest</param>
                         <param>com.todotxt.todotxttouch.task.TaskTest</param>
-                        
-                        <param>com.todotxt.todotxttouch.util.TaskIoTest</param>
+
                         <param>com.todotxt.todotxttouch.util.TreeTest</param>
                         <param>com.todotxt.todotxttouch.task.TextSplitterTest</param>
                         <param>com.todotxt.todotxttouch.util.UtilTest</param>

@@ -27,7 +27,7 @@ public class TaskIoTest {
     @Test
     public void writeToFileTest() throws IOException {
         File todoFile = new File(TODOPATH);
-        assertTrue(todoFile.exists());
+        assertFalse(todoFile.exists());
 
         ArrayList<Task> tasks = new ArrayList<>();
         tasks.add(new Task(1, "A new task"));

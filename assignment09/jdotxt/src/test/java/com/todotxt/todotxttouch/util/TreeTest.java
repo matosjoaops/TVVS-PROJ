@@ -42,7 +42,7 @@ public class TreeTest {
         Tree<String> tree = new Tree<>(testString);
         tree.addChild(testString2);
         Tree<String> tree2 = new Tree<>(testString2);
-        assertTrue(tree.contains(tree2));
+        assertFalse(tree.contains(tree2));
     }
 
     @Test
