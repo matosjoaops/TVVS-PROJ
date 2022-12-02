@@ -16,7 +16,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <surefire.plugin.version>3.0.0-M7</surefire.plugin.version>
         <jacoco.plugin.version>0.8.8</jacoco.plugin.version>
-        <pitest.plugin.version>1.9.11</pitest.plugin.version>
+        <pitest.plugin.version>1.10.0</pitest.plugin.version>
 
         <!-- JUnit related -->
         <junit.jupiter.version>5.9.1</junit.jupiter.version>
@@ -95,7 +95,7 @@
             <plugin>
                 <groupId>org.pitest</groupId>
                 <artifactId>pitest-maven</artifactId>
-                <version>1.9.11</version>
+                <version>${pitest.plugin.version}</version>
                 <dependencies>
                     <!-- The following dependency must be included to support JUnit 5 -->
                     <dependency>
@@ -159,7 +159,9 @@
                 </dependency>
                 </dependencies>
                 <configuration>
-                <trimStackTrace>false</trimStackTrace>
+                    <trimStackTrace>false</trimStackTrace>
+                    <forkCount>3</forkCount>
+                    <reuseForks>true</reuseForks>
                 </configuration>
             </plugin>
 
