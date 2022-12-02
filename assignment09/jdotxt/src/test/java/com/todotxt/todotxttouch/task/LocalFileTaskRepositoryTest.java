@@ -1,6 +1,5 @@
 package com.todotxt.todotxttouch.task;
 
-import com.todotxt.todotxttouch.TodoException;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -64,7 +63,7 @@ public class LocalFileTaskRepositoryTest {
         assertTrue(findStringInFile(todoString, todoFile));
     }
 
-    @Test(expected = TodoException.class)
+    @Test()
     public void load1() {
         LocalFileTaskRepository repository = new LocalFileTaskRepository();
 
@@ -72,6 +71,8 @@ public class LocalFileTaskRepositoryTest {
         file.delete();
 
         repository.load();
+
+        assertTrue(file.exists());
     }
 
     @Test
@@ -82,10 +83,10 @@ public class LocalFileTaskRepositoryTest {
         fileWriter.write("afdaf");
 
         ArrayList<Task> tasks = repository.load();
-        assertEquals(tasks.size(), 1);
+        assertEquals(tasks.size(), 0);
     }
 
-    @Test(expected = TodoException.class)
+    @Test()
     public void loadDoneTasks1() {
         LocalFileTaskRepository repository = new LocalFileTaskRepository();
 
@@ -93,6 +94,8 @@ public class LocalFileTaskRepositoryTest {
         file.delete();
 
         repository.loadDoneTasks();
+
+        assertFalse(file.exists());
     }
 
     @Test
@@ -103,7 +106,7 @@ public class LocalFileTaskRepositoryTest {
         fileWriter.write("afdaf");
 
         ArrayList<Task> tasks = repository.loadDoneTasks();
-        assertEquals(tasks.size(), 1);
+        assertEquals(tasks.size(), 0);
     }
 
     @Test

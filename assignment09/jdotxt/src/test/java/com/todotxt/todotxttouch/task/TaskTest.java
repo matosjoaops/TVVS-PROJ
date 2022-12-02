@@ -634,7 +634,7 @@ public class TaskTest {
         Task task = new Task(testId1, testText1);
         task.markComplete(testDate);
         String fileFormat = task.inFileFormatHeaderNoDate();
-        assertEquals(fileFormat, "x 1970-01-01 " + testText1);
+        assertEquals(fileFormat, "x 1970-01-01 ");
     }
 
     @Test
@@ -642,7 +642,7 @@ public class TaskTest {
         Task task = new Task(testId1, testText1);
         task.setPriority(Priority.A);
         String fileFormat = task.inFileFormatHeaderNoDate();
-        assertEquals(fileFormat, "A " + testText1);
+        assertEquals(fileFormat, "(A) ");
     }
 
     @Test
@@ -650,7 +650,7 @@ public class TaskTest {
         Task task = new Task(testId1, testText1, testDate);
         task.markComplete(testDate);
         String fileFormat = task.inFileFormatHeader();
-        assertEquals(fileFormat, "x 1970-01-01 1970-01-01 " + testText1);
+        assertEquals(fileFormat, "x 1970-01-01 1970-01-01 ");
     }
 
     @Test

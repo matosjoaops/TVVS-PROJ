@@ -9,18 +9,18 @@ import java.io.File;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 public class JdotxtTest {
     private static final String DEFAULTDIR = System.getProperty("user.home") + File.separator + "jdotxt";
     private static final String TODOPATH = DEFAULTDIR + File.separator + "todo.txt";
 
-    @Test
+    @Test(expected = NullPointerException.class)
     public void jdotxtTest() {
         Jdotxt.main(null);
 
         File todoFile = new File(TODOPATH);
-        assertTrue(todoFile.exists());
+        assertFalse(todoFile.exists());
 
         ArrayList<Task> tasks = new ArrayList<>();
         tasks.add(new Task(1, "A new task"));
