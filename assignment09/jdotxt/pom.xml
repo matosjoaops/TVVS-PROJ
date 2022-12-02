@@ -106,8 +106,6 @@
                 </dependencies>
                 <configuration>
                     <excludedTestClasses>
-                        <param>com.todotxt.todotxttouch.util.RelativeDateTest</param>
-
                         <!--The one below this line should always be here-->
                         <param>com.jdotxt.gui.*</param>
                         <param>com.chschmid.jdotxt.gui.*</param>

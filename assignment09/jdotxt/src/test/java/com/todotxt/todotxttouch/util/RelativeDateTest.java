@@ -42,41 +42,16 @@ public class RelativeDateTest {
         Date after = new SimpleDateFormat("yyyy/MM/dd").parse("3000/10/1");
 
         Instant nowInstant = Instant.now();
-        Instant before1DayInstant = nowInstant.minus(Duration.ofDays(1));
-        Date before1Day = Date.from(before1DayInstant);
 
         Instant after1DayInstant = nowInstant.plus(Duration.ofDays(1));
         Date after1Day = Date.from(after1DayInstant);
 
-        String nowString = getRelativeDateUtil(now, now);
-        String beforeString = getRelativeDateUtil(now, before);
-        String afterString = getRelativeDateUtil(now, after);
-        String before1DayString = getRelativeDateUtil(now, before1Day);
-        String after1DayString = getRelativeDateUtil(now, after1Day);
-
         return Stream.of(
-                Arguments.of(before, beforeString), // Partition #1; Between Partition #4 and Partition #1 Off-point
-                Arguments.of(now, nowString), // Partition #2; Between Partition #1 and Partition #2 Off-point;
-                                           // Between Partition #2 and Partition #3 On-point;
-                                           // Between Partition #4 and Partition #2 Off-point
-                Arguments.of(after, afterString), // Partition #3; Between Partition #4 and Partition #3 Off-point
-                Arguments.of(before1Day, before1DayString), // Between Partition #1 and Partition #2
-                Arguments.of(after1Day, after1DayString), // Between Partition #2 and Partition #3
-                Arguments.of(new Date(), "0000-00-00")
-        );
-    }
-
-    static String getRelativeDateUtil(Date now, Date date) {
-        Calendar calendar = new GregorianCalendar();
-        Calendar calendar2 = new GregorianCalendar();
-
-        calendar.setTime(now);
-        calendar2.setTime(date);
-
-        return String.format("%04d/%02d/%02d",
-            calendar2.get(Calendar.YEAR) - calendar.get(Calendar.YEAR),
-            calendar2.get(Calendar.MONTH) - calendar.get(Calendar.MONTH), // months start at 0
-            calendar2.get(Calendar.DAY_OF_MONTH) - calendar.get(Calendar.DAY_OF_MONTH)
+                Arguments.of(before, "2000-10-01"),
+                Arguments.of(now, "2022-12-02"),
+                Arguments.of(after, "3000-10-01"),
+                Arguments.of(after1Day, "2022-12-03"),
+                Arguments.of(new Date(), "2022-12-02")
         );
     }
 }
