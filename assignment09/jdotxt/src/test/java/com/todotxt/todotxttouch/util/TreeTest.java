@@ -25,9 +25,10 @@ public class TreeTest {
     @Test
     public void addChild() {
         Tree<String> tree = new Tree<>(testString);
-        tree.addChild(testString2);
+        Tree<String> toAdd = new Tree<>(testString2);
+        tree.addChild(toAdd);
         Tree<String> child = tree.getChild(0);
-        assertEquals(child, tree);
+        assertEquals(child, toAdd);
     }
 
     @Test

@@ -113,9 +113,6 @@
                         <param>com.jdotxt.JdotxtTest</param>
                         <param>com.todotxt.todotxttouch.task.TaskTest</param>
 
-                        <param>com.todotxt.todotxttouch.util.TreeTest</param>
-                        <param>com.todotxt.todotxttouch.task.TextSplitterTest</param>
-                        <param>com.todotxt.todotxttouch.util.UtilTest</param>
                         <!--The one below this line should always be here-->
                         <param>com.jdotxt.gui.*</param>
                         <param>com.chschmid.jdotxt.gui.*</param>

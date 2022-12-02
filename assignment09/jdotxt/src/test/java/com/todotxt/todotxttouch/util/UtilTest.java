@@ -36,7 +36,7 @@ public class UtilTest {
 
     @Test
     public void nullString() {
-        assertThrows(Exception.class, () -> Util.prependString(new ArrayList<>(Arrays.asList("b")), null));//On-point between partitions 1 and 2 for prepend parameter
+        assertThrows(Exception.class, () -> Util.prependString(new ArrayList<>(Arrays.asList(null)), null));//On-point between partitions 1 and 2 for prepend parameter
     }
 
     static Stream<Arguments> prependProvider() {
