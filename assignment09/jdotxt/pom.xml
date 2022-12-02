@@ -120,6 +120,8 @@
                         <param>com.todotxt.todotxttouch.util.TreeTest</param>
                         <param>com.todotxt.todotxttouch.task.TextSplitterTest</param>
                         <param>com.todotxt.todotxttouch.util.UtilTest</param>
+                        <!--The one below this line should always be here-->
+                        <param>com.jdotxt.gui.controls.JdotxtComboboxTest</param>
                     </excludedTestClasses>
                     <mutators>
                         <mutator>CONDITIONALS_BOUNDARY</mutator>
