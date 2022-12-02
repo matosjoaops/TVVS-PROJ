@@ -16,7 +16,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <surefire.plugin.version>3.0.0-M7</surefire.plugin.version>
         <jacoco.plugin.version>0.8.8</jacoco.plugin.version>
-        <pitest.plugin.version>1.10.0</pitest.plugin.version>
+        <pitest.plugin.version>1.9.11</pitest.plugin.version>
 
         <!-- JUnit related -->
         <junit.jupiter.version>5.9.1</junit.jupiter.version>
@@ -95,9 +95,55 @@
             <plugin>
                 <groupId>org.pitest</groupId>
                 <artifactId>pitest-maven</artifactId>
-                <version>${pitest.plugin.version}</version>
+                <version>1.9.11</version>
+                <dependencies>
+                    <!-- The following dependency must be included to support JUnit 5 -->
+                    <dependency>
+                        <groupId>org.pitest</groupId>
+                        <artifactId>pitest-junit5-plugin</artifactId>
+                        <version>1.1.0</version>
+                    </dependency>
+                </dependencies>
                 <configuration>
-                    <fullMutationMatrix>true</fullMutationMatrix>
+                    <excludedTestClasses>
+                        <param>com.todotxt.todotxttouch.util.RelativeDateTest</param>
+                        <param>com.todotxt.todotxttouch.task.LocalFileTaskRepositoryTest</param>
+                        <param>com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest</param>
+                        <param>com.todotxt.todotxttouch.task.TaskBagImplTest</param>
+                        <param>com.jdotxt.JdotxtTest</param>
+                        <param>com.todotxt.todotxttouch.task.PriorityTest</param>
+                        <param>com.todotxt.todotxttouch.task.TaskTest</param>
+                        <param>com.todotxt.todotxttouch.task.TextSplitterTest</param>
+                        <param>com.todotxt.todotxttouch.util.PathTest</param>
+                        <param>com.todotxt.todotxttouch.util.StringsTest</param>
+                        <param>com.todotxt.todotxttouch.util.TaskIoTest</param>
+                        <param>com.todotxt.todotxttouch.util.TreeTest</param>
+                        <param>com.todotxt.todotxttouch.task.TextSplitterTest</param>
+                        <param>com.todotxt.todotxttouch.util.UtilTest</param>
+                    </excludedTestClasses>
+                    <mutators>
+                        <mutator>CONDITIONALS_BOUNDARY</mutator>
+                        <mutator>INCREMENTS</mutator>
+                        <mutator>INVERT_NEGS</mutator>
+                        <mutator>MATH</mutator>
+                        <mutator>NEGATE_CONDITIONALS</mutator>
+                        <mutator>VOID_METHOD_CALLS</mutator>
+                        <mutator>EMPTY_RETURNS</mutator>
+                        <mutator>FALSE_RETURNS</mutator>
+                        <mutator>TRUE_RETURNS</mutator>
+                        <mutator>NULL_RETURNS</mutator>
+                        <mutator>PRIMITIVE_RETURNS</mutator>
+                        <mutator>CONSTRUCTOR_CALLS</mutator>
+                        <mutator>INLINE_CONSTS</mutator>
+                        <mutator>NON_VOID_METHOD_CALLS</mutator>
+                        <mutator>REMOVE_CONDITIONALS</mutator>
+                        <mutator>REMOVE_INCREMENTS</mutator>
+                        <mutator>EXPERIMENTAL_ARGUMENT_PROPAGATION</mutator>
+                        <mutator>EXPERIMENTAL_BIG_INTEGER</mutator>
+                        <mutator>EXPERIMENTAL_NAKED_RECEIVER</mutator>
+                        <mutator>EXPERIMENTAL_MEMBER_VARIABLE</mutator>
+                        <mutator>EXPERIMENTAL_SWITCH</mutator>
+                    </mutators>
                 </configuration>
             </plugin>
 
