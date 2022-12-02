@@ -78,7 +78,12 @@ public class PriorityTest {
                 Priority.B,
                 Priority.A
         };
-        assertEquals(expected, Priority.reverseValues());
+
+        Priority[] result = Priority.reverseValues();
+
+        for (int i  = 0; i < expected.length; i++) {
+            assertEquals(expected[i], result[i]);
+        }
     }
 
     @Test
