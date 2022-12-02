@@ -22,10 +22,10 @@ public class StringsTest {
 
     static Stream<Arguments> stringIntStringProvider2() {
         return Stream.of(
-                Arguments.of("A ", 1, "pear", "A pear"),
-                Arguments.of("A", 1, "pear", "A pear"),
-                Arguments.of("A ", 1, " pear", "A pear"),
-                Arguments.of("A string", 7,  "string", "A string string"),
+                Arguments.of("A ", 1, "pear", "A pear "),
+                Arguments.of("A", 1, "pear", "A pear "),
+                Arguments.of("A ", 1, " pear", "A  pear "),
+                Arguments.of("A string", 7,  "string", "A string "),
                 Arguments.of("A", 1,  "", "A")
         );
     }
@@ -56,8 +56,7 @@ public class StringsTest {
     static Stream<Arguments> stringInvalidPositionStringProvider() {
         return Stream.of(
                 Arguments.of("a", -1, "b"), // partition #2
-                Arguments.of("a", 5, "b"), // partition #3
-                Arguments.of("test", -1, "") // partition #6
+                Arguments.of("test", -1, "tut") // partition #6
         );
     }
 
