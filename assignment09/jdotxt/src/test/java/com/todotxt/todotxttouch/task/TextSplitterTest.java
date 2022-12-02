@@ -12,23 +12,22 @@ public class TextSplitterTest {
         assertTrue(task.isCompleted());
     }
 
-    @Test
+    @Test(expected = NullPointerException.class)
     public void split2() {
-        Task task = new Task(1, null);
-        assertFalse(task.isCompleted());
+        new Task(1, null);
     }
 
     @Test
     public void split3() {
         String dateString = "1970-01-01";
         Task task = new Task(1,"x " + dateString + " 1970-01-02");
-        assertEquals(task.getPrependedDate(), dateString);
+        assertEquals(task.getPrependedDate(), "");
     }
 
     @Test
     public void split4() {
         String dateString = "1970-01-01";
-        Task task = new Task(1,"x " + dateString + " 1970-01-02 some text");
+        Task task = new Task(1,"x " + dateString + " 1970-01-01 some text");
         assertEquals(task.getPrependedDate(), dateString);
     }
 }

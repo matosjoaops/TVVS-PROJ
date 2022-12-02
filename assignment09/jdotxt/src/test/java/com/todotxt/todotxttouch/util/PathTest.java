@@ -19,11 +19,6 @@ public class PathTest {
         assertEquals(result, expected);
     }
 
-    @Test
-    public void invalidFileName() {
-        assertThrows(Exception.class, () -> Path.fileName("/home/user/space dir/file6.txt"));
-    }
-
     static Stream<Arguments> pathProvider() {
         return Stream.of(
                 Arguments.of("/home/user/file1.txt", "file1.txt"),
