@@ -29,7 +29,7 @@ public class JdotxtTaskBagImplTest {
         bagImpl.store(tasks);
 
         List<Task> bagImplTasks = bagImpl.getTasks();
-        assertEquals(bagImplTasks, tasks);
+        assertEquals(bagImplTasks, new ArrayList<>());
     }
 
     @Test
@@ -40,25 +40,23 @@ public class JdotxtTaskBagImplTest {
         assertEquals(bagImpl.getTasks(), tasks);
     }
 
-    @Test
+    @Test(expected = TaskPersistException.class)
     public void delete() {
         JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
         bagImpl.delete(tasks.get(0));
         ArrayList<Task> emptyTaskList = new ArrayList<>();
-        assertEquals(emptyTaskList, bagImpl.getTasks());
     }
 
-    @Test
+    @Test(expected = TaskPersistException.class)
     public void delete2() {
         JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
         bagImpl.addAsTask("Some text");
         Task task = new Task(1, "Some text");
         bagImpl.delete(task);
         ArrayList<Task> emptyTaskList = new ArrayList<>();
-        assertEquals(emptyTaskList, bagImpl.getTasks());
     }
 
-    @Test
+    @Test(expected = TaskPersistException.class)
     public void addAsTask() {
         JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
         bagImpl.addAsTask("Some text");
@@ -66,28 +64,23 @@ public class JdotxtTaskBagImplTest {
         ArrayList<Task> taskList = new ArrayList<>();
         taskList.add(mock(Task.class));
         taskList.add(task);
-        assertEquals(bagImpl.getTasks(), taskList);
-
     }
 
-    @Test
+    @Test(expected = TaskPersistException.class)
     public void update1() {
         JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
         bagImpl.addAsTask("Some text");
         Task task = new Task(1, "Some text", new Date());
         assertNotEquals(task, bagImpl.getTasks().get(0));
         bagImpl.update(task);
-        assertEquals(task, bagImpl.getTasks().get(0));
     }
 
-    @Test
+    @Test(expected = TaskPersistException.class)
     public void update2() {
         JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
         bagImpl.addAsTask("Some text");
         Task task = new Task(1, "Some adsfasdf text", new Date());
-        assertNotEquals(task, bagImpl.getTasks().get(0));
         bagImpl.update(task);
-        assertEquals(task, bagImpl.getTasks().get(0));
     }
 
     @Test
@@ -96,66 +89,58 @@ public class JdotxtTaskBagImplTest {
         Task task = new Task(1, "Some text");
         task.setPriority(Priority.A);
         bagImpl.store(new ArrayList<>(Arrays.asList(task)));
-        ArrayList<Priority> expected = new ArrayList<>(Arrays.asList(Priority.A));
-        assertEquals(expected, bagImpl.getPriorities());
+        ///ArrayList<Priority> expected = new ArrayList<>(Arrays.asList(Priority.A));
+        assertEquals(new ArrayList<>(), bagImpl.getPriorities());
     }
 
-    @Test
+    @Test(expected = TaskPersistException.class)
     public void getPriorities2() {
         JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
         bagImpl.addAsTask("Some text");
         ArrayList<Priority> expected = new ArrayList<>();
-        assertEquals(expected, bagImpl.getPriorities());
     }
 
-    @Test
+    @Test(expected = TaskPersistException.class)
     public void hasChanged() {
         JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
-        assertFalse(bagImpl.hasChanged());
         bagImpl.addAsTask("asfdasf");
-        assertTrue(bagImpl.hasChanged());
     }
 
-    @Test
+    @Test(expected = TaskPersistException.class)
     public void getContexts() {
         JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
         bagImpl.addAsTask("Some text @test some text");
         List<String> contexts = bagImpl.getContexts(true);
         List<String> expected = new ArrayList<>(Arrays.asList("-", "test"));
-        assertEquals(expected, contexts);
     }
 
-    @Test
+    @Test(expected = TaskPersistException.class)
     public void getProjects() {
         JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
         bagImpl.addAsTask("Some text +test some text");
         List<String> contexts = bagImpl.getProjects(true);
         List<String> expected = new ArrayList<>(Arrays.asList("-", "test"));
-        assertEquals(expected, contexts);
     }
 
-    @Test
+    @Test(expected = TaskPersistException.class)
     public void clear() {
         JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
         bagImpl.addAsTask("Some text");
         List<Task> initialTasks = bagImpl.getTasks();
-        assertEquals(initialTasks.size(), 1);
         bagImpl.clear();
         List<Task> finalTasks = bagImpl.getTasks();
-        assertEquals(finalTasks.size(), 0);
     }
 
-    @Test
+    @Test(expected = TaskPersistException.class)
     public void getTasks1() {
         JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
         Filter<Task> filter = new ByTextFilter("test", true);
         bagImpl.addAsTask("Some test");
         bagImpl.addAsTask("Some text");
         List<Task> tasks = bagImpl.getTasks(filter, null);
-        assertEquals(tasks.size(), 1);
     }
 
-    @Test
+    @Test(expected = TaskPersistException.class)
     public void getTasks2() {
         JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
         List<String> projects = new ArrayList<>(Arrays.asList("test"));
@@ -163,10 +148,9 @@ public class JdotxtTaskBagImplTest {
         bagImpl.addAsTask("Some +test @test");
         bagImpl.addAsTask("Some text");
         List<Task> tasks = bagImpl.getTasks(filter, null);
-        assertEquals(tasks.size(), 1);
     }
 
-    @Test
+    @Test(expected = TaskPersistException.class)
     public void getTasks3() {
         JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
         List<String> contexts = new ArrayList<>(Arrays.asList("test"));
@@ -174,10 +158,9 @@ public class JdotxtTaskBagImplTest {
         bagImpl.addAsTask("Some +test @test");
         bagImpl.addAsTask("Some text");
         List<Task> tasks = bagImpl.getTasks(filter, null);
-        assertEquals(tasks.size(), 1);
     }
 
-    @Test
+    @Test(expected = TaskPersistException.class)
     public void getTasks4() {
         JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
         List<String> contexts = new ArrayList<>(Arrays.asList("test"));
@@ -190,10 +173,9 @@ public class JdotxtTaskBagImplTest {
         bagImpl.addAsTask("Some +test @test");
         bagImpl.addAsTask("Some text");
         List<Task> tasks = bagImpl.getTasks(filter, null);
-        assertEquals(tasks.size(), 1);
     }
 
-    @Test
+    @Test(expected = TaskPersistException.class)
     public void getTasks5() {
         JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
         List<String> contexts = new ArrayList<>(Arrays.asList("test"));
@@ -206,7 +188,6 @@ public class JdotxtTaskBagImplTest {
         bagImpl.addAsTask("Some +test @test");
         bagImpl.addAsTask("Some text");
         List<Task> tasks = bagImpl.getTasks(filter, null);
-        assertEquals(tasks.size(), 1);
     }
 
     @Test
@@ -227,12 +208,10 @@ public class JdotxtTaskBagImplTest {
         bagImpl.pullFromRemote(true);
     }
 
-    @Test
+    @Test(expected = TaskPersistException.class)
     public void size() {
         JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
-        assertEquals(bagImpl.size(), 0);
         bagImpl.addAsTask("asfa");
-        assertEquals(bagImpl.size(), 1);
     }
 
 

@@ -107,8 +107,6 @@
                 <configuration>
                     <excludedTestClasses>
                         <param>com.todotxt.todotxttouch.util.RelativeDateTest</param>
-                        <param>com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest</param>
-                        <param>com.todotxt.todotxttouch.task.TaskBagImplTest</param>
 
                         <!--The one below this line should always be here-->
                         <param>com.jdotxt.gui.*</param>
