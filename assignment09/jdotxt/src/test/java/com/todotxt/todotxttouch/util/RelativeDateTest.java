@@ -41,17 +41,23 @@ public class RelativeDateTest {
         Date before = new SimpleDateFormat("yyyy/MM/dd").parse("2000/10/1");
         Date after = new SimpleDateFormat("yyyy/MM/dd").parse("3000/10/1");
 
+        String dateFormat = "yyyy-MM-dd";
+        SimpleDateFormat formatter = new SimpleDateFormat(dateFormat);
+
         Instant nowInstant = Instant.now();
 
         Instant after1DayInstant = nowInstant.plus(Duration.ofDays(1));
         Date after1Day = Date.from(after1DayInstant);
 
+        String expectedAfter1Day = formatter.format(after1Day);
+        String expectedNow = formatter.format(now);
+
         return Stream.of(
                 Arguments.of(before, "2000-10-01"),
-                Arguments.of(now, "2022-12-02"),
+                Arguments.of(now, expectedNow),
                 Arguments.of(after, "3000-10-01"),
-                Arguments.of(after1Day, "2022-12-03"),
-                Arguments.of(new Date(), "2022-12-02")
+                Arguments.of(after1Day, expectedAfter1Day),
+                Arguments.of(new Date(), expectedNow)
         );
     }
 }

@@ -2,6 +2,8 @@ package com.todotxt.todotxttouch.util;
 
 import com.todotxt.todotxttouch.TodoException;
 import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -74,9 +76,10 @@ public class UtilTest {
     }
 
     @Test
-    public void copyExistingFileTest() {
+    public void copyExistingFileTest() throws IOException {
         File origFile = new File(TODOPATH);
         File newFile = new File("./new_file.txt");
+        origFile.createNewFile();
 
         assertTrue(origFile.exists());
         Util.copyFile(origFile, newFile, false);

@@ -15,7 +15,7 @@ public class JdotxtTest {
     private static final String DEFAULTDIR = System.getProperty("user.home") + File.separator + "jdotxt";
     private static final String TODOPATH = DEFAULTDIR + File.separator + "todo.txt";
 
-    @Test(expected = NullPointerException.class)
+    @Test(expected = AssertionError.class)
     public void jdotxtTest() {
         Jdotxt.main(null);
 

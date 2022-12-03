@@ -46,34 +46,34 @@ public class TaskBagImplTest {
         TaskBagImpl bagImpl = new TaskBagImpl(repository);
         bagImpl.delete(tasks.get(0));
         ArrayList<Task> emptyTaskList = new ArrayList<>();
+        assertEquals(emptyTaskList, bagImpl.getTasks());
     }
 
-    @Test(expected = TaskPersistException.class)
+    @Test
     public void delete2() {
         TaskBagImpl bagImpl = new TaskBagImpl(repository);
         bagImpl.addAsTask("Some text");
         Task task = new Task(1, "Some text");
         bagImpl.delete(task);
         ArrayList<Task> emptyTaskList = new ArrayList<>();
+        assertEquals(emptyTaskList, bagImpl.getTasks());
     }
 
-    @Test(expected = TaskPersistException.class)
+    @Test
     public void addAsTask() {
         TaskBagImpl bagImpl = new TaskBagImpl(repository);
         bagImpl.addAsTask("Some text");
-        Task task = new Task(1, "Some text");
-        ArrayList<Task> taskList = new ArrayList<>();
-        taskList.add(mock(Task.class));
-        taskList.add(task);
-
+        assertEquals(1, bagImpl.getTasks().size());
     }
 
-    @Test(expected = TaskPersistException.class)
+    @Test
     public void update1() {
         TaskBagImpl bagImpl = new TaskBagImpl(repository);
         bagImpl.addAsTask("Some text");
         Task task = new Task(1, "Some text", new Date());
+        assertNotEquals(task, bagImpl.getTasks().get(0));
         bagImpl.update(task);
+        assertEquals(task, bagImpl.getTasks().get(0));
     }
 
     @Test(expected = TaskPersistException.class)
@@ -83,6 +83,7 @@ public class TaskBagImplTest {
         Task task = new Task(1, "Some adsfasdf text", new Date());
         assertNotEquals(task, bagImpl.getTasks().get(0));
         bagImpl.update(task);
+        assertEquals(task, bagImpl.getTasks().get(0));
     }
 
     @Test
@@ -91,55 +92,63 @@ public class TaskBagImplTest {
         Task task = new Task(1, "Some text");
         task.setPriority(Priority.A);
         bagImpl.store(new ArrayList<>(Arrays.asList(task)));
-        ArrayList<Priority> expected = new ArrayList<>(Arrays.asList(Priority.A));
-        assertEquals(new ArrayList<>(), bagImpl.getPriorities());
+        ArrayList<Priority> expected = new ArrayList<>();
+        assertEquals(expected, bagImpl.getPriorities());
     }
 
-    @Test(expected = TaskPersistException.class)
+    @Test
     public void getPriorities2() {
         TaskBagImpl bagImpl = new TaskBagImpl(repository);
         bagImpl.addAsTask("Some text");
-        ArrayList<Priority> expected = new ArrayList<>();
+        ArrayList<Priority> expected = new ArrayList<>(Arrays.asList(Priority.NONE));
+        assertEquals(expected, bagImpl.getPriorities());
     }
 
-    @Test(expected = TaskPersistException.class)
+    @Test
     public void hasChanged() {
         TaskBagImpl bagImpl = new TaskBagImpl(repository);
+        assertFalse(bagImpl.hasChanged());
         bagImpl.addAsTask("asfdasf");
+        assertTrue(bagImpl.hasChanged());
     }
 
-    @Test(expected = TaskPersistException.class)
+    @Test
     public void getContexts() {
         TaskBagImpl bagImpl = new TaskBagImpl(repository);
         bagImpl.addAsTask("Some text @test some text");
         List<String> contexts = bagImpl.getContexts(true);
         List<String> expected = new ArrayList<>(Arrays.asList("-", "test"));
+        assertEquals(expected, contexts);
     }
 
-    @Test(expected = TaskPersistException.class)
+    @Test
     public void getProjects() {
         TaskBagImpl bagImpl = new TaskBagImpl(repository);
         bagImpl.addAsTask("Some text +test some text");
         List<String> contexts = bagImpl.getProjects(true);
         List<String> expected = new ArrayList<>(Arrays.asList("-", "test"));
+        assertEquals(expected, contexts);
     }
 
-    @Test(expected = TaskPersistException.class)
+    @Test
     public void clear() {
         TaskBagImpl bagImpl = new TaskBagImpl(repository);
         bagImpl.addAsTask("Some text");
         List<Task> initialTasks = bagImpl.getTasks();
+        assertEquals(initialTasks.size(), 1);
         bagImpl.clear();
         List<Task> finalTasks = bagImpl.getTasks();
+        assertEquals(finalTasks.size(), 0);
     }
 
-    @Test(expected = TaskPersistException.class)
+    @Test
     public void getTasks() {
         TaskBagImpl bagImpl = new TaskBagImpl(repository);
         Filter<Task> filter = new ByTextFilter("test", true);
         bagImpl.addAsTask("Some test");
         bagImpl.addAsTask("Some text");
         List<Task> tasks = bagImpl.getTasks(filter, null);
+        assertEquals(tasks.size(), 1);
     }
 
     @Test
@@ -158,9 +167,11 @@ public class TaskBagImplTest {
         bagImpl.pushToRemote(true);
     }
 
-    @Test(expected = TaskPersistException.class)
+    @Test
     public void size() {
         TaskBagImpl bagImpl = new TaskBagImpl(repository);
+        assertEquals(bagImpl.size(), 0);
         bagImpl.addAsTask("asfa");
+        assertEquals(bagImpl.size(), 1);
     }
 }

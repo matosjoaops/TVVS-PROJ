@@ -160,8 +160,6 @@
                 </dependencies>
                 <configuration>
                     <trimStackTrace>false</trimStackTrace>
-                    <forkCount>3</forkCount>
-                    <reuseForks>true</reuseForks>
                 </configuration>
             </plugin>
 

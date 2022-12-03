@@ -43,9 +43,11 @@ public class RelativeDate {
 	}
 	
 	public static String getRelativeDate(Calendar d1, Calendar d2) {
-		long diff = d1.getTimeInMillis() - d2.getTimeInMillis();
+		long d1Time = d1.getTimeInMillis();
+		long d2Time = d2.getTimeInMillis();
+		long diff = d1Time - d2Time;
 
-		if (diff < 0 || diff >= RelativeDate.YEAR) {
+		if (diff <= 0 || diff >= RelativeDate.YEAR) {
 			// future or far in past,
 			// just return yyyy-mm-dd
 			return sdf.format(d2.getTime());
