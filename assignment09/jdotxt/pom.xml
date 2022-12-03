@@ -107,8 +107,8 @@
                 <configuration>
                     <timeoutConstant>1</timeoutConstant>
                     <excludedTestClasses>
-                        <param>com.jdotxt.gui.*</param>
-                        <param>com.chschmid.jdotxt.gui.*</param>
+                        <param>com.jdotxt.gui.**</param>
+                        <param>com.chschmid.jdotxt.gui.**</param>
                     </excludedTestClasses>
                     <mutators>
                         <mutator>CONDITIONALS_BOUNDARY</mutator>

@@ -82,6 +82,7 @@ public class UtilTest {
         origFile.createNewFile();
 
         assertTrue(origFile.exists());
+        newFile.delete();
         Util.copyFile(origFile, newFile, false);
 
         newFile.delete();
