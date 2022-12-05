@@ -105,6 +105,10 @@
                     </dependency>
                 </dependencies>
                 <configuration>
+                    <threads>2</threads>
+                    <withHistory>true</withHistory>
+                    <historyInputFile>./.fastermutationtesting</historyInputFile>
+                    <historyOutputFile>./.fastermutationtesting</historyOutputFile>
                     <timeoutConstant>1</timeoutConstant>
                     <excludedClasses>
                         <param>com.jdotxt.gui.*</param>
