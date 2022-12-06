@@ -113,10 +113,12 @@
                     <excludedClasses>
                         <param>com.jdotxt.gui.*</param>
                         <param>com.chschmid.jdotxt.gui.*</param>
+                        <param>com.chschmid.jdotxt.Jdotxt</param>
                     </excludedClasses>
                     <excludedTestClasses>
                         <param>com.jdotxt.gui.*</param>
                         <param>com.chschmid.jdotxt.gui.*</param>
+                        <param>com.chschmid.jdotxt.Jdotxt</param>
                     </excludedTestClasses>
                     <mutators>
                         <mutator>CONDITIONALS_BOUNDARY</mutator>

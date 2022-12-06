@@ -10,6 +10,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.io.*;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,6 +24,9 @@ public class UtilTest {
     private final String DEFAULTDIR = System.getProperty("user.home") + File.separator + "jdotxt";
     private final String TODOPATH = DEFAULTDIR + File.separator + "todo.txt";
     private final String DONEPATH = DEFAULTDIR + File.separator + "done.txt";
+
+    private final String TESTPATH = "." + File.separator + "testFile.txt";
+    private final String TESTPATH2 = "." + File.separator + "testFile2.txt";
 
     @ParameterizedTest
     @MethodSource("prependProvider")
@@ -151,6 +155,29 @@ public class UtilTest {
 
         Util.writeFile(inputStream, todoFile);
         assertTrue(todoFile.exists());
+    }
+
+    @Test
+    public void writeFileTest2() throws IOException {
+        File testFile = new File(TESTPATH);
+        testFile.createNewFile();
+
+        FileOutputStream outputStream = new FileOutputStream(testFile);
+        outputStream.write("test".getBytes());
+        outputStream.close();
+
+        InputStream inputStream = new FileInputStream(testFile);
+
+        File testFile2 = new File(TESTPATH2);
+        testFile2.createNewFile();
+        Util.writeFile(inputStream, testFile2);
+
+        String testFile2Content = Files.readString(Path.of(TESTPATH2));
+
+        assertTrue(testFile2Content.contains("test"));
+
+        testFile.delete();
+        testFile2.delete();
     }
 
     @Test
