@@ -78,7 +78,7 @@ public class FileModifiedWatcher {
 		fileModifiedListenerList.remove(fileModifiedListener);
 	}
 
-	private void fireFileModified() {
+	public void fireFileModified() {
 		for (int i = fileModifiedListenerList.size() - 1; i >= 0; i--)
 			fileModifiedListenerList.get(i).fileModified();
 	}
