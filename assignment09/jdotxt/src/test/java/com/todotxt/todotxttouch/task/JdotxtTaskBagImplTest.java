@@ -19,12 +19,6 @@ public class JdotxtTaskBagImplTest {
     ArrayList<Task> tasks = new ArrayList<>(Arrays.asList(mock(Task.class)));
 
     @Test
-    public void createBagImpl() {
-        JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
-        assertNotNull(bagImpl);
-    }
-
-    @Test
     public void store() {
         JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
         bagImpl.store(tasks);
@@ -60,13 +54,6 @@ public class JdotxtTaskBagImplTest {
     }
 
     @Test
-    public void addAsTask() {
-        JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
-        bagImpl.addAsTask("Some text");
-        assertEquals(1, bagImpl.getTasks().size());
-    }
-
-    @Test
     public void update1() {
         JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
         bagImpl.addAsTask("Some text");
@@ -87,17 +74,7 @@ public class JdotxtTaskBagImplTest {
     }
 
     @Test
-    public void getPriorities1() {
-        JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
-        Task task = new Task(1, "Some text");
-        task.setPriority(Priority.A);
-        bagImpl.store(new ArrayList<>(Arrays.asList(task)));
-        ArrayList<Priority> expected = new ArrayList<>();
-        assertEquals(expected, bagImpl.getPriorities());
-    }
-
-    @Test
-    public void getPriorities2() {
+    public void getPriorities() {
         JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
         bagImpl.addAsTask("Some text");
         ArrayList<Priority> expected = new ArrayList<>(Arrays.asList(Priority.NONE));
@@ -154,28 +131,6 @@ public class JdotxtTaskBagImplTest {
     @Test
     public void getTasks2() {
         JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
-        List<String> projects = new ArrayList<>(Arrays.asList("test"));
-        Filter<Task> filter = new ByProjectFilter(projects);
-        bagImpl.addAsTask("Some +test @test");
-        bagImpl.addAsTask("Some text");
-        List<Task> tasks = bagImpl.getTasks(filter, null);
-        assertEquals(tasks.size(), 1);
-    }
-
-    @Test
-    public void getTasks3() {
-        JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
-        List<String> contexts = new ArrayList<>(Arrays.asList("test"));
-        Filter<Task> filter = new ByContextFilter(contexts);
-        bagImpl.addAsTask("Some +test @test");
-        bagImpl.addAsTask("Some text");
-        List<Task> tasks = bagImpl.getTasks(filter, null);
-        assertEquals(tasks.size(), 1);
-    }
-
-    @Test
-    public void getTasks4() {
-        JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
         List<String> contexts = new ArrayList<>(Arrays.asList("test"));
         Filter<Task> contextFilter = new ByContextFilter(contexts);
         List<String> projects = new ArrayList<>(Arrays.asList("test"));
@@ -190,7 +145,7 @@ public class JdotxtTaskBagImplTest {
     }
 
     @Test
-    public void getTasks5() {
+    public void getTasks3() {
         JdotxtTaskBagImpl bagImpl = new JdotxtTaskBagImpl(repository);
         List<String> contexts = new ArrayList<>(Arrays.asList("test"));
         Filter<Task> contextFilter = new ByContextFilter(contexts);

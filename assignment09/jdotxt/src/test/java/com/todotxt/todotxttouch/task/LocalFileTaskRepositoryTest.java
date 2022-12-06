@@ -31,17 +31,6 @@ public class LocalFileTaskRepositoryTest {
         }
     }
 
-    @BeforeEach
-    public void clearDefaultDir() {
-        try {
-            File directory = new File(DEFAULTDIR);
-            Files.walk(directory.toPath())
-                    .filter(Files::isRegularFile)
-                    .map(Path::toFile)
-                    .forEach(File::delete);
-        } catch (IOException e) {}
-    }
-
     @Test
     public void archive() {
         LocalFileTaskRepository repository = new LocalFileTaskRepository();

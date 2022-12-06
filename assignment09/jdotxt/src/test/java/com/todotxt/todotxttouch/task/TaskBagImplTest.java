@@ -19,12 +19,6 @@ public class TaskBagImplTest {
     ArrayList<Task> tasks = new ArrayList<>(Arrays.asList(mock(Task.class)));
 
     @Test
-    public void createBagImpl() {
-        TaskBagImpl bagImpl = new TaskBagImpl(repository);
-        assertNotNull(bagImpl);
-    }
-
-    @Test
     public void store() {
         TaskBagImpl bagImpl = new TaskBagImpl(repository);
         bagImpl.store(tasks);
@@ -60,13 +54,6 @@ public class TaskBagImplTest {
     }
 
     @Test
-    public void addAsTask() {
-        TaskBagImpl bagImpl = new TaskBagImpl(repository);
-        bagImpl.addAsTask("Some text");
-        assertEquals(1, bagImpl.getTasks().size());
-    }
-
-    @Test
     public void update1() {
         TaskBagImpl bagImpl = new TaskBagImpl(repository);
         bagImpl.addAsTask("Some text");
@@ -87,17 +74,7 @@ public class TaskBagImplTest {
     }
 
     @Test
-    public void getPriorities1() {
-        TaskBagImpl bagImpl = new TaskBagImpl(repository);
-        Task task = new Task(1, "Some text");
-        task.setPriority(Priority.A);
-        bagImpl.store(new ArrayList<>(Arrays.asList(task)));
-        ArrayList<Priority> expected = new ArrayList<>();
-        assertEquals(expected, bagImpl.getPriorities());
-    }
-
-    @Test
-    public void getPriorities2() {
+    public void getPriorities() {
         TaskBagImpl bagImpl = new TaskBagImpl(repository);
         bagImpl.addAsTask("Some text");
         ArrayList<Priority> expected = new ArrayList<>(Arrays.asList(Priority.NONE));
