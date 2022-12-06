@@ -1,37 +1,31 @@
 package com.todotxt.todotxttouch.task;
 
 import org.junit.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TaskTest {
 
-    private final long testId1 = 1;
-    private final long testId2 = 2;
+    private final static long testId1 = 1;
+    private final static long testId2 = 2;
 
-    private final String testText1 = "Some text";
-    private final String testText2 = "Some other text";
+    private final static String testText1 = "Some text";
+    private final static String testText2 = "Some other text";
 
-    private final Date testDate = new Date(0);
-
-    @Test
-    public void createTask1() {
-        Task task = new Task(testId1, testText1);
-        long taskId = task.getId();
-        String taskText = task.getText();
-
-        assertEquals(taskId, 1);
-        assertEquals(taskText, "Some text");
-    }
+    private final static Date testDate = new Date(0);
 
     @Test
-    public void createTask2() {
+    public void createTask() {
         Task task = new Task();
         assertEquals(task.getId(), 0);
         assertEquals(task.getText(), "");
@@ -78,231 +72,113 @@ public class TaskTest {
         assertFalse(task.isCompleted());
     }
 
-    @Test
-    public void compareTask1() {
-        Task task1 = new Task(testId1, testText1);
-        Task task2 = new Task(testId2, testText2);
-        assertNotEquals(task1, task2);
+    @ParameterizedTest
+    @MethodSource("comparisonProvider")
+    public void compareTask(Task task1, Object task2, boolean equal) {
+        if (equal) assertEquals(task1, task2);
+        else assertNotEquals(task1, task2);
     }
 
-    @Test
-    public void compareTask2() {
-        Task task1 = new Task(testId1, testText1);
-        assertNotEquals(task1, null);
-    }
+    private static Stream<Arguments> comparisonProvider() throws NoSuchFieldException, IllegalAccessException {
+        Task simpleTask = new Task(testId1, testText1);
 
-    @Test
-    public void compareTask3() {
-        Task task1 = new Task(testId1, testText1);
-        Task task2 = new Task(testId1, testText1);
-        assertEquals(task1, task2);
-    }
+        Task completedTask = new Task(testId1, testText1);
+        completedTask.markComplete(testDate);
 
-    @Test
-    public void compareTask4() {
-        Task task1 = new Task(testId1, testText1);
-        Task task2 = new Task(testId1, testText1);
+        Task taskWithDate1 = new Task(testId1, testText1, testDate);
+        Task taskWithDate2 = new Task(testId1, testText1, new Date(100000000));
 
-        task1.markComplete(testDate);
+        Task taskWithCompletionDate1 = new Task(testId1, testText1);
+        Task taskWithCompletionDate2 = new Task(testId1, testText1);
+        taskWithCompletionDate1.markComplete(new Date());
+        taskWithCompletionDate2.markComplete(testDate);
 
-        assertNotEquals(task1, task2);
-    }
+        Task taskWithPriority = new Task(testId1, testText1);
+        taskWithPriority.setPriority(Priority.A);
 
-    @Test
-    public void compareTask5() {
-        Task task1 = new Task(testId1, testText1, testDate);
-        Task task2 = new Task(testId1, testText1, new Date(100000000));
-        assertNotEquals(task1, task2);
-    }
+        Task taskWithEmail = new Task(testId1, "example@email.com");
+        Task taskWithLink = new Task(testId1, "https://www.google.com");
+        Task taskWithRec = new Task(testId1, "rec:+9w");
+        Task taskWithAt = new Task(testId1, "Some text @test some text");
+        Task taskWithPlus = new Task(testId1, "Some text +test some text");
 
-    @Test
-    public void compareTask6() {
-        Task task1 = new Task(testId1, testText1);
-        Object object = new Object();
-        assertNotEquals(task1, object);
-    }
+        Task taskWithNullCompletionDate = new Task(testId1, testText1);
+        Field completionDate = taskWithNullCompletionDate.getClass().getDeclaredField("completionDate");
+        completionDate.setAccessible(true);
+        completionDate.set(taskWithNullCompletionDate, null);
 
-    @Test
-    public void compareTask7() {
-        Task task1 = new Task(testId1, testText1);
-        assertEquals(task1, task1);
-    }
+        Task taskWithNullContexts = new Task(testId1, testText1);
+        Field contexts = taskWithNullContexts.getClass().getDeclaredField("contexts");
+        contexts.setAccessible(true);
+        contexts.set(taskWithNullContexts, null);
 
-    @Test
-    public void compareTask8() {
-        Task task1 = new Task(testId1, testText1);
-        Task task2 = new Task(testId1, testText1);
-        task1.markComplete(new Date());
-        task2.markComplete(testDate);
-        assertNotEquals(task1, task2);
-    }
+        Task taskWithNullLinks = new Task(testId1, testText1);
+        Field links = taskWithNullLinks.getClass().getDeclaredField("links");
+        links.setAccessible(true);
+        links.set(taskWithNullLinks, null);
 
-    @Test
-    public void compareTask9() {
-        Task task1 = new Task(testId1, testText1);
-        Task task2 = new Task(testId1, testText1);
-        task1.setPriority(Priority.A);
-        assertNotEquals(task1, task2);
-    }
+        Task taskWithNullMailAddresses = new Task(testId1, testText1);
+        Field mailAddresses = taskWithNullMailAddresses.getClass().getDeclaredField("mailAddresses");
+        mailAddresses.setAccessible(true);
+        mailAddresses.set(taskWithNullMailAddresses, null);
 
-    @Test
-    public void compareTask10() {
-        Task task1 = new Task(testId1, testText1);
-        Task task2 = new Task(testId1, testText2);
-        assertNotEquals(task1, task2);
-    }
+        Task taskWithNullPhoneNumbers = new Task(testId1, testText1);
+        Field phoneNumbers = taskWithNullPhoneNumbers.getClass().getDeclaredField("phoneNumbers");
+        phoneNumbers.setAccessible(true);
+        phoneNumbers.set(taskWithNullPhoneNumbers, null);
 
-    @Test
-    public void compareTask11() {
-        Task task1 = new Task(testId1, "example@email.com");
-        Task task2 = new Task(testId1, testText2);
-        assertNotEquals(task1, task2);
-    }
+        Task taskWithNullDate = new Task(testId1, testText1);
+        Field date = taskWithNullDate.getClass().getDeclaredField("prependedDate");
+        date.setAccessible(true);
+        date.set(taskWithNullDate, null);
 
-    @Test
-    public void compareTask12() {
-        Task task1 = new Task(testId1, "https://www.google.com");
-        Task task2 = new Task(testId1, testText2);
-        assertNotEquals(task1, task2);
-    }
+        Task taskWithNullProjects = new Task(testId1, testText1);
+        Field projects = taskWithNullProjects.getClass().getDeclaredField("projects");
+        projects.setAccessible(true);
+        projects.set(taskWithNullProjects, null);
 
-    @Test
-    public void compareTask13() {
-        Task task1 = new Task(testId1, "rec:+9w");
-        Task task2 = new Task(testId1, testText2);
-        assertNotEquals(task1, task2);
-    }
+        Task taskWithNullAge = new Task(testId1, testText1);
+        Field age = taskWithNullAge.getClass().getDeclaredField("relativeAge");
+        age.setAccessible(true);
+        age.set(taskWithNullAge, null);
 
-    @Test
-    public void compareTask14() {
-        Task task1 = new Task(testId1, "Some text @test some text");
-        Task task2 = new Task(testId1, testText1);
-        assertNotEquals(task1, task2);
-    }
+        Task taskWithNullText = new Task(testId1, testText1);
+        Field text = taskWithNullText.getClass().getDeclaredField("text");
+        text.setAccessible(true);
+        text.set(taskWithNullText, null);
 
-    @Test
-    public void compareTask15() {
-        Task task1 = new Task(testId1, "Some text +test some text");
-        Task task2 = new Task(testId1, testText1);
-        assertNotEquals(task1, task2);
-    }
+        Task deletedTask = new Task(testId1, testText1);
+        deletedTask.delete();
 
-    @Test
-    public void compareTask16() throws NoSuchFieldException, IllegalAccessException {
-        Task task1 = new Task(testId1, testText1);
-        Task task2 = new Task(testId1, testText1);
-        Field field = task2.getClass().getDeclaredField("completionDate");
-        field.setAccessible(true);
-        field.set(task2, null);
-        assertNotEquals(task2, task1);
-    }
-
-    @Test
-    public void compareTask17() throws NoSuchFieldException, IllegalAccessException {
-        Task task1 = new Task(testId1, testText1);
-        Task task2 = new Task(testId1, testText1);
-        Field field = task2.getClass().getDeclaredField("contexts");
-        field.setAccessible(true);
-        field.set(task2, null);
-        assertNotEquals(task2, task1);
-    }
-
-    @Test
-    public void compareTask18() throws NoSuchFieldException, IllegalAccessException {
-        Task task1 = new Task(testId1, testText1);
-        Task task2 = new Task(testId1, testText1);
-        Field field = task2.getClass().getDeclaredField("links");
-        field.setAccessible(true);
-        field.set(task2, null);
-        assertNotEquals(task2, task1);
-    }
-
-    @Test
-    public void compareTask19() throws NoSuchFieldException, IllegalAccessException {
-        Task task1 = new Task(testId1, testText1);
-        Task task2 = new Task(testId1, testText1);
-        Field field = task2.getClass().getDeclaredField("mailAddresses");
-        field.setAccessible(true);
-        field.set(task2, null);
-        assertNotEquals(task2, task1);
-    }
-
-    @Test
-    public void compareTask20() throws NoSuchFieldException, IllegalAccessException {
-        Task task1 = new Task(testId1, "example@email.com");
-        Task task2 = new Task(testId1, testText1);
-        Field field = task2.getClass().getDeclaredField("phoneNumbers");
-        field.setAccessible(true);
-        field.set(task2, null);
-        assertNotEquals(task2, task1);
-    }
-
-    @Test
-    public void compareTask21() throws NoSuchFieldException, IllegalAccessException {
-        Task task1 = new Task(testId1, testText1);
-        Task task2 = new Task(testId1, testText1);
-        Field field = task2.getClass().getDeclaredField("prependedDate");
-        field.setAccessible(true);
-        field.set(task2, null);
-        assertNotEquals(task2, task1);
-    }
-
-    @Test
-    public void compareTask22() throws NoSuchFieldException, IllegalAccessException {
-        Task task1 = new Task(testId1, testText1);
-        Task task2 = new Task(testId1, testText1);
-        Field field = task2.getClass().getDeclaredField("projects");
-        field.setAccessible(true);
-        field.set(task2, null);
-        assertNotEquals(task2, task1);
-    }
-
-    @Test
-    public void compareTask23() throws NoSuchFieldException, IllegalAccessException {
-        Task task1 = new Task(testId1, testText1);
-        Task task2 = new Task(testId1, testText1);
-        Field field = task2.getClass().getDeclaredField("relativeAge");
-        field.setAccessible(true);
-        field.set(task2, null);
-        assertNotEquals(task2, task1);
-    }
-
-    @Test
-    public void compareTask24() throws NoSuchFieldException, IllegalAccessException {
-        Task task1 = new Task(testId1, testText1);
-        Task task2 = new Task(testId1, testText1);
-        Field field = task2.getClass().getDeclaredField("text");
-        field.setAccessible(true);
-        field.set(task2, null);
-        assertNotEquals(task2, task1);
-    }
-
-    @Test
-    public void compareTask25() {
-        Task task1 = new Task(testId1, testText1);
-        Task task2 = new Task(testId1, testText1);
-        task1.delete();
-        assertNotEquals(task2, task1);
-    }
-
-    @Test
-    public void compareTask26() throws NoSuchFieldException, IllegalAccessException {
-        Task task1 = new Task(testId1, testText1);
-        Task task2 = new Task(testId1, testText1);
-        Field field = task2.getClass().getDeclaredField("relativeAge");
-        field.setAccessible(true);
-        field.set(task2, null);
-        assertNotEquals(task1, task2);
-    }
-
-    @Test
-    public void compareTask27() throws NoSuchFieldException, IllegalAccessException {
-        Task task1 = new Task(testId1, "example@email.com");
-        Task task2 = new Task(testId1, testText1);
-        Field field = task2.getClass().getDeclaredField("phoneNumbers");
-        field.setAccessible(true);
-        field.set(task2, null);
-        assertNotEquals(task1, task2);
+        return Stream.of(
+                Arguments.of(simpleTask, new Task(testId2, testText2), false),
+                Arguments.of(simpleTask, null, false),
+                Arguments.of(simpleTask, new Task(testId1, testText1), true),
+                Arguments.of(completedTask, simpleTask, false),
+                Arguments.of(taskWithDate1, taskWithDate2, false),
+                Arguments.of(simpleTask, new Object(), false),
+                Arguments.of(simpleTask, simpleTask, true),
+                Arguments.of(taskWithCompletionDate1, taskWithCompletionDate2, false),
+                Arguments.of(taskWithPriority, simpleTask, false),
+                Arguments.of(simpleTask, new Task(testId1, testText2), false),
+                Arguments.of(taskWithEmail, simpleTask, false),
+                Arguments.of(taskWithLink, simpleTask, false),
+                Arguments.of(taskWithRec, simpleTask, false),
+                Arguments.of(taskWithAt, simpleTask, false),
+                Arguments.of(taskWithPlus, simpleTask, false),
+                Arguments.of(taskWithNullCompletionDate, simpleTask, false),
+                Arguments.of(taskWithNullContexts, simpleTask, false),
+                Arguments.of(taskWithNullLinks, simpleTask, false),
+                Arguments.of(taskWithNullMailAddresses, simpleTask, false),
+                Arguments.of(taskWithNullPhoneNumbers, taskWithEmail, false),
+                Arguments.of(taskWithNullDate, simpleTask, false),
+                Arguments.of(taskWithNullProjects, simpleTask, false),
+                Arguments.of(taskWithNullAge, simpleTask, false),
+                Arguments.of(taskWithNullText, simpleTask, false),
+                Arguments.of(simpleTask, deletedTask, false),
+                Arguments.of(simpleTask, taskWithNullAge, false),
+                Arguments.of(taskWithEmail, taskWithNullPhoneNumbers, false)
+        );
     }
 
     @Test
