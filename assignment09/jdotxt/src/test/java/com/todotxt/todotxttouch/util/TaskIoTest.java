@@ -3,8 +3,7 @@ package com.todotxt.todotxttouch.util;
 import com.todotxt.todotxttouch.task.Task;
 import org.junit.Test;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -15,7 +14,6 @@ import static org.junit.Assert.*;
 public class TaskIoTest {
     private static final String DEFAULTDIR = System.getProperty("user.home") + File.separator + "jdotxt";
     private static final String TODOPATH = DEFAULTDIR + File.separator + "todo.txt";
-    private static final String DONEPATH = DEFAULTDIR + File.separator + "done.txt";
 
     @Test
     public void loadTasksFromNonExistingFile() throws IOException {
@@ -34,5 +32,16 @@ public class TaskIoTest {
         TaskIo.writeToFile(tasks, todoFile);
         String fileContent = Files.readString(Path.of(TODOPATH), StandardCharsets.UTF_8);
         assertEquals(fileContent, "A new task\n");
+    }
+
+    @Test
+    public void readLineTest() throws IOException {
+        InputStream stream = new ByteArrayInputStream("test\n another test\n test".getBytes(StandardCharsets.UTF_8));
+
+        BufferedReader buffer = new BufferedReader(new InputStreamReader(stream));
+
+        String str = TaskIo.readLine(buffer);
+        System.out.println(str);
+        assertEquals(str, "test\n");
     }
 }
