@@ -18,3 +18,5 @@ With all the tests developed in the previous assignments, our line coverage is 8
 ## Equivalent Mutants
 
 ## Tests Developed and Final Mutation Score
+
+![](./images/Captura%20de%20ecr%C3%A3%20de%202022-12-07%2016-09-27.png)
