@@ -44,10 +44,6 @@ public class TaskIoTest {
         String str2 = TaskIo.readLine(buffer);
         String str3 = TaskIo.readLine(buffer);
         String str4 = TaskIo.readLine(buffer);
-        System.out.println(str1);
-        System.out.println(str2);
-        System.out.println(str3);
-        System.out.println(str4);
         assertEquals(str1, "test\r");
         assertEquals(str2, " another test\n");
         assertEquals(str3, " test");
