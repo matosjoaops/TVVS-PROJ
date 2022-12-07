@@ -36,12 +36,21 @@ public class TaskIoTest {
 
     @Test
     public void readLineTest() throws IOException {
-        InputStream stream = new ByteArrayInputStream("test\n another test\n test".getBytes(StandardCharsets.UTF_8));
+        InputStream stream = new ByteArrayInputStream("test\r another test\n test".getBytes(StandardCharsets.UTF_8));
 
         BufferedReader buffer = new BufferedReader(new InputStreamReader(stream));
 
-        String str = TaskIo.readLine(buffer);
-        System.out.println(str);
-        assertEquals(str, "test\n");
+        String str1 = TaskIo.readLine(buffer);
+        String str2 = TaskIo.readLine(buffer);
+        String str3 = TaskIo.readLine(buffer);
+        String str4 = TaskIo.readLine(buffer);
+        System.out.println(str1);
+        System.out.println(str2);
+        System.out.println(str3);
+        System.out.println(str4);
+        assertEquals(str1, "test\r");
+        assertEquals(str2, " another test\n");
+        assertEquals(str3, " test");
+        assertNull(str4);
     }
 }
