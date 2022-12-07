@@ -1,0 +1,2192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>TextSplitter.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_1'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_2'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * This file is part of Todo.txt Touch, an Android app for managing your todo.txt file (http://todotxt.com).</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_3'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_4'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Copyright (c) 2009-2013 Todo.txt contributors (http://todotxt.com)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_5'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_6'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * LICENSE:</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_7'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_8'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Todo.txt Touch is free software: you can redistribute it and/or modify it under the terms of the GNU General Public</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_9'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * License as published by the Free Software Foundation, either version 2 of the License, or (at your option) any</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_10'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * later version.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_11'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_12'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Todo.txt Touch is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_13'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_14'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * details.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_15'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_16'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * You should have received a copy of the GNU General Public License along with Todo.txt Touch.  If not, see</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_17'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * &#60;http://www.gnu.org/licenses/&#62;.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_18'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_19'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * @author Todo.txt contributors &#60;todotxt@yahoogroups.com&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_20'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * @license http://www.gnu.org/licenses/gpl.html</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_21'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * @copyright 2009-2013 Todo.txt contributors (http://todotxt.com)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_22'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_23'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package com.todotxt.todotxttouch.task;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_24'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_25'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.regex.Matcher;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_26'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.regex.Pattern;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_27'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_28'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>class TextSplitter {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_29'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;private final static Pattern COMPLETED_PATTERN = Pattern</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_30'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;&#9;&#9;.compile(&#34;^([X,x] )(.*)&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_31'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_32'/>
+32
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_32'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;private final static Pattern COMPLETED_PREPENDED_DATES_PATTERN = Pattern</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_33'/>
+33
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_33'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;&#9;&#9;.compile(&#34;^(\\d{4}-\\d{2}-\\d{2}) (\\d{4}-\\d{2}-\\d{2}) (.*)&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_34'/>
+34
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_34'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_35'/>
+35
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_35'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;private final static Pattern SINGLE_DATE_PATTERN = Pattern</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_36'/>
+36
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_36'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;&#9;&#9;.compile(&#34;^(\\d{4}-\\d{2}-\\d{2}) (.*)&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_37'/>
+37
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_37'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_38'/>
+38
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_38'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;private final static TextSplitter INSTANCE = new TextSplitter();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_39'/>
+39
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_39'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_40'/>
+40
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_40'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;private TextSplitter() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_41'/>
+41
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_41'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_42'/>
+42
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_42'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_43'/>
+43
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_43'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;public static TextSplitter getInstance() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_44'/>
+44
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_44'>1</a>
+<span>
+1. getInstance : replaced return value with null for com/todotxt/todotxttouch/task/TextSplitter::getInstance &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;return INSTANCE;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_45'/>
+45
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_45'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_46'/>
+46
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_46'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_47'/>
+47
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_47'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;static class SplitResult {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_48'/>
+48
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_48'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;&#9;public final Priority priority;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_49'/>
+49
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_49'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;&#9;public final String text;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_50'/>
+50
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_50'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;&#9;public final String prependedDate;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_51'/>
+51
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_51'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;&#9;public final boolean completed;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_52'/>
+52
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_52'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;&#9;public final String completedDate;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_53'/>
+53
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_53'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_54'/>
+54
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_54'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;&#9;private SplitResult(Priority priority, String text,</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_55'/>
+55
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_55'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;&#9;&#9;&#9;String prependedDate, boolean completed, String completedDate) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_56'/>
+56
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_56'>1</a>
+<span>
+1. &#60;init&#62; : Removed assignment to member variable priority &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;&#9;this.priority = priority;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_57'/>
+57
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_57'>1</a>
+<span>
+1. &#60;init&#62; : Removed assignment to member variable text &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;&#9;this.text = text;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_58'/>
+58
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_58'>1</a>
+<span>
+1. &#60;init&#62; : Removed assignment to member variable prependedDate &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;&#9;this.prependedDate = prependedDate;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_59'/>
+59
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_59'>1</a>
+<span>
+1. &#60;init&#62; : Removed assignment to member variable completed &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;&#9;this.completed = completed;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_60'/>
+60
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_60'>1</a>
+<span>
+1. &#60;init&#62; : Removed assignment to member variable completedDate &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;&#9;this.completedDate = completedDate;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_61'/>
+61
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_61'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_62'/>
+62
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_62'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_63'/>
+63
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_63'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_64'/>
+64
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_64'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;public SplitResult split(String inputText) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_65'/>
+65
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_65'>3</a>
+<span>
+1. split : negated conditional &rarr; TIMED_OUT<br/>
+2. split : removed conditional - replaced equality check with false &rarr; TIMED_OUT<br/>
+3. split : removed conditional - replaced equality check with true &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;if (inputText == null) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_66'/>
+66
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_66'>3</a>
+<span>
+1. split : removed call to com/todotxt/todotxttouch/task/TextSplitter$SplitResult::&#60;init&#62; &rarr; TIMED_OUT<br/>
+2. split : Substituted 0 with 1 &rarr; TIMED_OUT<br/>
+3. split : replaced return value with null for com/todotxt/todotxttouch/task/TextSplitter::split &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;&#9;return new SplitResult(Priority.NONE, &#34;&#34;, &#34;&#34;, false, &#34;&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_67'/>
+67
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_67'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_68'/>
+68
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_68'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_69'/>
+69
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_69'>1</a>
+<span>
+1. split : removed call to java/util/regex/Pattern::matcher &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;Matcher completedMatcher = COMPLETED_PATTERN.matcher(inputText);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_70'/>
+70
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_70'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;&#9;boolean completed;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_71'/>
+71
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_71'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;&#9;String text;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_72'/>
+72
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_72'>4</a>
+<span>
+1. split : negated conditional &rarr; TIMED_OUT<br/>
+2. split : removed call to java/util/regex/Matcher::find &rarr; TIMED_OUT<br/>
+3. split : removed conditional - replaced equality check with false &rarr; TIMED_OUT<br/>
+4. split : removed conditional - replaced equality check with true &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;if (completedMatcher.find()) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_73'/>
+73
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_73'>1</a>
+<span>
+1. split : Substituted 1 with 0 &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;&#9;completed = true;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_74'/>
+74
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_74'>2</a>
+<span>
+1. split : Substituted 2 with 3 &rarr; TIMED_OUT<br/>
+2. split : removed call to java/util/regex/Matcher::group &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;&#9;text = completedMatcher.group(2);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_75'/>
+75
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_75'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;&#9;} else {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_76'/>
+76
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_76'>1</a>
+<span>
+1. split : Substituted 0 with 1 &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;&#9;completed = false;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_77'/>
+77
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_77'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;&#9;&#9;text = inputText;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_78'/>
+78
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_78'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_79'/>
+79
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_79'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_80'/>
+80
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_80'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;&#9;Priority priority = Priority.NONE;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_81'/>
+81
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_81'>3</a>
+<span>
+1. split : negated conditional &rarr; TIMED_OUT<br/>
+2. split : removed conditional - replaced equality check with false &rarr; TIMED_OUT<br/>
+3. split : removed conditional - replaced equality check with true &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;if (!completed) {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_82'/>
+82
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_82'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;&#9;&#9;PriorityTextSplitter.PrioritySplitResult prioritySplitResult = PriorityTextSplitter</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_83'/>
+83
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_83'>2</a>
+<span>
+1. split : removed call to com/todotxt/todotxttouch/task/PriorityTextSplitter::getInstance &rarr; TIMED_OUT<br/>
+2. split : removed call to com/todotxt/todotxttouch/task/PriorityTextSplitter::split &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;&#9;&#9;&#9;.getInstance().split(text);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_84'/>
+84
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_84'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;&#9;&#9;priority = prioritySplitResult.priority;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_85'/>
+85
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_85'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;&#9;&#9;text = prioritySplitResult.text;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_86'/>
+86
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_86'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_87'/>
+87
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_87'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_88'/>
+88
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_88'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;&#9;String completedDate = &#34;&#34;;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_89'/>
+89
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_89'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;&#9;String prependedDate = &#34;&#34;;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_90'/>
+90
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_90'>3</a>
+<span>
+1. split : negated conditional &rarr; TIMED_OUT<br/>
+2. split : removed conditional - replaced equality check with false &rarr; TIMED_OUT<br/>
+3. split : removed conditional - replaced equality check with true &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;if (completed) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_91'/>
+91
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_91'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;&#9;&#9;Matcher completedAndPrependedDatesMatcher = COMPLETED_PREPENDED_DATES_PATTERN</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_92'/>
+92
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_92'>1</a>
+<span>
+1. split : removed call to java/util/regex/Pattern::matcher &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;&#9;&#9;&#9;.matcher(text);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_93'/>
+93
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_93'>4</a>
+<span>
+1. split : negated conditional &rarr; TIMED_OUT<br/>
+2. split : removed call to java/util/regex/Matcher::find &rarr; TIMED_OUT<br/>
+3. split : removed conditional - replaced equality check with false &rarr; TIMED_OUT<br/>
+4. split : removed conditional - replaced equality check with true &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;&#9;if (completedAndPrependedDatesMatcher.find()) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_94'/>
+94
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_94'>2</a>
+<span>
+1. split : Substituted 1 with 0 &rarr; TIMED_OUT<br/>
+2. split : removed call to java/util/regex/Matcher::group &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;&#9;&#9;completedDate = completedAndPrependedDatesMatcher.group(1);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_95'/>
+95
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_95'>2</a>
+<span>
+1. split : Substituted 2 with 3 &rarr; TIMED_OUT<br/>
+2. split : removed call to java/util/regex/Matcher::group &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;&#9;&#9;prependedDate = completedAndPrependedDatesMatcher.group(2);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_96'/>
+96
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_96'>2</a>
+<span>
+1. split : Substituted 3 with 4 &rarr; TIMED_OUT<br/>
+2. split : removed call to java/util/regex/Matcher::group &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;&#9;&#9;text = completedAndPrependedDatesMatcher.group(3);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_97'/>
+97
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_97'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;&#9;&#9;} else {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_98'/>
+98
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_98'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;&#9;&#9;&#9;Matcher completionDateMatcher = SINGLE_DATE_PATTERN</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_99'/>
+99
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_99'>1</a>
+<span>
+1. split : removed call to java/util/regex/Pattern::matcher &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;&#9;&#9;&#9;&#9;.matcher(text);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_100'/>
+100
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_100'>4</a>
+<span>
+1. split : negated conditional &rarr; TIMED_OUT<br/>
+2. split : removed call to java/util/regex/Matcher::find &rarr; TIMED_OUT<br/>
+3. split : removed conditional - replaced equality check with false &rarr; TIMED_OUT<br/>
+4. split : removed conditional - replaced equality check with true &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;&#9;&#9;if (completionDateMatcher.find()) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_101'/>
+101
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_101'>2</a>
+<span>
+1. split : Substituted 1 with 0 &rarr; TIMED_OUT<br/>
+2. split : removed call to java/util/regex/Matcher::group &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;&#9;&#9;&#9;completedDate = completionDateMatcher.group(1);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_102'/>
+102
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_102'>2</a>
+<span>
+1. split : Substituted 2 with 3 &rarr; TIMED_OUT<br/>
+2. split : removed call to java/util/regex/Matcher::group &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;&#9;&#9;&#9;text = completionDateMatcher.group(2);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_103'/>
+103
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_103'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;&#9;&#9;&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_104'/>
+104
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_104'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;&#9;&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_105'/>
+105
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_105'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;&#9;} else {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_106'/>
+106
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_106'>1</a>
+<span>
+1. split : removed call to java/util/regex/Pattern::matcher &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;&#9;Matcher prependedDateMatcher = SINGLE_DATE_PATTERN.matcher(text);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_107'/>
+107
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_107'>4</a>
+<span>
+1. split : negated conditional &rarr; TIMED_OUT<br/>
+2. split : removed call to java/util/regex/Matcher::find &rarr; TIMED_OUT<br/>
+3. split : removed conditional - replaced equality check with false &rarr; TIMED_OUT<br/>
+4. split : removed conditional - replaced equality check with true &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;&#9;if (prependedDateMatcher.find()) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_108'/>
+108
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_108'>2</a>
+<span>
+1. split : Substituted 2 with 3 &rarr; TIMED_OUT<br/>
+2. split : removed call to java/util/regex/Matcher::group &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;&#9;&#9;text = prependedDateMatcher.group(2);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_109'/>
+109
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_109'>2</a>
+<span>
+1. split : Substituted 1 with 0 &rarr; TIMED_OUT<br/>
+2. split : removed call to java/util/regex/Matcher::group &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;&#9;&#9;prependedDate = prependedDateMatcher.group(1);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_110'/>
+110
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_110'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;&#9;&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_111'/>
+111
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_111'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_112'/>
+112
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_112'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_113'/>
+113
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_113'>2</a>
+<span>
+1. split : removed call to com/todotxt/todotxttouch/task/TextSplitter$SplitResult::&#60;init&#62; &rarr; TIMED_OUT<br/>
+2. split : replaced return value with null for com/todotxt/todotxttouch/task/TextSplitter::split &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;return new SplitResult(priority, text, prependedDate, completed,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_114'/>
+114
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_114'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;&#9;&#9;&#9;completedDate);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_115'/>
+115
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_115'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@32826a98_116'/>
+116
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_116'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@32826a98_44'>44</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_44'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getInstance<br/><b>Killed by : </b>none</span></span> replaced return value with null for com/todotxt/todotxttouch/task/TextSplitter::getInstance &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@32826a98_56'>56</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_56'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>&#60;init&#62;<br/><b>Killed by : </b>none</span></span> Removed assignment to member variable priority &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@32826a98_57'>57</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_57'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>&#60;init&#62;<br/><b>Killed by : </b>none</span></span> Removed assignment to member variable text &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@32826a98_58'>58</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_58'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>&#60;init&#62;<br/><b>Killed by : </b>none</span></span> Removed assignment to member variable prependedDate &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@32826a98_59'>59</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_59'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>&#60;init&#62;<br/><b>Killed by : </b>none</span></span> Removed assignment to member variable completed &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@32826a98_60'>60</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_60'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>&#60;init&#62;<br/><b>Killed by : </b>none</span></span> Removed assignment to member variable completedDate &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@32826a98_65'>65</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_65'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed conditional - replaced equality check with false &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed conditional - replaced equality check with true &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@32826a98_66'>66</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_66'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed call to com/todotxt/todotxttouch/task/TextSplitter$SplitResult::&#60;init&#62; &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> Substituted 0 with 1 &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> replaced return value with null for com/todotxt/todotxttouch/task/TextSplitter::split &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@32826a98_69'>69</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_69'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed call to java/util/regex/Pattern::matcher &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@32826a98_72'>72</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_72'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed call to java/util/regex/Matcher::find &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed conditional - replaced equality check with false &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed conditional - replaced equality check with true &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@32826a98_73'>73</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_73'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> Substituted 1 with 0 &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@32826a98_74'>74</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_74'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> Substituted 2 with 3 &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed call to java/util/regex/Matcher::group &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@32826a98_76'>76</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_76'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> Substituted 0 with 1 &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@32826a98_81'>81</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_81'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed conditional - replaced equality check with false &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed conditional - replaced equality check with true &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@32826a98_83'>83</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_83'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed call to com/todotxt/todotxttouch/task/PriorityTextSplitter::getInstance &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed call to com/todotxt/todotxttouch/task/PriorityTextSplitter::split &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@32826a98_90'>90</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_90'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed conditional - replaced equality check with false &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed conditional - replaced equality check with true &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@32826a98_92'>92</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_92'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed call to java/util/regex/Pattern::matcher &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@32826a98_93'>93</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_93'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed call to java/util/regex/Matcher::find &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed conditional - replaced equality check with false &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed conditional - replaced equality check with true &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@32826a98_94'>94</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_94'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> Substituted 1 with 0 &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed call to java/util/regex/Matcher::group &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@32826a98_95'>95</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_95'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> Substituted 2 with 3 &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed call to java/util/regex/Matcher::group &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@32826a98_96'>96</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_96'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> Substituted 3 with 4 &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed call to java/util/regex/Matcher::group &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@32826a98_99'>99</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_99'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed call to java/util/regex/Pattern::matcher &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@32826a98_100'>100</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_100'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed call to java/util/regex/Matcher::find &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed conditional - replaced equality check with false &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed conditional - replaced equality check with true &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@32826a98_101'>101</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_101'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> Substituted 1 with 0 &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed call to java/util/regex/Matcher::group &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@32826a98_102'>102</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_102'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> Substituted 2 with 3 &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed call to java/util/regex/Matcher::group &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@32826a98_106'>106</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_106'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed call to java/util/regex/Pattern::matcher &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@32826a98_107'>107</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_107'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed call to java/util/regex/Matcher::find &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed conditional - replaced equality check with false &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed conditional - replaced equality check with true &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@32826a98_108'>108</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_108'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> Substituted 2 with 3 &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed call to java/util/regex/Matcher::group &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@32826a98_109'>109</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_109'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> Substituted 1 with 0 &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed call to java/util/regex/Matcher::group &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@32826a98_113'>113</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@32826a98_113'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> removed call to com/todotxt/todotxttouch/task/TextSplitter$SplitResult::&#60;init&#62; &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>split<br/><b>Killed by : </b>none</span></span> replaced return value with null for com/todotxt/todotxttouch/task/TextSplitter::split &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>CONDITIONALS_BOUNDARY</li>
+<li class='mutator'>CONSTRUCTOR_CALLS</li>
+<li class='mutator'>EMPTY_RETURNS</li>
+<li class='mutator'>EXPERIMENTAL_ARGUMENT_PROPAGATION</li>
+<li class='mutator'>EXPERIMENTAL_BIG_INTEGER</li>
+<li class='mutator'>EXPERIMENTAL_MEMBER_VARIABLE</li>
+<li class='mutator'>EXPERIMENTAL_NAKED_RECEIVER</li>
+<li class='mutator'>EXPERIMENTAL_SWITCH</li>
+<li class='mutator'>FALSE_RETURNS</li>
+<li class='mutator'>INCREMENTS</li>
+<li class='mutator'>INLINE_CONSTS</li>
+<li class='mutator'>INVERT_NEGS</li>
+<li class='mutator'>MATH</li>
+<li class='mutator'>NEGATE_CONDITIONALS</li>
+<li class='mutator'>NON_VOID_METHOD_CALLS</li>
+<li class='mutator'>NULL_RETURNS</li>
+<li class='mutator'>PRIMITIVE_RETURNS</li>
+<li class='mutator'>REMOVE_CONDITIONALS_EQUAL_ELSE</li>
+<li class='mutator'>REMOVE_CONDITIONALS_EQUAL_IF</li>
+<li class='mutator'>REMOVE_CONDITIONALS_ORDER_ELSE</li>
+<li class='mutator'>REMOVE_CONDITIONALS_ORDER_IF</li>
+<li class='mutator'>REMOVE_INCREMENTS</li>
+<li class='mutator'>TRUE_RETURNS</li>
+<li class='mutator'>VOID_METHOD_CALLS</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>com.todotxt.todotxttouch.task.TaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskBagImplTest]/[test:hasChanged(com.todotxt.todotxttouch.task.TaskBagImplTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.sorter.SortersTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.sorter.SortersTest]/[test:sortersByCompletionTaskTest(com.todotxt.todotxttouch.task.sorter.SortersTest)] (1 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:markComplete(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:screenFormat(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:hash5(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:hash6(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.sorter.SortersTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.sorter.SortersTest]/[test:sortersByPriorityNullTaskTest1(com.todotxt.todotxttouch.task.sorter.SortersTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:hash7(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:rec3(com.todotxt.todotxttouch.task.TaskTest)] (1 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:hash9(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:delete(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskBagImplTest]/[test:getProjects(com.todotxt.todotxttouch.task.TaskBagImplTest)] (1 ms)</li><li>com.todotxt.todotxttouch.task.TextSplitterTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TextSplitterTest]/[test:split1(com.todotxt.todotxttouch.task.TextSplitterTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:rec2(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:hash8(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest]/[test:update2(com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest)] (1 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:priority(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.sorter.SortersTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.sorter.SortersTest]/[test:sortersByTextNullTaskTest1(com.todotxt.todotxttouch.task.sorter.SortersTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:hash10(com.todotxt.todotxttouch.task.TaskTest)] (1 ms)</li><li>com.todotxt.todotxttouch.task.TaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskBagImplTest]/[test:find(com.todotxt.todotxttouch.task.TaskBagImplTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskBagImplTest]/[test:getTasks(com.todotxt.todotxttouch.task.TaskBagImplTest)] (1 ms)</li><li>com.todotxt.todotxttouch.task.sorter.SortersTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.sorter.SortersTest]/[test:sortersByIDNullTaskTest1(com.todotxt.todotxttouch.task.sorter.SortersTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.FilterTest.[engine:junit-jupiter]/[class:com.todotxt.todotxttouch.task.FilterTest]/[method:hiddenFilter()] (7 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:updateText(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest]/[test:find(com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest)] (1 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:createTask(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:hidden(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskBagImplTest]/[test:size(com.todotxt.todotxttouch.task.TaskBagImplTest)] (1 ms)</li><li>com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest]/[test:update1(com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest)] (1 ms)</li><li>com.todotxt.todotxttouch.task.TextSplitterTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TextSplitterTest]/[test:split4(com.todotxt.todotxttouch.task.TextSplitterTest)] (1 ms)</li><li>com.todotxt.todotxttouch.util.TaskIoTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.util.TaskIoTest]/[test:writeToFileTest(com.todotxt.todotxttouch.util.TaskIoTest)] (2 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-jupiter]/[class:com.todotxt.todotxttouch.task.TaskTest]/[test-template:compareTask(com.todotxt.todotxttouch.task.Task, java.lang.Object, boolean)]/[test-template-invocation:#1] (9 ms)</li><li>com.todotxt.todotxttouch.task.TaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskBagImplTest]/[test:update1(com.todotxt.todotxttouch.task.TaskBagImplTest)] (1 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:initWithFilters(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.sorter.SortersTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.sorter.SortersTest]/[test:sortersByCompletionNullTaskTest1(com.todotxt.todotxttouch.task.sorter.SortersTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:hash4(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:hash2(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskBagImplTest]/[test:getContexts(com.todotxt.todotxttouch.task.TaskBagImplTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:hash3(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:hash1(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest]/[test:hasChanged(com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest)] (198 ms)</li><li>com.todotxt.todotxttouch.task.sorter.SortersTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.sorter.SortersTest]/[test:sortersByPriorityNullTaskTest2(com.todotxt.todotxttouch.task.sorter.SortersTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskBagImplTest]/[test:getPriorities(com.todotxt.todotxttouch.task.TaskBagImplTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.sorter.SortersTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.sorter.SortersTest]/[test:sortersByCompletionDateTaskTest(com.todotxt.todotxttouch.task.sorter.SortersTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.sorter.SortersTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.sorter.SortersTest]/[test:sortersByIDTest(com.todotxt.todotxttouch.task.sorter.SortersTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.sorter.SortersTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.sorter.SortersTest]/[test:sortersByIDNullTaskTest2(com.todotxt.todotxttouch.task.sorter.SortersTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.sorter.SortersTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.sorter.SortersTest]/[test:sortersByThresholdDateTaskTest(com.todotxt.todotxttouch.task.sorter.SortersTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:markIncomplete(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskBagImplTest]/[test:delete2(com.todotxt.todotxttouch.task.TaskBagImplTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.sorter.SortersTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.sorter.SortersTest]/[test:sortersByContextsTaskTest(com.todotxt.todotxttouch.task.sorter.SortersTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.sorter.SortersTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.sorter.SortersTest]/[test:sortersByProjectsTaskTest(com.todotxt.todotxttouch.task.sorter.SortersTest)] (1 ms)</li><li>com.todotxt.todotxttouch.task.sorter.SortersTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.sorter.SortersTest]/[test:sortersByTaskTextTest(com.todotxt.todotxttouch.task.sorter.SortersTest)] (1 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:rec(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest]/[test:getPriorities(com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest)] (1 ms)</li><li>com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest]/[test:getTasks1(com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest)] (1 ms)</li><li>com.todotxt.todotxttouch.task.TextSplitterTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TextSplitterTest]/[test:split2(com.todotxt.todotxttouch.task.TextSplitterTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:date(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.sorter.SortersTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.sorter.SortersTest]/[test:sortersByPriorityTest(com.todotxt.todotxttouch.task.sorter.SortersTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:completionDate(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.jdotxt.JdotxtTest.[engine:junit-vintage]/[runner:com.jdotxt.JdotxtTest]/[test:jdotxtTest(com.jdotxt.JdotxtTest)] (201 ms)</li><li>com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest]/[test:getContexts(com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.sorter.SortersTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.sorter.SortersTest]/[test:sortersByTextNullTaskTest2(com.todotxt.todotxttouch.task.sorter.SortersTest)] (1 ms)</li><li>com.todotxt.todotxttouch.task.LocalFileTaskRepositoryTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.LocalFileTaskRepositoryTest]/[test:archive(com.todotxt.todotxttouch.task.LocalFileTaskRepositoryTest)] (1 ms)</li><li>com.todotxt.todotxttouch.task.TaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskBagImplTest]/[test:update2(com.todotxt.todotxttouch.task.TaskBagImplTest)] (1 ms)</li><li>com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest]/[test:getProjects(com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest)] (1 ms)</li><li>com.todotxt.todotxttouch.task.TaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskBagImplTest]/[test:clear(com.todotxt.todotxttouch.task.TaskBagImplTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest]/[test:getTasks3(com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:fileFormat6(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:fileFormat5(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.sorter.SortersTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.sorter.SortersTest]/[test:sortersByDueDateTaskTest(com.todotxt.todotxttouch.task.sorter.SortersTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:fileFormat7(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TextSplitterTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TextSplitterTest]/[test:split3(com.todotxt.todotxttouch.task.TextSplitterTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:fileFormat3(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest]/[test:clear(com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest)] (1 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:fileFormat4(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:has11(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.sorter.SortersTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.sorter.SortersTest]/[test:sortersByCreationDateTaskTest(com.todotxt.todotxttouch.task.sorter.SortersTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.FilterTest.[engine:junit-jupiter]/[class:com.todotxt.todotxttouch.task.FilterTest]/[method:thresholdDateFilter()] (1 ms)</li><li>com.todotxt.todotxttouch.task.FilterTest.[engine:junit-jupiter]/[class:com.todotxt.todotxttouch.task.FilterTest]/[method:byContextFilter()] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:hash12(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.sorter.GenericSorterTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.sorter.GenericSorterTest]/[test:buildGenericSorterTest(com.todotxt.todotxttouch.task.sorter.GenericSorterTest)] (1 ms)</li><li>com.todotxt.todotxttouch.task.sorter.SortersTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.sorter.SortersTest]/[test:sortersByCompletionNullTaskTest2(com.todotxt.todotxttouch.task.sorter.SortersTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:hash13(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest]/[test:delete2(com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.FilterTest.[engine:junit-jupiter]/[class:com.todotxt.todotxttouch.task.FilterTest]/[method:byPriorityFilter2()] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:fileFormat2(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest]/[test:getTasks2(com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest)] (1 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:fileFormat1(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest]/[test:size(com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest)] (0 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.10.0
+
+</body>
+</html>

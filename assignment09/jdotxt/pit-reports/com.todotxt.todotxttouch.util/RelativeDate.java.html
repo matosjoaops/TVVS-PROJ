@@ -1,0 +1,1846 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>RelativeDate.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_1'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_2'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * This file is part of Todo.txt Touch, an Android app for managing your todo.txt file (http://todotxt.com).</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_3'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_4'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Thanks to: http://kurtischiappone.com/programming/java/relative-date</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_5'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_6'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package com.todotxt.todotxttouch.util;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_7'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_8'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.text.SimpleDateFormat;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_9'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.Calendar;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_10'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.Date;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_11'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.GregorianCalendar;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_12'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_13'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import com.chschmid.jdotxt.gui.JdotxtGUI;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_14'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_15'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>public class RelativeDate {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_16'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_17'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>&#9;private static SimpleDateFormat sdf = new SimpleDateFormat(&#34;yyyy-MM-dd&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_18'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;//private static Context context = TodoApplication.getAppContetxt();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_19'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_20'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;// Doesn&#39;t handle leap year, etc, but we don&#39;t need to be very</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_21'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;// accurate. This is just for human readable date displays.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_22'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;private static final long SECOND = 1000; //milliseconds</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_23'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;private static final long HOUR = 3600 * SECOND;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_24'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;private static final long DAY = 24 * HOUR;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_25'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;private static final long YEAR = 365 * DAY;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_26'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_27'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;/**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_28'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * This method returns a String representing the relative date by comparing</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_29'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * the Calendar being passed in to the date / time that it is right now.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_30'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_31'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * @param calendar</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_32'/>
+32
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_32'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * @return String representing the relative date</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_33'/>
+33
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_33'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_34'/>
+34
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_34'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_35'/>
+35
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_35'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;public static String getRelativeDate(Calendar calendar) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_36'/>
+36
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_36'>1</a>
+<span>
+1. getRelativeDate : removed call to java/util/GregorianCalendar::&#60;init&#62; &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;Calendar today = new GregorianCalendar();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_37'/>
+37
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_37'>3</a>
+<span>
+1. getRelativeDate : Substituted 11 with 12 &rarr; TIMED_OUT<br/>
+2. getRelativeDate : Substituted 0 with 1 &rarr; TIMED_OUT<br/>
+3. getRelativeDate : removed call to java/util/Calendar::set &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;today.set(GregorianCalendar.HOUR_OF_DAY, 0);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_38'/>
+38
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_38'>3</a>
+<span>
+1. getRelativeDate : Substituted 12 with 13 &rarr; TIMED_OUT<br/>
+2. getRelativeDate : Substituted 0 with 1 &rarr; TIMED_OUT<br/>
+3. getRelativeDate : removed call to java/util/Calendar::set &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;today.set(GregorianCalendar.MINUTE, 0);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_39'/>
+39
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_39'>3</a>
+<span>
+1. getRelativeDate : Substituted 13 with 14 &rarr; TIMED_OUT<br/>
+2. getRelativeDate : Substituted 0 with 1 &rarr; TIMED_OUT<br/>
+3. getRelativeDate : removed call to java/util/Calendar::set &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;today.set(GregorianCalendar.SECOND, 0);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_40'/>
+40
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_40'>3</a>
+<span>
+1. getRelativeDate : Substituted 14 with 15 &rarr; TIMED_OUT<br/>
+2. getRelativeDate : Substituted 0 with 1 &rarr; TIMED_OUT<br/>
+3. getRelativeDate : removed call to java/util/Calendar::set &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;today.set(GregorianCalendar.MILLISECOND,0);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_41'/>
+41
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_41'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;&#9;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_42'/>
+42
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_42'>2</a>
+<span>
+1. getRelativeDate : removed call to com/todotxt/todotxttouch/util/RelativeDate::getRelativeDate &rarr; TIMED_OUT<br/>
+2. getRelativeDate : replaced return value with &#34;&#34; for com/todotxt/todotxttouch/util/RelativeDate::getRelativeDate &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;return getRelativeDate(today, calendar);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_43'/>
+43
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_43'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_44'/>
+44
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_44'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_45'/>
+45
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_45'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;public static String getRelativeDate(Calendar d1, Calendar d2) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_46'/>
+46
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_46'>1</a>
+<span>
+1. getRelativeDate : removed call to java/util/Calendar::getTimeInMillis &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;long d1Time = d1.getTimeInMillis();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_47'/>
+47
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_47'>1</a>
+<span>
+1. getRelativeDate : removed call to java/util/Calendar::getTimeInMillis &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;long d2Time = d2.getTimeInMillis();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_48'/>
+48
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_48'>1</a>
+<span>
+1. getRelativeDate : Replaced long subtraction with addition &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;long diff = d1Time - d2Time;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_49'/>
+49
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_49'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_50'/>
+50
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_50'>10</a>
+<span>
+1. getRelativeDate : changed conditional boundary &rarr; TIMED_OUT<br/>
+2. getRelativeDate : changed conditional boundary &rarr; TIMED_OUT<br/>
+3. getRelativeDate : Substituted 0 with 1 &rarr; TIMED_OUT<br/>
+4. getRelativeDate : Substituted 31536000000 with 31536000001 &rarr; TIMED_OUT<br/>
+5. getRelativeDate : negated conditional &rarr; TIMED_OUT<br/>
+6. getRelativeDate : negated conditional &rarr; TIMED_OUT<br/>
+7. getRelativeDate : removed conditional - replaced comparison check with false &rarr; TIMED_OUT<br/>
+8. getRelativeDate : removed conditional - replaced comparison check with false &rarr; TIMED_OUT<br/>
+9. getRelativeDate : removed conditional - replaced comparison check with true &rarr; TIMED_OUT<br/>
+10. getRelativeDate : removed conditional - replaced comparison check with true &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;if (diff &#60;= 0 || diff &#62;= RelativeDate.YEAR) {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_51'/>
+51
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_51'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;&#9;&#9;// future or far in past,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_52'/>
+52
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_52'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;&#9;&#9;// just return yyyy-mm-dd</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_53'/>
+53
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_53'>3</a>
+<span>
+1. getRelativeDate : removed call to java/util/Calendar::getTime &rarr; TIMED_OUT<br/>
+2. getRelativeDate : removed call to java/text/SimpleDateFormat::format &rarr; TIMED_OUT<br/>
+3. getRelativeDate : replaced return value with &#34;&#34; for com/todotxt/todotxttouch/util/RelativeDate::getRelativeDate &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;&#9;return sdf.format(d2.getTime());</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_54'/>
+54
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_54'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_55'/>
+55
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_55'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_56'/>
+56
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_56'>5</a>
+<span>
+1. getRelativeDate : changed conditional boundary &rarr; TIMED_OUT<br/>
+2. getRelativeDate : Substituted 5184000000 with 5184000001 &rarr; TIMED_OUT<br/>
+3. getRelativeDate : negated conditional &rarr; TIMED_OUT<br/>
+4. getRelativeDate : removed conditional - replaced comparison check with false &rarr; TIMED_OUT<br/>
+5. getRelativeDate : removed conditional - replaced comparison check with true &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;if (diff &#62;= 60 * RelativeDate.DAY) {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_57'/>
+57
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_57'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;&#9;&#9;// N months ago</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_58'/>
+58
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_58'>2</a>
+<span>
+1. getRelativeDate : Substituted 2592000000 with 2592000001 &rarr; TIMED_OUT<br/>
+2. getRelativeDate : Replaced long division with multiplication &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;&#9;long months = diff / (30 * DAY);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_59'/>
+59
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_59'>8</a>
+<span>
+1. getRelativeDate : Substituted 1 with 0 &rarr; TIMED_OUT<br/>
+2. getRelativeDate : Substituted 0 with 1 &rarr; TIMED_OUT<br/>
+3. getRelativeDate : removed call to com/chschmid/jdotxt/util/LanguagesController::getWord &rarr; TIMED_OUT<br/>
+4. getRelativeDate : removed call to java/lang/Long::valueOf &rarr; TIMED_OUT<br/>
+5. getRelativeDate : removed call to java/lang/String::format &rarr; TIMED_OUT<br/>
+6. getRelativeDate : replaced call to com/chschmid/jdotxt/util/LanguagesController::getWord with argument &rarr; TIMED_OUT<br/>
+7. getRelativeDate : replaced call to java/lang/String::format with argument &rarr; TIMED_OUT<br/>
+8. getRelativeDate : replaced return value with &#34;&#34; for com/todotxt/todotxttouch/util/RelativeDate::getRelativeDate &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;&#9;return String.format(JdotxtGUI.lang.getWord(&#34;dates_months_ago&#34;), months);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_60'/>
+60
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_60'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_61'/>
+61
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_61'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_62'/>
+62
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_62'>5</a>
+<span>
+1. getRelativeDate : changed conditional boundary &rarr; TIMED_OUT<br/>
+2. getRelativeDate : Substituted 2592000000 with 2592000001 &rarr; TIMED_OUT<br/>
+3. getRelativeDate : negated conditional &rarr; TIMED_OUT<br/>
+4. getRelativeDate : removed conditional - replaced comparison check with false &rarr; TIMED_OUT<br/>
+5. getRelativeDate : removed conditional - replaced comparison check with true &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;if (diff &#62;= 30 * RelativeDate.DAY) {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_63'/>
+63
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_63'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;&#9;&#9;// 1 month ago</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_64'/>
+64
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_64'>3</a>
+<span>
+1. getRelativeDate : removed call to com/chschmid/jdotxt/util/LanguagesController::getWord &rarr; TIMED_OUT<br/>
+2. getRelativeDate : replaced call to com/chschmid/jdotxt/util/LanguagesController::getWord with argument &rarr; TIMED_OUT<br/>
+3. getRelativeDate : replaced return value with &#34;&#34; for com/todotxt/todotxttouch/util/RelativeDate::getRelativeDate &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;&#9;return JdotxtGUI.lang.getWord(&#34;dates_one_month_ago&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_65'/>
+65
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_65'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_66'/>
+66
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_66'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_67'/>
+67
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_67'>5</a>
+<span>
+1. getRelativeDate : changed conditional boundary &rarr; TIMED_OUT<br/>
+2. getRelativeDate : Substituted 172800000 with 172800001 &rarr; TIMED_OUT<br/>
+3. getRelativeDate : negated conditional &rarr; TIMED_OUT<br/>
+4. getRelativeDate : removed conditional - replaced comparison check with false &rarr; TIMED_OUT<br/>
+5. getRelativeDate : removed conditional - replaced comparison check with true &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;if (diff &#62;= 2 * RelativeDate.DAY) {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_68'/>
+68
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_68'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;&#9;&#9;// more than 2 days ago</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_69'/>
+69
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_69'>2</a>
+<span>
+1. getRelativeDate : Substituted 86400000 with 86400001 &rarr; TIMED_OUT<br/>
+2. getRelativeDate : Replaced long division with multiplication &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;&#9;long days = diff / DAY;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_70'/>
+70
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_70'>8</a>
+<span>
+1. getRelativeDate : Substituted 1 with 0 &rarr; TIMED_OUT<br/>
+2. getRelativeDate : Substituted 0 with 1 &rarr; TIMED_OUT<br/>
+3. getRelativeDate : removed call to com/chschmid/jdotxt/util/LanguagesController::getWord &rarr; TIMED_OUT<br/>
+4. getRelativeDate : removed call to java/lang/Long::valueOf &rarr; TIMED_OUT<br/>
+5. getRelativeDate : removed call to java/lang/String::format &rarr; TIMED_OUT<br/>
+6. getRelativeDate : replaced call to com/chschmid/jdotxt/util/LanguagesController::getWord with argument &rarr; TIMED_OUT<br/>
+7. getRelativeDate : replaced call to java/lang/String::format with argument &rarr; TIMED_OUT<br/>
+8. getRelativeDate : replaced return value with &#34;&#34; for com/todotxt/todotxttouch/util/RelativeDate::getRelativeDate &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;&#9;return String.format(JdotxtGUI.lang.getWord(&#34;dates_days_ago&#34;), days);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_71'/>
+71
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_71'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_72'/>
+72
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_72'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_73'/>
+73
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_73'>5</a>
+<span>
+1. getRelativeDate : changed conditional boundary &rarr; TIMED_OUT<br/>
+2. getRelativeDate : Substituted 86400000 with 86400001 &rarr; TIMED_OUT<br/>
+3. getRelativeDate : negated conditional &rarr; TIMED_OUT<br/>
+4. getRelativeDate : removed conditional - replaced comparison check with false &rarr; TIMED_OUT<br/>
+5. getRelativeDate : removed conditional - replaced comparison check with true &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;if (diff &#62;= 1 * RelativeDate.DAY) {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_74'/>
+74
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_74'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;&#9;&#9;// 1 day ago</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_75'/>
+75
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_75'>3</a>
+<span>
+1. getRelativeDate : removed call to com/chschmid/jdotxt/util/LanguagesController::getWord &rarr; TIMED_OUT<br/>
+2. getRelativeDate : replaced call to com/chschmid/jdotxt/util/LanguagesController::getWord with argument &rarr; TIMED_OUT<br/>
+3. getRelativeDate : replaced return value with &#34;&#34; for com/todotxt/todotxttouch/util/RelativeDate::getRelativeDate &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;&#9;return JdotxtGUI.lang.getWord(&#34;dates_one_day_ago&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_76'/>
+76
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_76'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_77'/>
+77
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_77'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_78'/>
+78
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_78'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;&#9;// today</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_79'/>
+79
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_79'>3</a>
+<span>
+1. getRelativeDate : removed call to com/chschmid/jdotxt/util/LanguagesController::getWord &rarr; NO_COVERAGE<br/>
+2. getRelativeDate : replaced call to com/chschmid/jdotxt/util/LanguagesController::getWord with argument &rarr; NO_COVERAGE<br/>
+3. getRelativeDate : replaced return value with &#34;&#34; for com/todotxt/todotxttouch/util/RelativeDate::getRelativeDate &rarr; NO_COVERAGE<br/>
+
+</span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>&#9;&#9;return JdotxtGUI.lang.getWord(&#34;dates_today&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_80'/>
+80
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_80'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_81'/>
+81
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_81'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_82'/>
+82
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_82'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;/**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_83'/>
+83
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_83'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * This method returns a String representing the relative date by comparing</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_84'/>
+84
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_84'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * the Date being passed in to the date / time that it is right now.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_85'/>
+85
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_85'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_86'/>
+86
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_86'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * @param date</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_87'/>
+87
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_87'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; * @return String representing the relative date</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_88'/>
+88
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_88'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9; */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_89'/>
+89
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_89'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;public static String getRelativeDate(Date date) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_90'/>
+90
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_90'>1</a>
+<span>
+1. getRelativeDate : removed call to java/util/GregorianCalendar::getInstance &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;Calendar converted = GregorianCalendar.getInstance();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_91'/>
+91
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_91'>1</a>
+<span>
+1. getRelativeDate : removed call to java/util/Calendar::setTime &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;converted.setTime(date);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_92'/>
+92
+</td>
+<td class='uncertain'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_92'>2</a>
+<span>
+1. getRelativeDate : removed call to com/todotxt/todotxttouch/util/RelativeDate::getRelativeDate &rarr; TIMED_OUT<br/>
+2. getRelativeDate : replaced return value with &#34;&#34; for com/todotxt/todotxttouch/util/RelativeDate::getRelativeDate &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='uncertain'>&#9;&#9;return getRelativeDate(converted);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_93'/>
+93
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_93'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;}</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_94'/>
+94
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_94'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@79cac29d_95'/>
+95
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_95'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@79cac29d_36'>36</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_36'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed call to java/util/GregorianCalendar::&#60;init&#62; &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@79cac29d_37'>37</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_37'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> Substituted 11 with 12 &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> Substituted 0 with 1 &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed call to java/util/Calendar::set &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@79cac29d_38'>38</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_38'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> Substituted 12 with 13 &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> Substituted 0 with 1 &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed call to java/util/Calendar::set &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@79cac29d_39'>39</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_39'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> Substituted 13 with 14 &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> Substituted 0 with 1 &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed call to java/util/Calendar::set &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@79cac29d_40'>40</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_40'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> Substituted 14 with 15 &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> Substituted 0 with 1 &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed call to java/util/Calendar::set &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@79cac29d_42'>42</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_42'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed call to com/todotxt/todotxttouch/util/RelativeDate::getRelativeDate &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> replaced return value with &#34;&#34; for com/todotxt/todotxttouch/util/RelativeDate::getRelativeDate &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@79cac29d_46'>46</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_46'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed call to java/util/Calendar::getTimeInMillis &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@79cac29d_47'>47</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_47'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed call to java/util/Calendar::getTimeInMillis &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@79cac29d_48'>48</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_48'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> Replaced long subtraction with addition &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@79cac29d_50'>50</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_50'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> Substituted 0 with 1 &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> Substituted 31536000000 with 31536000001 &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>7.<span><b>7</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed conditional - replaced comparison check with false &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>8.<span><b>8</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed conditional - replaced comparison check with false &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>9.<span><b>9</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed conditional - replaced comparison check with true &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>10.<span><b>10</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed conditional - replaced comparison check with true &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@79cac29d_53'>53</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_53'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed call to java/util/Calendar::getTime &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed call to java/text/SimpleDateFormat::format &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> replaced return value with &#34;&#34; for com/todotxt/todotxttouch/util/RelativeDate::getRelativeDate &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@79cac29d_56'>56</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_56'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> Substituted 5184000000 with 5184000001 &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed conditional - replaced comparison check with false &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed conditional - replaced comparison check with true &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@79cac29d_58'>58</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_58'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> Substituted 2592000000 with 2592000001 &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> Replaced long division with multiplication &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@79cac29d_59'>59</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_59'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> Substituted 1 with 0 &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> Substituted 0 with 1 &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed call to com/chschmid/jdotxt/util/LanguagesController::getWord &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed call to java/lang/Long::valueOf &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed call to java/lang/String::format &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> replaced call to com/chschmid/jdotxt/util/LanguagesController::getWord with argument &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>7.<span><b>7</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> replaced call to java/lang/String::format with argument &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>8.<span><b>8</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> replaced return value with &#34;&#34; for com/todotxt/todotxttouch/util/RelativeDate::getRelativeDate &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@79cac29d_62'>62</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_62'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> Substituted 2592000000 with 2592000001 &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed conditional - replaced comparison check with false &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed conditional - replaced comparison check with true &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@79cac29d_64'>64</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_64'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed call to com/chschmid/jdotxt/util/LanguagesController::getWord &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> replaced call to com/chschmid/jdotxt/util/LanguagesController::getWord with argument &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> replaced return value with &#34;&#34; for com/todotxt/todotxttouch/util/RelativeDate::getRelativeDate &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@79cac29d_67'>67</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_67'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> Substituted 172800000 with 172800001 &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed conditional - replaced comparison check with false &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed conditional - replaced comparison check with true &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@79cac29d_69'>69</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_69'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> Substituted 86400000 with 86400001 &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> Replaced long division with multiplication &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@79cac29d_70'>70</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_70'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> Substituted 1 with 0 &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> Substituted 0 with 1 &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed call to com/chschmid/jdotxt/util/LanguagesController::getWord &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed call to java/lang/Long::valueOf &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed call to java/lang/String::format &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> replaced call to com/chschmid/jdotxt/util/LanguagesController::getWord with argument &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>7.<span><b>7</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> replaced call to java/lang/String::format with argument &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>8.<span><b>8</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> replaced return value with &#34;&#34; for com/todotxt/todotxttouch/util/RelativeDate::getRelativeDate &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@79cac29d_73'>73</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_73'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> Substituted 86400000 with 86400001 &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed conditional - replaced comparison check with false &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed conditional - replaced comparison check with true &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@79cac29d_75'>75</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_75'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed call to com/chschmid/jdotxt/util/LanguagesController::getWord &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> replaced call to com/chschmid/jdotxt/util/LanguagesController::getWord with argument &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> replaced return value with &#34;&#34; for com/todotxt/todotxttouch/util/RelativeDate::getRelativeDate &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@79cac29d_79'>79</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_79'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed call to com/chschmid/jdotxt/util/LanguagesController::getWord &rarr; NO_COVERAGE</p> <p class='NO_COVERAGE'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> replaced call to com/chschmid/jdotxt/util/LanguagesController::getWord with argument &rarr; NO_COVERAGE</p> <p class='NO_COVERAGE'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> replaced return value with &#34;&#34; for com/todotxt/todotxttouch/util/RelativeDate::getRelativeDate &rarr; NO_COVERAGE</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@79cac29d_90'>90</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_90'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed call to java/util/GregorianCalendar::getInstance &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@79cac29d_91'>91</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_91'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed call to java/util/Calendar::setTime &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@79cac29d_92'>92</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@79cac29d_92'/> 
+
+<p class='TIMED_OUT'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> removed call to com/todotxt/todotxttouch/util/RelativeDate::getRelativeDate &rarr; TIMED_OUT</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getRelativeDate<br/><b>Killed by : </b>none</span></span> replaced return value with &#34;&#34; for com/todotxt/todotxttouch/util/RelativeDate::getRelativeDate &rarr; TIMED_OUT</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>CONDITIONALS_BOUNDARY</li>
+<li class='mutator'>CONSTRUCTOR_CALLS</li>
+<li class='mutator'>EMPTY_RETURNS</li>
+<li class='mutator'>EXPERIMENTAL_ARGUMENT_PROPAGATION</li>
+<li class='mutator'>EXPERIMENTAL_BIG_INTEGER</li>
+<li class='mutator'>EXPERIMENTAL_MEMBER_VARIABLE</li>
+<li class='mutator'>EXPERIMENTAL_NAKED_RECEIVER</li>
+<li class='mutator'>EXPERIMENTAL_SWITCH</li>
+<li class='mutator'>FALSE_RETURNS</li>
+<li class='mutator'>INCREMENTS</li>
+<li class='mutator'>INLINE_CONSTS</li>
+<li class='mutator'>INVERT_NEGS</li>
+<li class='mutator'>MATH</li>
+<li class='mutator'>NEGATE_CONDITIONALS</li>
+<li class='mutator'>NON_VOID_METHOD_CALLS</li>
+<li class='mutator'>NULL_RETURNS</li>
+<li class='mutator'>PRIMITIVE_RETURNS</li>
+<li class='mutator'>REMOVE_CONDITIONALS_EQUAL_ELSE</li>
+<li class='mutator'>REMOVE_CONDITIONALS_EQUAL_IF</li>
+<li class='mutator'>REMOVE_CONDITIONALS_ORDER_ELSE</li>
+<li class='mutator'>REMOVE_CONDITIONALS_ORDER_IF</li>
+<li class='mutator'>REMOVE_INCREMENTS</li>
+<li class='mutator'>TRUE_RETURNS</li>
+<li class='mutator'>VOID_METHOD_CALLS</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>com.todotxt.todotxttouch.task.TaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskBagImplTest]/[test:hasChanged(com.todotxt.todotxttouch.task.TaskBagImplTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskBagImplTest]/[test:getPriorities(com.todotxt.todotxttouch.task.TaskBagImplTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:screenFormat(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskBagImplTest]/[test:delete2(com.todotxt.todotxttouch.task.TaskBagImplTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskBagImplTest]/[test:getProjects(com.todotxt.todotxttouch.task.TaskBagImplTest)] (1 ms)</li><li>com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest]/[test:update2(com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest)] (1 ms)</li><li>com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest]/[test:getPriorities(com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest)] (1 ms)</li><li>com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest]/[test:getTasks1(com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest)] (1 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:date(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskBagImplTest]/[test:getTasks(com.todotxt.todotxttouch.task.TaskBagImplTest)] (1 ms)</li><li>com.todotxt.todotxttouch.util.RelativeDateTest.[engine:junit-jupiter]/[class:com.todotxt.todotxttouch.util.RelativeDateTest]/[test-template:getRelativeDateCalendar(java.util.Calendar, java.util.Calendar, java.lang.String)]/[test-template-invocation:#1] (0 ms)</li><li>com.todotxt.todotxttouch.util.RelativeDateTest.[engine:junit-jupiter]/[class:com.todotxt.todotxttouch.util.RelativeDateTest]/[test-template:getRelativeDate(java.util.Date, java.lang.String)]/[test-template-invocation:#5] (1 ms)</li><li>com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest]/[test:getContexts(com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest)] (0 ms)</li><li>com.todotxt.todotxttouch.util.RelativeDateTest.[engine:junit-jupiter]/[class:com.todotxt.todotxttouch.util.RelativeDateTest]/[test-template:getRelativeDateCalendar(java.util.Calendar, java.util.Calendar, java.lang.String)]/[test-template-invocation:#2] (0 ms)</li><li>com.todotxt.todotxttouch.util.RelativeDateTest.[engine:junit-jupiter]/[class:com.todotxt.todotxttouch.util.RelativeDateTest]/[test-template:getRelativeDate(java.util.Date, java.lang.String)]/[test-template-invocation:#4] (1 ms)</li><li>com.todotxt.todotxttouch.util.RelativeDateTest.[engine:junit-jupiter]/[class:com.todotxt.todotxttouch.util.RelativeDateTest]/[test-template:getRelativeDateCalendar(java.util.Calendar, java.util.Calendar, java.lang.String)]/[test-template-invocation:#3] (0 ms)</li><li>com.todotxt.todotxttouch.util.RelativeDateTest.[engine:junit-jupiter]/[class:com.todotxt.todotxttouch.util.RelativeDateTest]/[test-template:getRelativeDate(java.util.Date, java.lang.String)]/[test-template-invocation:#3] (0 ms)</li><li>com.todotxt.todotxttouch.util.RelativeDateTest.[engine:junit-jupiter]/[class:com.todotxt.todotxttouch.util.RelativeDateTest]/[test-template:getRelativeDateCalendar(java.util.Calendar, java.util.Calendar, java.lang.String)]/[test-template-invocation:#4] (0 ms)</li><li>com.todotxt.todotxttouch.util.RelativeDateTest.[engine:junit-jupiter]/[class:com.todotxt.todotxttouch.util.RelativeDateTest]/[test-template:getRelativeDate(java.util.Date, java.lang.String)]/[test-template-invocation:#2] (0 ms)</li><li>com.todotxt.todotxttouch.util.RelativeDateTest.[engine:junit-jupiter]/[class:com.todotxt.todotxttouch.util.RelativeDateTest]/[test-template:getRelativeDate(java.util.Date, java.lang.String)]/[test-template-invocation:#1] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskBagImplTest]/[test:update2(com.todotxt.todotxttouch.task.TaskBagImplTest)] (1 ms)</li><li>com.todotxt.todotxttouch.task.TaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskBagImplTest]/[test:size(com.todotxt.todotxttouch.task.TaskBagImplTest)] (1 ms)</li><li>com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest]/[test:update1(com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest)] (1 ms)</li><li>com.todotxt.todotxttouch.task.TextSplitterTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TextSplitterTest]/[test:split4(com.todotxt.todotxttouch.task.TextSplitterTest)] (1 ms)</li><li>com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest]/[test:getProjects(com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest)] (1 ms)</li><li>com.todotxt.todotxttouch.task.TaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskBagImplTest]/[test:clear(com.todotxt.todotxttouch.task.TaskBagImplTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest]/[test:getTasks3(com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:fileFormat7(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-jupiter]/[class:com.todotxt.todotxttouch.task.TaskTest]/[test-template:compareTask(com.todotxt.todotxttouch.task.Task, java.lang.Object, boolean)]/[test-template-invocation:#1] (9 ms)</li><li>com.todotxt.todotxttouch.task.TaskTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskTest]/[test:fileFormat3(com.todotxt.todotxttouch.task.TaskTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest]/[test:clear(com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest)] (1 ms)</li><li>com.todotxt.todotxttouch.task.TaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskBagImplTest]/[test:update1(com.todotxt.todotxttouch.task.TaskBagImplTest)] (1 ms)</li><li>com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest]/[test:delete2(com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest]/[test:getTasks2(com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest)] (1 ms)</li><li>com.todotxt.todotxttouch.task.TaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.TaskBagImplTest]/[test:getContexts(com.todotxt.todotxttouch.task.TaskBagImplTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest]/[test:size(com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest)] (0 ms)</li><li>com.todotxt.todotxttouch.util.RelativeDateTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.util.RelativeDateTest]/[test:getRelativeDateNull(com.todotxt.todotxttouch.util.RelativeDateTest)] (0 ms)</li><li>com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest.[engine:junit-vintage]/[runner:com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest]/[test:hasChanged(com.todotxt.todotxttouch.task.JdotxtTaskBagImplTest)] (198 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.10.0
+
+</body>
+</html>
