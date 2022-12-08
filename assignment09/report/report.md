@@ -27,7 +27,7 @@ Some of the mutators remove calls to print statements inside catch blocks. Print
 
 ![](./images/Captura%20de%20ecr%C3%A3%20de%202022-12-07%2016-09-27.png)
 
-This is the final coverage report. The new values for line coverage, mutation coverage and test strength are, respectively, 91%, 91% and 99%. We did not improve coverage further because the leftover mutants are either equivalent (as mentioned in the previous section) or are hard to kill. For example, some mutants have changes in code that runs in separate threads, testing this kind of code can be difficult and often requires waiting for the threads to run, which would make Pitest take even longer to run.
+This is the final coverage report. The new values for line coverage, mutation coverage and test strength are, respectively, 91%, 91% and 99%. We did not improve coverage further because the leftover mutants are either equivalent (as mentioned in the previous section) or are hard to kill. For example, some mutants have changes in code that runs in separate threads. Testing this kind of code can be difficult and often requires waiting for the threads to run, which would make Pitest take even longer to run.
 
 ## Tests Developed
 
